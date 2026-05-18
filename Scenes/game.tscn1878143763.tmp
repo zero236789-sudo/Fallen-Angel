@@ -1,0 +1,145 @@
+[gd_scene load_steps=9 format=3 uid="uid://cb4ubxmtajkey"]
+
+[ext_resource type="Script" uid="uid://d1e4b52y10qc3" path="res://game.gd" id="1_qxrlw"]
+[ext_resource type="PackedScene" uid="uid://bg88xaf2p2gvc" path="res://Scenes/player.tscn" id="2_wrm1d"]
+[ext_resource type="PackedScene" uid="uid://cin40omuysyd5" path="res://Scenes/PlayerBullet.tscn" id="3_wrm1d"]
+[ext_resource type="PackedScene" uid="uid://wjc25p10vq4y" path="res://Enemies/enemy.tscn" id="5_i6g32"]
+[ext_resource type="Texture2D" uid="uid://dr4dadlm6g0yx" path="res://Sprites/Screen.png" id="5_wowpa"]
+[ext_resource type="PackedScene" uid="uid://bo1ia4oej4ttp" path="res://Enemies/Spider.tscn" id="6_i6g32"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wowpa"]
+size = Vector2(16, 888)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i6g32"]
+size = Vector2(579, 16)
+
+[node name="GAME" type="Node2D"]
+script = ExtResource("1_qxrlw")
+
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("2_wrm1d")]
+light_mask = 512
+visibility_layer = 512
+position = Vector2(960, 858)
+bullet = ExtResource("3_wrm1d")
+
+[node name="Screen" type="Sprite2D" parent="."]
+top_level = true
+position = Vector2(960, 540)
+texture = ExtResource("5_wowpa")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(671, 540)
+shape = SubResource("RectangleShape2D_wowpa")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+position = Vector2(1234, 540)
+shape = SubResource("RectangleShape2D_wowpa")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(952.5, 104)
+shape = SubResource("RectangleShape2D_i6g32")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(952, 976)
+shape = SubResource("RectangleShape2D_i6g32")
+
+[node name="Enemy" parent="." instance=ExtResource("5_i6g32")]
+position = Vector2(-109, -83)
+collision_layer = 128
+collision_mask = 128
+
+[node name="Spider8" parent="." instance=ExtResource("6_i6g32")]
+position = Vector2(894, -66)
+collision_layer = 2
+collision_mask = 2
+motion_mode = 1
+stop_y = 400.0
+fire_rate = 1.0
+bullets_per_shot = 1
+aim_at_player = false
+max_health = 6
+
+[node name="Spider5" parent="." instance=ExtResource("6_i6g32")]
+position = Vector2(1149, -193)
+collision_layer = 2
+collision_mask = 2
+motion_mode = 1
+stop_y = 200.0
+fire_rate = 1.0
+bullets_per_shot = 1
+aim_at_player = false
+max_health = 6
+
+[node name="Spider4" parent="." instance=ExtResource("6_i6g32")]
+position = Vector2(1022, -194)
+collision_layer = 2
+collision_mask = 2
+motion_mode = 1
+stop_y = 200.0
+fire_rate = 1.0
+bullets_per_shot = 1
+aim_at_player = false
+max_health = 6
+
+[node name="Spider6" parent="." instance=ExtResource("6_i6g32")]
+position = Vector2(895, -195)
+collision_layer = 2
+collision_mask = 2
+motion_mode = 1
+stop_y = 200.0
+fire_rate = 1.0
+bullets_per_shot = 1
+aim_at_player = false
+max_health = 6
+
+[node name="Spider7" parent="." instance=ExtResource("6_i6g32")]
+position = Vector2(768, -196)
+collision_layer = 2
+collision_mask = 2
+motion_mode = 1
+stop_y = 200.0
+fire_rate = 1.0
+bullets_per_shot = 1
+aim_at_player = false
+max_health = 6
+
+[node name="Spider3" parent="." instance=ExtResource("6_i6g32")]
+position = Vector2(1146, -66)
+collision_layer = 2
+collision_mask = 2
+motion_mode = 1
+stop_y = 400.0
+fire_rate = 1.0
+bullets_per_shot = 1
+aim_at_player = false
+max_health = 6
+
+[node name="Spider2" parent="." instance=ExtResource("6_i6g32")]
+position = Vector2(1020, -66)
+collision_layer = 2
+collision_mask = 2
+motion_mode = 1
+stop_y = 400.0
+fire_rate = 1.0
+bullets_per_shot = 1
+aim_at_player = false
+max_health = 6
+
+[node name="Spider" parent="." instance=ExtResource("6_i6g32")]
+position = Vector2(768, -66)
+collision_layer = 2
+collision_mask = 2
+motion_mode = 1
+stop_y = 400.0
+fire_rate = 1.0
+bullets_per_shot = 1
+aim_at_player = false
+max_health = 6

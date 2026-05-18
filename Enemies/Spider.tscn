@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bo1ia4oej4ttp"]
+
+[ext_resource type="Texture2D" uid="uid://cnajcq2nb5kfd" path="res://Sprites/spider.png" id="1_5e61y"]
+[ext_resource type="Script" uid="uid://ds75tmv5mdtpq" path="res://Scripts/Enemy1.gd" id="1_jj670"]
+[ext_resource type="PackedScene" uid="uid://bhw0yihwm00rq" path="res://Scenes/spider_bullet.tscn" id="2_3f47e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jj670"]
+size = Vector2(117, 120)
+
+[node name="Spider" type="CharacterBody2D" groups=["Enemies"]]
+script = ExtResource("1_jj670")
+bullet_scene = ExtResource("2_3f47e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_jj670")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.74999475, 0.2499916)
+scale = Vector2(0.113106795, 0.119500026)
+texture = ExtResource("1_5e61y")
+
+[node name="spawnpos" type="Marker2D" parent="."]
+position = Vector2(0, -64)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+
+[node name="Muzzleflash" type="AnimationPlayer" parent="."]
+
+[node name="shootdelay" type="Timer" parent="." groups=["Player"]]
+wait_time = 0.15
+one_shot = true

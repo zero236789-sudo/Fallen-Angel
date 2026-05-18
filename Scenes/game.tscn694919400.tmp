@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://cb4ubxmtajkey"]
+
+[ext_resource type="Script" uid="uid://d1e4b52y10qc3" path="res://game.gd" id="1_qxrlw"]
+[ext_resource type="PackedScene" uid="uid://bg88xaf2p2gvc" path="res://Scenes/player.tscn" id="2_wrm1d"]
+[ext_resource type="PackedScene" uid="uid://cin40omuysyd5" path="res://Scenes/PlayerBullet.tscn" id="3_wrm1d"]
+[ext_resource type="PackedScene" uid="uid://wjc25p10vq4y" path="res://Scenes/enemy.tscn" id="4_3dryh"]
+
+[node name="GAME" type="Node2D"]
+script = ExtResource("1_qxrlw")
+
+[node name="Player" parent="." instance=ExtResource("2_wrm1d")]
+bullet = ExtResource("3_wrm1d")
+
+[node name="Enemy" parent="." groups=["Enemies"] instance=ExtResource("4_3dryh")]
+position = Vector2(250, -150)
+
+[node name="Enemy2" parent="." groups=["Enemies"] instance=ExtResource("4_3dryh")]
+position = Vector2(450, -150)
+
+[node name="Enemy3" parent="." groups=["Enemies"] instance=ExtResource("4_3dryh")]
+position = Vector2(650, -150)
+
+[node name="Enemy4" parent="." groups=["Enemies"] instance=ExtResource("4_3dryh")]
+position = Vector2(850, -150)

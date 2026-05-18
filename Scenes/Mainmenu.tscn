@@ -1,0 +1,117 @@
+[gd_scene load_steps=5 format=3 uid="uid://duggw5svsuooh"]
+
+[ext_resource type="FontFile" uid="uid://cxaqp7qbdbf7s" path="res://INVASION2000.TTF" id="1_e8kt5"]
+[ext_resource type="Script" uid="uid://cs4c8eu6xbpbw" path="res://Scripts/mainmenu.gd" id="1_mxk1q"]
+[ext_resource type="Texture2D" uid="uid://dvqj1frbtvcmk" path="res://Scenes/4b68569fd2c32e0abccb8ce1de04aa2b.jpg" id="3_lgpea"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j1xha"]
+bg_color = Color(0.14117648, 0.13725491, 0.15294118, 1)
+
+[node name="Mainmenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mxk1q")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 211.0
+grow_horizontal = 2
+
+[node name="Main menu" type="Label" parent="CenterContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_e8kt5")
+theme_override_font_sizes/font_size = 124
+text = "Main Menu"
+
+[node name="CenterContainer2" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -68.0
+offset_bottom = 291.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 65
+
+[node name="Play" type="Button" parent="CenterContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_e8kt5")
+theme_override_font_sizes/font_size = 55
+text = "Play"
+
+[node name="Settings" type="Button" parent="CenterContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_e8kt5")
+theme_override_font_sizes/font_size = 50
+text = "Settings"
+
+[node name="Quit" type="Button" parent="CenterContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_e8kt5")
+theme_override_font_sizes/font_size = 55
+text = "Quit"
+
+[node name="SettingsPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 449.0
+offset_bottom = 1083.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_j1xha")
+
+[node name="Musica" type="Label" parent="SettingsPanel"]
+layout_mode = 0
+offset_left = 133.0
+offset_top = 130.0
+offset_right = 280.0
+offset_bottom = 153.0
+theme_override_fonts/font = ExtResource("1_e8kt5")
+theme_override_font_sizes/font_size = 35
+text = "Musica"
+
+[node name="MusicSlider" type="HSlider" parent="SettingsPanel"]
+layout_mode = 0
+offset_left = 78.0
+offset_top = 212.0
+offset_right = 351.0
+offset_bottom = 228.0
+
+[node name="SFX" type="Label" parent="SettingsPanel"]
+layout_mode = 0
+offset_left = 169.0
+offset_top = 353.0
+offset_right = 247.0
+offset_bottom = 389.0
+theme_override_fonts/font = ExtResource("1_e8kt5")
+theme_override_font_sizes/font_size = 35
+text = "SFX"
+
+[node name="SFXSlider" type="HSlider" parent="SettingsPanel"]
+layout_mode = 0
+offset_left = 87.0
+offset_top = 466.0
+offset_right = 350.0
+offset_bottom = 482.0
+
+[node name="4b68569Fd2c32e0Abccb8Ce1De04Aa2b" type="Sprite2D" parent="."]
+position = Vector2(1580, 631.1508)
+scale = Vector2(0.9157609, 0.9157609)
+texture = ExtResource("3_lgpea")

@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://b136pmigt1374"]
+
+[ext_resource type="Script" uid="uid://br3ne2rgji3lw" path="res://Scripts/enemy_bullet.gd" id="1_t8o34"]
+[ext_resource type="Texture2D" uid="uid://dauu1kjdcujd0" path="res://Sprites/SkullBullet.png" id="2_4f7k7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b6yqb"]
+radius = 22.0
+
+[node name="Spider_Bullet" type="Area2D" unique_id=222731872 groups=["enemy_bullet"]]
+script = ExtResource("1_t8o34")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1302336984]
+shape = SubResource("CircleShape2D_b6yqb")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=482509394]
+position = Vector2(1.2516975e-06, -2.2053719e-06)
+scale = Vector2(0.32812503, 0.32812503)
+texture = ExtResource("2_4f7k7")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
