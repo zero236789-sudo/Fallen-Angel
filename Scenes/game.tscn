@@ -1,0 +1,125 @@
+[gd_scene load_steps=12 format=3 uid="uid://cb4ubxmtajkey"]
+
+[ext_resource type="Script" uid="uid://d1e4b52y10qc3" path="res://game.gd" id="1_qxrlw"]
+[ext_resource type="PackedScene" uid="uid://bg88xaf2p2gvc" path="res://Scenes/player.tscn" id="2_wrm1d"]
+[ext_resource type="Texture2D" uid="uid://08eqvf3cckr" path="res://6499_original.png" id="7_1l0tm"]
+[ext_resource type="PackedScene" uid="uid://vvx1thhhoqaf" path="res://Enemies/Angel.tscn" id="7_v158k"]
+[ext_resource type="Script" uid="uid://bhmprte321pd7" path="res://Scenes/canvas_layer.gd" id="8_h4fw4"]
+[ext_resource type="Texture2D" uid="uid://cwni3clhkdb28" path="res://png-clipart-heart-pixel-art-warning-function-angle-text-removebg-preview.png" id="8_v158k"]
+[ext_resource type="PackedScene" uid="uid://o5cliqxcmn04" path="res://Scenes/parallax_background.tscn" id="9_h4fw4"]
+[ext_resource type="Texture2D" uid="uid://0jy15scj6anm" path="res://imagen vacia.png" id="10_ldgsr"]
+[ext_resource type="Texture2D" uid="uid://cxv3bbgamwmni" path="res://image-removebg-preview.png" id="10_o5yvi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wowpa"]
+size = Vector2(16, 1107.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i6g32"]
+size = Vector2(716.5, 16)
+
+[node name="GAME" type="Node2D"]
+script = ExtResource("1_qxrlw")
+
+[node name="6499Original" type="Sprite2D" parent="."]
+top_level = true
+position = Vector2(960, 540.00006)
+scale = Vector2(1.4999999, 1.5)
+texture = ExtResource("7_1l0tm")
+
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("2_wrm1d")]
+light_mask = 512
+visibility_layer = 512
+position = Vector2(960, 858)
+scale = Vector2(3.5, 3.5)
+collision_layer = 3
+collision_mask = 3
+
+[node name="Skull" parent="." instance=ExtResource("7_v158k")]
+position = Vector2(963, 257)
+collision_layer = 3
+collision_mask = 3
+bullets_per_shot = 3
+max_health = 500
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(590, 538.25)
+shape = SubResource("RectangleShape2D_wowpa")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+position = Vector2(1324, 538.5)
+shape = SubResource("RectangleShape2D_wowpa")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(957, -8)
+shape = SubResource("RectangleShape2D_i6g32")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(957.75, 1085)
+shape = SubResource("RectangleShape2D_i6g32")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+offset = Vector2(680, 1000)
+scale = Vector2(0.09, 0.09)
+transform = Transform2D(0.09, 0, 0, 0.09, 680, 1000)
+script = ExtResource("8_h4fw4")
+heart_full = ExtResource("8_v158k")
+heart_empty = ExtResource("10_ldgsr")
+
+[node name="BombsContainer" type="HBoxContainer" parent="CanvasLayer" groups=["BombsContainer"]]
+offset_right = 1508.0
+offset_bottom = 500.0
+
+[node name="Bomb1" type="TextureRect" parent="CanvasLayer/BombsContainer"]
+layout_mode = 2
+texture = ExtResource("10_o5yvi")
+
+[node name="Bomb2" type="TextureRect" parent="CanvasLayer/BombsContainer"]
+layout_mode = 2
+texture = ExtResource("10_o5yvi")
+
+[node name="Bomb3" type="TextureRect" parent="CanvasLayer/BombsContainer"]
+layout_mode = 2
+texture = ExtResource("10_o5yvi")
+
+[node name="HeartsContainer" type="HBoxContainer" parent="CanvasLayer"]
+light_mask = 512
+visibility_layer = 512
+anchors_preset = -1
+anchor_left = 3.9810002
+anchor_top = 0.15400001
+anchor_right = 4.842
+anchor_bottom = 0.577
+offset_left = 0.9248047
+offset_top = 0.34669495
+offset_right = -0.19433594
+offset_bottom = -0.49328613
+
+[node name="Heart1" type="TextureRect" parent="CanvasLayer/HeartsContainer"]
+layout_mode = 2
+
+[node name="Heart2" type="TextureRect" parent="CanvasLayer/HeartsContainer"]
+layout_mode = 2
+
+[node name="Heart3" type="TextureRect" parent="CanvasLayer/HeartsContainer"]
+layout_mode = 2
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+custom_minimum_size = Vector2(50, 50)
+anchors_preset = -1
+anchor_left = 3.5130002
+anchor_top = -9.959001
+anchor_right = 4.375
+anchor_bottom = -9.453
+offset_left = -0.5161133
+offset_top = 0.16601563
+offset_bottom = -0.31445313
+theme_override_font_sizes/font_size = 400
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("9_h4fw4")]

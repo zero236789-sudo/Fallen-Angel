@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://djtfn68sm776c"]
+
+[ext_resource type="Script" uid="uid://ds75tmv5mdtpq" path="res://Scripts/Enemy1.gd" id="1_dsyb5"]
+[ext_resource type="PackedScene" uid="uid://bhw0yihwm00rq" path="res://Scenes/spider_bullet.tscn" id="2_5ylhx"]
+[ext_resource type="Texture2D" uid="uid://qgor8exeutfi" path="res://aa.png" id="3_ywea1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jj670"]
+size = Vector2(277, 249)
+
+[node name="Skull" type="CharacterBody2D" groups=["Enemies"]]
+script = ExtResource("1_dsyb5")
+bullet_scene = ExtResource("2_5ylhx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5.5, 3.5)
+shape = SubResource("RectangleShape2D_jj670")
+
+[node name="spawnpos" type="Marker2D" parent="."]
+position = Vector2(0, -64)
+
+[node name="Muzzleflash" type="AnimationPlayer" parent="."]
+
+[node name="shootdelay" type="Timer" parent="." groups=["Player"]]
+wait_time = 0.15
+one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_ywea1")

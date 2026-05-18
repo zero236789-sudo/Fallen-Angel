@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://wjc25p10vq4y"]
+
+[ext_resource type="Script" uid="uid://48ja0nwx4hxg" path="res://Scripts/enemy.gd" id="1_1f0kj"]
+[ext_resource type="Texture2D" uid="uid://c7h0r67jguerv" path="res://Sprites/icon.svg" id="2_afpow"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2eihg"]
+size = Vector2(117, 120)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0gh8i"]
+radius = 335.72162
+
+[node name="Enemy" type="CharacterBody2D" groups=["Player"]]
+script = ExtResource("1_1f0kj")
+speed = null
+stop_y = null
+shoot_cooldown = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_2eihg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_afpow")
+
+[node name="spawnpos" type="Marker2D" parent="."]
+position = Vector2(0, -64)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+
+[node name="Muzzleflash" type="AnimationPlayer" parent="."]
+
+[node name="shootspeed" type="Timer" parent="." groups=["Player"]]
+wait_time = 0.3
+one_shot = true
+
+[node name="Detection" type="Area2D" parent="."]
+
+[node name="colisionShape2D" type="CollisionShape2D" parent="Detection"]
+shape = SubResource("CircleShape2D_0gh8i")
+
+[connection signal="timeout" from="shootspeed" to="." method="_on_shoot_speed_timeout"]
+[connection signal="body_entered" from="Detection" to="." method="_on_detection_body_entered"]
