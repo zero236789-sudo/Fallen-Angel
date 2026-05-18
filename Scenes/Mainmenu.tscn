@@ -2,7 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://cxaqp7qbdbf7s" path="res://INVASION2000.TTF" id="1_e8kt5"]
 [ext_resource type="Script" uid="uid://cs4c8eu6xbpbw" path="res://Scripts/mainmenu.gd" id="1_mxk1q"]
-[ext_resource type="Texture2D" uid="uid://dvqj1frbtvcmk" path="res://Scenes/4b68569fd2c32e0abccb8ce1de04aa2b.jpg" id="3_lgpea"]
+[ext_resource type="Texture2D" uid="uid://duxa07endl4am" path="res://G5U9wn-XwAAMg-Z.png" id="2_lgpea"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j1xha"]
 bg_color = Color(0.14117648, 0.13725491, 0.15294118, 1)
@@ -24,6 +24,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="G5u9WnXwAaMgZ" type="Sprite2D" parent="."]
+position = Vector2(1412, 550)
+texture = ExtResource("2_lgpea")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -110,8 +114,3 @@ offset_left = 87.0
 offset_top = 466.0
 offset_right = 350.0
 offset_bottom = 482.0
-
-[node name="4b68569Fd2c32e0Abccb8Ce1De04Aa2b" type="Sprite2D" parent="."]
-position = Vector2(1580, 631.1508)
-scale = Vector2(0.9157609, 0.9157609)
-texture = ExtResource("3_lgpea")
