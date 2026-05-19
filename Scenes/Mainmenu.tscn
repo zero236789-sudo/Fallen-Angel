@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://duggw5svsuooh"]
+[gd_scene load_steps=8 format=3 uid="uid://duggw5svsuooh"]
 
 [ext_resource type="FontFile" uid="uid://cxaqp7qbdbf7s" path="res://INVASION2000.TTF" id="1_e8kt5"]
 [ext_resource type="Script" uid="uid://cs4c8eu6xbpbw" path="res://Scripts/mainmenu.gd" id="1_mxk1q"]
-[ext_resource type="Texture2D" uid="uid://dvqj1frbtvcmk" path="res://Scenes/4b68569fd2c32e0abccb8ce1de04aa2b.jpg" id="3_lgpea"]
+[ext_resource type="Texture2D" uid="uid://cfguga2jv04b4" path="res://Main Menu.png" id="2_i27ks"]
+[ext_resource type="Texture2D" uid="uid://d0kd0vvvrtihu" path="res://Heart.jpg" id="3_28j1r"]
+[ext_resource type="Texture2D" uid="uid://bimjmasglpwa6" path="res://Crown.jpg" id="5_lsapa"]
+[ext_resource type="Texture2D" uid="uid://qg4uwnpqeiaa" path="res://Fallen Angel Titlepix.jpg" id="6_lsapa"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j1xha"]
 bg_color = Color(0.14117648, 0.13725491, 0.15294118, 1)
@@ -25,18 +28,22 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
+[node name="MainMenu" type="Sprite2D" parent="."]
+position = Vector2(960.2222, 540)
+scale = Vector2(0.99814814, 0.99814814)
+texture = ExtResource("2_i27ks")
+
+[node name="Heart" type="Sprite2D" parent="."]
+position = Vector2(382.99997, 599)
+scale = Vector2(0.7036563, 0.7341197)
+texture = ExtResource("3_28j1r")
+
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 211.0
 grow_horizontal = 2
-
-[node name="Main menu" type="Label" parent="CenterContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_e8kt5")
-theme_override_font_sizes/font_size = 124
-text = "Main Menu"
 
 [node name="CenterContainer2" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -115,3 +122,14 @@ offset_bottom = 482.0
 position = Vector2(1580, 631.1508)
 scale = Vector2(0.9157609, 0.9157609)
 texture = ExtResource("3_lgpea")
+
+[node name="Crown" type="Sprite2D" parent="."]
+position = Vector2(1513.0001, 612.00006)
+scale = Vector2(0.91799635, 0.91069865)
+texture = ExtResource("5_lsapa")
+
+[node name="FallenAngelTitlepix" type="Sprite2D" parent="."]
+position = Vector2(944, 207)
+scale = Vector2(1.0517241, 1.0517242)
+texture = ExtResource("6_lsapa")
+
