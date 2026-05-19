@@ -43,13 +43,13 @@ collision_layer = 3
 script = ExtResource("1_v2e8e")
 bullet_scene = ExtResource("2_v2e8e")
 bullets_per_shot = 12
-max_health = 50
+max_health = 10
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0.9999962, 0.9999924)
 scale = Vector2(0.24837136, 0.23423006)
 sprite_frames = SubResource("SpriteFrames_hbeph")
-frame_progress = 0.7469528
+frame_progress = 0.22924745
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -1)
