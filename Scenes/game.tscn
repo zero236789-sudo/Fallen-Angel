@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cb4ubxmtajkey"]
+[gd_scene load_steps=22 format=3 uid="uid://cb4ubxmtajkey"]
 
 [ext_resource type="Script" uid="uid://d1e4b52y10qc3" path="res://game.gd" id="1_qxrlw"]
 [ext_resource type="PackedScene" uid="uid://bg88xaf2p2gvc" path="res://Scenes/player.tscn" id="2_wrm1d"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://o5cliqxcmn04" path="res://Scenes/parallax_background.tscn" id="9_h4fw4"]
 [ext_resource type="Texture2D" uid="uid://0jy15scj6anm" path="res://imagen vacia.png" id="10_ldgsr"]
 [ext_resource type="Texture2D" uid="uid://cxv3bbgamwmni" path="res://image-removebg-preview.png" id="10_o5yvi"]
+[ext_resource type="PackedScene" uid="uid://bau5bbqndilf8" path="res://Enemies/spike_eye.tscn" id="10_rku1e"]
 [ext_resource type="PackedScene" uid="uid://bo1ia4oej4ttp" path="res://Enemies/Spider.tscn" id="12_rku1e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wowpa"]
@@ -15,6 +16,21 @@ size = Vector2(16, 1107.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i6g32"]
 size = Vector2(716.5, 16)
+
+[sub_resource type="Animation" id="Animation_ldgsr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(502, -95)]
+}
 
 [sub_resource type="Animation" id="Animation_h4fw4"]
 resource_name = "new_animation"
@@ -32,7 +48,13 @@ tracks/0/keys = {
 "values": [Vector2(502, -95), Vector2(1460, 717)]
 }
 
-[sub_resource type="Animation" id="Animation_ldgsr"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o5yvi"]
+_data = {
+&"RESET": SubResource("Animation_ldgsr"),
+&"new_animation": SubResource("Animation_h4fw4")
+}
+
+[sub_resource type="Animation" id="Animation_rfjv2"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -44,13 +66,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(502, -95)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_o5yvi"]
-_data = {
-&"RESET": SubResource("Animation_ldgsr"),
-&"new_animation": SubResource("Animation_h4fw4")
+"values": [Vector2(324, -276)]
 }
 
 [sub_resource type="Animation" id="Animation_rku1e"]
@@ -69,7 +85,13 @@ tracks/0/keys = {
 "values": [Vector2(324, -276), Vector2(1460, 717)]
 }
 
-[sub_resource type="Animation" id="Animation_rfjv2"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1phco"]
+_data = {
+&"RESET": SubResource("Animation_rfjv2"),
+&"new_animation": SubResource("Animation_rku1e")
+}
+
+[sub_resource type="Animation" id="Animation_nnt18"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -81,13 +103,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(324, -276)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_1phco"]
-_data = {
-&"RESET": SubResource("Animation_rfjv2"),
-&"new_animation": SubResource("Animation_rku1e")
+"values": [Vector2(146, -456)]
 }
 
 [sub_resource type="Animation" id="Animation_nb51f"]
@@ -104,21 +120,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(146, -456), Vector2(1460, 717)]
-}
-
-[sub_resource type="Animation" id="Animation_nnt18"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(146, -456)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ewbju"]
@@ -265,3 +266,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_ewbju")
 }
 autoplay = "new_animation"
+
+[node name="SpikeEye" parent="." instance=ExtResource("10_rku1e")]
+position = Vector2(956, 71)

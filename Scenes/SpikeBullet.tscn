@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxlob7cq2hleh"]
+
+[ext_resource type="Texture2D" uid="uid://eq74x7dcvwq7" path="res://Sprites/SpikeEyeBullet.png" id="1_5c1xu"]
+[ext_resource type="Script" uid="uid://5nh6psy0bonr" path="res://Scripts/spike_bullet.gd" id="1_u8wpr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u8wpr"]
+radius = 22.0
+height = 86.0
+
+[node name="SpikeBullet" type="Area2D"]
+script = ExtResource("1_u8wpr")
+speed = 300.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -1)
+shape = SubResource("CapsuleShape2D_u8wpr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2.0000153, -3.0000305)
+scale = Vector2(0.27720207, 0.26086956)
+texture = ExtResource("1_5c1xu")

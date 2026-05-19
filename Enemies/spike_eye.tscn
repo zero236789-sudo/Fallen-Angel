@@ -1,0 +1,58 @@
+[gd_scene load_steps=10 format=3 uid="uid://bau5bbqndilf8"]
+
+[ext_resource type="Script" uid="uid://bkl6ble4xqt4q" path="res://Scripts/SpikeEye.gd" id="1_v2e8e"]
+[ext_resource type="PackedScene" uid="uid://cxlob7cq2hleh" path="res://Scenes/SpikeBullet.tscn" id="2_v2e8e"]
+[ext_resource type="Texture2D" uid="uid://blilxlo63phrs" path="res://Sprites/bolapincho6.png" id="3_eb5ij"]
+[ext_resource type="Texture2D" uid="uid://ciqcxknp87mxo" path="res://Sprites/bolapincho5.png" id="4_o8iv0"]
+[ext_resource type="Texture2D" uid="uid://c4s4uybp7l7ut" path="res://Sprites/bolapincho3.png" id="5_wlpfc"]
+[ext_resource type="Texture2D" uid="uid://co6c6gf85wej5" path="res://Sprites/bolapincho4.png" id="6_0l3if"]
+[ext_resource type="Texture2D" uid="uid://b7be8orbuq4bp" path="res://Sprites/bolapincho7.png" id="7_sdoig"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hbeph"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_eb5ij")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_o8iv0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_wlpfc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_0l3if")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_wlpfc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_sdoig")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oxpn2"]
+radius = 59.5399
+
+[node name="SpikeEye" type="CharacterBody2D"]
+collision_layer = 3
+script = ExtResource("1_v2e8e")
+bullet_scene = ExtResource("2_v2e8e")
+bullets_per_shot = 12
+max_health = 50
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.9999962, 0.9999924)
+scale = Vector2(0.24837136, 0.23423006)
+sprite_frames = SubResource("SpriteFrames_hbeph")
+frame_progress = 0.7469528
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -1)
+shape = SubResource("CircleShape2D_oxpn2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
