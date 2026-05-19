@@ -34,6 +34,7 @@ window/size/mode=3
 player=""
 Enemies=""
 enemy_bullet=""
+wall=""
 
 [input]
 
