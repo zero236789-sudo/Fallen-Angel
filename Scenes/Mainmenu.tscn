@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://duggw5svsuooh"]
+[gd_scene load_steps=7 format=3 uid="uid://duggw5svsuooh"]
 
 [ext_resource type="FontFile" uid="uid://cxaqp7qbdbf7s" path="res://INVASION2000.TTF" id="1_e8kt5"]
 [ext_resource type="Script" uid="uid://cs4c8eu6xbpbw" path="res://Scripts/mainmenu.gd" id="1_mxk1q"]
@@ -118,11 +118,6 @@ offset_top = 466.0
 offset_right = 350.0
 offset_bottom = 482.0
 
-[node name="4b68569Fd2c32e0Abccb8Ce1De04Aa2b" type="Sprite2D" parent="."]
-position = Vector2(1580, 631.1508)
-scale = Vector2(0.9157609, 0.9157609)
-texture = ExtResource("3_lgpea")
-
 [node name="Crown" type="Sprite2D" parent="."]
 position = Vector2(1513.0001, 612.00006)
 scale = Vector2(0.91799635, 0.91069865)
@@ -132,4 +127,3 @@ texture = ExtResource("5_lsapa")
 position = Vector2(944, 207)
 scale = Vector2(1.0517241, 1.0517242)
 texture = ExtResource("6_lsapa")
-
