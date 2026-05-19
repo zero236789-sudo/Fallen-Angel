@@ -1,13 +1,64 @@
-[gd_scene load_steps=5 format=3 uid="uid://bo1ia4oej4ttp"]
+[gd_scene load_steps=12 format=3 uid="uid://bo1ia4oej4ttp"]
 
-[ext_resource type="Texture2D" uid="uid://cnajcq2nb5kfd" path="res://Sprites/spider.png" id="1_5e61y"]
-[ext_resource type="Script" uid="uid://ds75tmv5mdtpq" path="res://Scripts/Enemy1.gd" id="1_jj670"]
-[ext_resource type="PackedScene" uid="uid://bhw0yihwm00rq" path="res://Scenes/spider_bullet.tscn" id="2_3f47e"]
+[ext_resource type="Script" uid="uid://w648ystwlijo" path="res://Scripts/BasicEnemys.gd" id="1_jj670"]
+[ext_resource type="PackedScene" uid="uid://6rpkf88xqu3y" path="res://Scenes/AngelBullet.tscn" id="2_3f47e"]
+[ext_resource type="Texture2D" uid="uid://d5j2mmmn3xcb" path="res://Esbirro.png" id="3_3f47e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jj670"]
 size = Vector2(117, 120)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_h38at"]
+atlas = ExtResource("3_3f47e")
+region = Rect2(0, 0, 460, 561)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgk2i"]
+atlas = ExtResource("3_3f47e")
+region = Rect2(460, 0, 460, 561)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67a37"]
+atlas = ExtResource("3_3f47e")
+region = Rect2(920, 0, 460, 561)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8nug"]
+atlas = ExtResource("3_3f47e")
+region = Rect2(0, 561, 460, 561)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5xue"]
+atlas = ExtResource("3_3f47e")
+region = Rect2(460, 561, 460, 561)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2jsl"]
+atlas = ExtResource("3_3f47e")
+region = Rect2(920, 561, 460, 561)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ulwwc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h38at")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgk2i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_67a37")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j8nug")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5xue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2jsl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
 [node name="Spider" type="CharacterBody2D" groups=["Enemies"]]
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_jj670")
 bullet_scene = ExtResource("2_3f47e")
 
@@ -15,10 +66,12 @@ bullet_scene = ExtResource("2_3f47e")
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_jj670")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0.74999475, 0.2499916)
-scale = Vector2(0.113106795, 0.119500026)
-texture = ExtResource("1_5e61y")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2.3841858e-07, -2.3841858e-07)
+scale = Vector2(0.27499995, 0.27499995)
+sprite_frames = SubResource("SpriteFrames_ulwwc")
+autoplay = "default"
+frame_progress = 0.46225795
 
 [node name="spawnpos" type="Marker2D" parent="."]
 position = Vector2(0, -64)
