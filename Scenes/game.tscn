@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cb4ubxmtajkey"]
+[gd_scene load_steps=23 format=3 uid="uid://cb4ubxmtajkey"]
 
 [ext_resource type="Script" uid="uid://d1e4b52y10qc3" path="res://game.gd" id="1_qxrlw"]
 [ext_resource type="PackedScene" uid="uid://bg88xaf2p2gvc" path="res://Scenes/player.tscn" id="2_wrm1d"]
@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://0jy15scj6anm" path="res://imagen vacia.png" id="10_ldgsr"]
 [ext_resource type="Texture2D" uid="uid://cxv3bbgamwmni" path="res://image-removebg-preview.png" id="10_o5yvi"]
 [ext_resource type="PackedScene" uid="uid://cank3qa2fuhfl" path="res://Enemies/spike_eye.tscn" id="10_rku1e"]
-[ext_resource type="PackedScene" uid="uid://ufelgdytsabu" path="res://Enemies/trumpetist.tscn" id="11_o5yvi"]
 [ext_resource type="PackedScene" uid="uid://bo1ia4oej4ttp" path="res://Enemies/LilDemon.tscn" id="12_rku1e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wowpa"]
@@ -278,6 +277,3 @@ autoplay = "new_animation"
 
 [node name="SpikeEye" parent="." instance=ExtResource("10_rku1e")]
 position = Vector2(1587, -114)
-
-[node name="Trumpetist" parent="." instance=ExtResource("11_o5yvi")]
-position = Vector2(942, 161)
