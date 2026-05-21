@@ -10,7 +10,7 @@ extends CharacterBody2D
 
 # ─── Zigzag ──────────────────────────────────────────────────
 # Alterna entre izquierda y derecha cada disparo
-var zigzag_angles: Array = [-30.0, 30.0]  # Ángulos del zigzag
+var zigzag_angles: Array = [-30.0, 0.0, 30.0]  # Ángulos del zigzag
 var zigzag_index: int = 0                 # Cuál toca ahora
 
 var current_health: int
