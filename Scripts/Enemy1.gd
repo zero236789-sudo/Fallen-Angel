@@ -77,7 +77,7 @@ func shoot_phase3() -> void:
 	else:
 		for sp in pts:
 			fire_spread(sp.global_position, bullets_per_shot, spread_angle)
-	for i in range(8):
+	for i in range(64):
 		var angle = (TAU / 8.0) * i
 		spawn_bullet(global_position, Vector2(cos(angle), sin(angle)))
 

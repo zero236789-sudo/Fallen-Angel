@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dygdl2o1ksl1q"]
+
+[ext_resource type="Script" uid="uid://ds75tmv5mdtpq" path="res://Scripts/Enemy1.gd" id="1_4dgrm"]
+[ext_resource type="PackedScene" uid="uid://6rpkf88xqu3y" path="res://Scenes/AngelBullet.tscn" id="2_eyo3j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jj670"]
+size = Vector2(756, 505)
+
+[node name="Skull" type="CharacterBody2D" groups=["Enemies"]]
+script = ExtResource("1_4dgrm")
+bullet_scene = ExtResource("2_eyo3j")
+bullets_per_shot = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 1.5)
+shape = SubResource("RectangleShape2D_jj670")
+
+[node name="spawnpos" type="Marker2D" parent="."]
+position = Vector2(-1, 1)
+
+[node name="Muzzleflash" type="AnimationPlayer" parent="."]
+
+[node name="shootdelay" type="Timer" parent="." groups=["Player"]]
+wait_time = 0.15
+one_shot = true
