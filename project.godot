@@ -21,7 +21,7 @@ config/icon="res://Sprites/icon.svg"
 
 [autoload]
 
-GameManager="*uid://bb6v2vo4h5liq"
+GameManager="*res://game_manager.gd"
 
 [display]
 
