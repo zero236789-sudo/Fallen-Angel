@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://ufelgdytsabu"]
+
+[ext_resource type="Texture2D" uid="uid://cwkpjtltkchso" path="res://Sprites/trumeptist.png" id="1_icb7t"]
+[ext_resource type="Script" uid="uid://bmyfx46gm3mma" path="res://Scripts/trumpetist.gd" id="1_uyrtp"]
+[ext_resource type="PackedScene" uid="uid://2k6vg2yxr4dx" path="res://Scenes/trumpetist_bullet.tscn" id="2_0hbmw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uyrtp"]
+atlas = ExtResource("1_icb7t")
+region = Rect2(253, 15, 253, 353)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hbmw"]
+atlas = ExtResource("1_icb7t")
+region = Rect2(0, 15, 228, 352)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4jmt"]
+atlas = ExtResource("1_icb7t")
+region = Rect2(517, 15, 290, 352)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nyla8"]
+atlas = ExtResource("1_icb7t")
+region = Rect2(227, 367, 290, 352)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3yvqy"]
+atlas = ExtResource("1_icb7t")
+region = Rect2(594, 362, 297, 331)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wg8wj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uyrtp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hbmw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4jmt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nyla8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3yvqy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_icb7t"]
+size = Vector2(191.5, 256)
+
+[node name="Trumpetist" type="CharacterBody2D"]
+collision_layer = 3
+script = ExtResource("1_uyrtp")
+bullet_scene = ExtResource("2_0hbmw")
+fire_rate = 0.1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -1)
+scale = Vector2(1.0087719, 0.9943182)
+sprite_frames = SubResource("SpriteFrames_wg8wj")
+frame_progress = 0.6256071
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5, 1)
+shape = SubResource("RectangleShape2D_icb7t")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AnimatedSprite2D")
+
+[node name="spawnpos" type="Marker2D" parent="."]
+position = Vector2(51, 73)
