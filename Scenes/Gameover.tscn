@@ -1,8 +1,8 @@
-[gd_scene format=3 uid="uid://dtg3888ksre5v"]
+[gd_scene load_steps=2 format=3 uid="uid://dtg3888ksre5v"]
 
-[ext_resource type="Script" uid="uid://clsgwmsep8n0a" path="res://game_over.gd" id="1_m5628"]
+[ext_resource type="Script" path="res://game_over.gd" id="1_m5628"]
 
-[node name="Control" type="Control" unique_id=565687025]
+[node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,12 +11,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_m5628")
 
-[node name="Panel" type="Panel" parent="." unique_id=482781453]
+[node name="Panel" type="Panel" parent="."]
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 705.0
 
-[node name="game over" type="Label" parent="Panel" unique_id=1850363766]
+[node name="game over" type="Label" parent="Panel"]
 layout_mode = 0
 offset_left = 870.0
 offset_top = 159.0
@@ -24,19 +24,19 @@ offset_right = 962.0
 offset_bottom = 182.0
 text = "GAME OVER"
 
-[node name="FinalScore" type="Label" parent="Panel" unique_id=1967423177]
+[node name="FinalScore" type="Label" parent="Panel"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 
-[node name="Highscore" type="Label" parent="Panel" unique_id=208817062]
+[node name="Highscore" type="Label" parent="Panel"]
 layout_mode = 0
 offset_left = 816.0
 offset_top = 58.0
 offset_right = 978.0
 offset_bottom = 90.0
 
-[node name="RetryButton" type="Button" parent="Panel" unique_id=1618912450]
+[node name="RetryButton" type="Button" parent="Panel"]
 layout_mode = 0
 offset_left = 857.0
 offset_top = 336.0
@@ -44,7 +44,7 @@ offset_right = 995.0
 offset_bottom = 367.0
 text = "Volver a intentar"
 
-[node name="MenuButton" type="Button" parent="Panel" unique_id=489918408]
+[node name="MenuButton" type="Button" parent="Panel"]
 layout_mode = 0
 offset_left = 855.0
 offset_top = 420.0
@@ -52,7 +52,7 @@ offset_right = 980.0
 offset_bottom = 451.0
 text = "Menú principal"
 
-[node name="SettingsButton" type="Button" parent="Panel" unique_id=789005224]
+[node name="SettingsButton" type="Button" parent="Panel"]
 layout_mode = 0
 offset_left = 884.0
 offset_top = 377.0
@@ -60,13 +60,13 @@ offset_right = 949.0
 offset_bottom = 408.0
 text = "Ajustes"
 
-[node name="SettingsPanel" type="Panel" parent="." unique_id=1171799847]
+[node name="SettingsPanel" type="Panel" parent="."]
 layout_mode = 0
 offset_top = 707.0
 offset_right = 1917.0
 offset_bottom = 1081.0
 
-[node name="Volumen" type="Label" parent="SettingsPanel" unique_id=1130018989]
+[node name="Volumen" type="Label" parent="SettingsPanel"]
 layout_mode = 0
 offset_left = 853.0
 offset_top = 45.0
@@ -74,14 +74,14 @@ offset_right = 908.0
 offset_bottom = 68.0
 text = "Musica"
 
-[node name="MusicSlider" type="HSlider" parent="SettingsPanel" unique_id=1349880177]
+[node name="MusicSlider" type="HSlider" parent="SettingsPanel"]
 layout_mode = 0
 offset_left = 755.0
 offset_top = 90.0
 offset_right = 1016.0
 offset_bottom = 138.0
 
-[node name="SFX" type="Label" parent="SettingsPanel" unique_id=1001867999]
+[node name="SFX" type="Label" parent="SettingsPanel"]
 layout_mode = 0
 offset_left = 867.0
 offset_top = 146.0
@@ -89,7 +89,7 @@ offset_right = 912.0
 offset_bottom = 169.0
 text = "SFX"
 
-[node name="SFXSlider" type="HSlider" parent="SettingsPanel" unique_id=1328143374]
+[node name="SFXSlider" type="HSlider" parent="SettingsPanel"]
 layout_mode = 0
 offset_left = 757.0
 offset_top = 171.0

@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://csgk4j68edutf"]
 
-[ext_resource type="Script" uid="uid://bbgp0gd27vbi2" path="res://trompetiti.gd" id="1_p3lyi"]
+[ext_resource type="Script" uid="uid://bbgp0gd27vbi2" path="res://Scripts/trompetiti.gd" id="1_p3lyi"]
 [ext_resource type="PackedScene" uid="uid://2k6vg2yxr4dx" path="res://Scenes/trumpetist_bullet.tscn" id="2_m6ow6"]
 [ext_resource type="Texture2D" uid="uid://bclmq8q1baeby" path="res://Sprites/trompetiti.png" id="3_pg38a"]
 
