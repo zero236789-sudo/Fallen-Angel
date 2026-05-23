@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://2k6vg2yxr4dx"]
+
+[ext_resource type="Texture2D" uid="uid://c0iexka1n0fqu" path="res://Wii_-_Wii_Music_-_Miscellaneous_-_Notes.png" id="1_8nme1"]
+[ext_resource type="Script" uid="uid://dwl734calr12k" path="res://Scripts/trumpetist_bullet.gd" id="1_hd1ub"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hd1ub"]
+atlas = ExtResource("1_8nme1")
+region = Rect2(5, 5, 58, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ahv1"]
+atlas = ExtResource("1_8nme1")
+region = Rect2(69, 5, 58, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gxqm"]
+atlas = ExtResource("1_8nme1")
+region = Rect2(133, 5, 58, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ecxuj"]
+atlas = ExtResource("1_8nme1")
+region = Rect2(199, 5, 58, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hb0iy"]
+atlas = ExtResource("1_8nme1")
+region = Rect2(265, 5, 58, 58)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uvr0e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hd1ub")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ahv1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7gxqm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ecxuj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hb0iy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uvr0e"]
+radius = 15.0
+
+[node name="note" type="Area2D"]
+script = ExtResource("1_hd1ub")
+zigzag_amplitude = 200.0
+zigzag_frequency = 5.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(5, 6.999999)
+scale = Vector2(0.5517242, 0.5172413)
+sprite_frames = SubResource("SpriteFrames_uvr0e")
+frame_progress = 0.2241313
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 8)
+shape = SubResource("CircleShape2D_uvr0e")

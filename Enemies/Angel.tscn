@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://vvx1thhhoqaf"]
+
+[ext_resource type="Script" uid="uid://ds75tmv5mdtpq" path="res://Scripts/Enemy1.gd" id="1_1kj8b"]
+[ext_resource type="PackedScene" uid="uid://6rpkf88xqu3y" path="res://Scenes/AngelBullet.tscn" id="2_1kj8b"]
+[ext_resource type="Texture2D" uid="uid://orc5tsoflwl3" path="res://angel.png" id="3_1kj8b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jj670"]
+size = Vector2(756, 505)
+
+[node name="Skull" type="CharacterBody2D" groups=["Enemies"]]
+script = ExtResource("1_1kj8b")
+bullet_scene = ExtResource("2_1kj8b")
+bullets_per_shot = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 1.5)
+shape = SubResource("RectangleShape2D_jj670")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, 2)
+texture = ExtResource("3_1kj8b")
+
+[node name="spawnpos4" type="Marker2D" parent="."]
+position = Vector2(69, 45)
+
+[node name="spawnpos5" type="Marker2D" parent="."]
+position = Vector2(-81, 46)
+
+[node name="spawnpos6" type="Marker2D" parent="."]
+position = Vector2(-71, -4)
+
+[node name="spawnpos9" type="Marker2D" parent="."]
+position = Vector2(75, -52)
+
+[node name="spawnpos8" type="Marker2D" parent="."]
+position = Vector2(62, -8)
+
+[node name="spawnpos7" type="Marker2D" parent="."]
+position = Vector2(-87, -51)
+
+[node name="spawnpos2" type="Marker2D" parent="."]
+position = Vector2(-28, 118)
+
+[node name="spawnpos" type="Marker2D" parent="."]
+position = Vector2(-5, 62)
+
+[node name="spawnpos3" type="Marker2D" parent="."]
+position = Vector2(18, 119)
+
+[node name="Muzzleflash" type="AnimationPlayer" parent="."]
+
+[node name="shootdelay" type="Timer" parent="." groups=["Player"]]
+wait_time = 0.15
+one_shot = true

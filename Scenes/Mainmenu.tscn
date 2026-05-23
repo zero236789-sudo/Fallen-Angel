@@ -1,0 +1,129 @@
+[gd_scene format=3 uid="uid://duggw5svsuooh"]
+
+[ext_resource type="FontFile" uid="uid://cxaqp7qbdbf7s" path="res://INVASION2000.TTF" id="1_e8kt5"]
+[ext_resource type="Script" uid="uid://cs4c8eu6xbpbw" path="res://Scripts/mainmenu.gd" id="1_mxk1q"]
+[ext_resource type="Texture2D" uid="uid://cfguga2jv04b4" path="res://Main Menu.png" id="2_i27ks"]
+[ext_resource type="Texture2D" uid="uid://d0kd0vvvrtihu" path="res://Heart.jpg" id="3_28j1r"]
+[ext_resource type="Texture2D" uid="uid://bimjmasglpwa6" path="res://Crown.jpg" id="5_lsapa"]
+[ext_resource type="Texture2D" uid="uid://qg4uwnpqeiaa" path="res://Fallen Angel Titlepix.jpg" id="6_lsapa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j1xha"]
+bg_color = Color(0.14117648, 0.13725491, 0.15294118, 1)
+
+[node name="Mainmenu" type="Control" unique_id=39014474]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mxk1q")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1945895740]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MainMenu" type="Sprite2D" parent="." unique_id=1058575435]
+position = Vector2(960.2222, 540)
+scale = Vector2(0.99814814, 0.99814814)
+texture = ExtResource("2_i27ks")
+
+[node name="Heart" type="Sprite2D" parent="." unique_id=549908654]
+position = Vector2(382.99997, 599)
+scale = Vector2(0.7036563, 0.7341197)
+texture = ExtResource("3_28j1r")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=944550826]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 211.0
+grow_horizontal = 2
+
+[node name="CenterContainer2" type="CenterContainer" parent="." unique_id=2069871348]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -68.0
+offset_bottom = 291.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer2" unique_id=1915614110]
+layout_mode = 2
+theme_override_constants/separation = 65
+
+[node name="Play" type="Button" parent="CenterContainer2/VBoxContainer" unique_id=549698503]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_e8kt5")
+theme_override_font_sizes/font_size = 55
+text = "Play"
+
+[node name="Settings" type="Button" parent="CenterContainer2/VBoxContainer" unique_id=918240376]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_e8kt5")
+theme_override_font_sizes/font_size = 50
+text = "Settings"
+
+[node name="Quit" type="Button" parent="CenterContainer2/VBoxContainer" unique_id=2145300306]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_e8kt5")
+theme_override_font_sizes/font_size = 55
+text = "Quit"
+
+[node name="SettingsPanel" type="Panel" parent="." unique_id=555664662]
+layout_mode = 0
+offset_right = 449.0
+offset_bottom = 1083.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_j1xha")
+
+[node name="Musica" type="Label" parent="SettingsPanel" unique_id=459110844]
+layout_mode = 0
+offset_left = 133.0
+offset_top = 130.0
+offset_right = 280.0
+offset_bottom = 153.0
+theme_override_fonts/font = ExtResource("1_e8kt5")
+theme_override_font_sizes/font_size = 35
+text = "Musica"
+
+[node name="MusicSlider" type="HSlider" parent="SettingsPanel" unique_id=218922362]
+layout_mode = 0
+offset_left = 78.0
+offset_top = 212.0
+offset_right = 351.0
+offset_bottom = 228.0
+
+[node name="SFX" type="Label" parent="SettingsPanel" unique_id=1254358421]
+layout_mode = 0
+offset_left = 169.0
+offset_top = 353.0
+offset_right = 247.0
+offset_bottom = 389.0
+theme_override_fonts/font = ExtResource("1_e8kt5")
+theme_override_font_sizes/font_size = 35
+text = "SFX"
+
+[node name="SFXSlider" type="HSlider" parent="SettingsPanel" unique_id=1108985884]
+layout_mode = 0
+offset_left = 87.0
+offset_top = 466.0
+offset_right = 350.0
+offset_bottom = 482.0
+
+[node name="Crown" type="Sprite2D" parent="." unique_id=81024476]
+position = Vector2(1513.0001, 612.00006)
+scale = Vector2(0.91799635, 0.91069865)
+texture = ExtResource("5_lsapa")
+
+[node name="FallenAngelTitlepix" type="Sprite2D" parent="." unique_id=1691499424]
+position = Vector2(944, 207)
+scale = Vector2(1.0517241, 1.0517242)
+texture = ExtResource("6_lsapa")

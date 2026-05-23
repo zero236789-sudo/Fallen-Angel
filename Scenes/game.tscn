@@ -1,0 +1,409 @@
+[gd_scene format=3 uid="uid://cb4ubxmtajkey"]
+
+[ext_resource type="Script" uid="uid://d1e4b52y10qc3" path="res://game.gd" id="1_qxrlw"]
+[ext_resource type="PackedScene" uid="uid://bg88xaf2p2gvc" path="res://Scenes/player.tscn" id="2_wrm1d"]
+[ext_resource type="PackedScene" uid="uid://cin40omuysyd5" path="res://Scenes/PlayerBullet.tscn" id="5_rfjv2"]
+[ext_resource type="Texture2D" uid="uid://08eqvf3cckr" path="res://6499_original.png" id="7_1l0tm"]
+[ext_resource type="Script" uid="uid://bhmprte321pd7" path="res://Scenes/canvas_layer.gd" id="8_h4fw4"]
+[ext_resource type="Texture2D" uid="uid://cwni3clhkdb28" path="res://png-clipart-heart-pixel-art-warning-function-angle-text-removebg-preview.png" id="8_v158k"]
+[ext_resource type="PackedScene" uid="uid://o5cliqxcmn04" path="res://Scenes/parallax_background.tscn" id="9_h4fw4"]
+[ext_resource type="PackedScene" uid="uid://vvx1thhhoqaf" path="res://Enemies/Angel.tscn" id="9_ldgsr"]
+[ext_resource type="Texture2D" uid="uid://0jy15scj6anm" path="res://imagen vacia.png" id="10_ldgsr"]
+[ext_resource type="Texture2D" uid="uid://cxv3bbgamwmni" path="res://image-removebg-preview.png" id="10_o5yvi"]
+[ext_resource type="PackedScene" uid="uid://cank3qa2fuhfl" path="res://Enemies/spike_eye.tscn" id="10_rku1e"]
+[ext_resource type="PackedScene" uid="uid://ufelgdytsabu" path="res://Enemies/trumpetist.tscn" id="11_o5yvi"]
+[ext_resource type="PackedScene" uid="uid://bo1ia4oej4ttp" path="res://Enemies/LilDemon.tscn" id="12_rku1e"]
+[ext_resource type="PackedScene" uid="uid://csgk4j68edutf" path="res://Enemies/trompetiti.tscn" id="13_rfjv2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wowpa"]
+size = Vector2(16, 1107.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i6g32"]
+size = Vector2(716.5, 16)
+
+[sub_resource type="Animation" id="Animation_ldgsr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(502, -95)]
+}
+
+[sub_resource type="Animation" id="Animation_h4fw4"]
+resource_name = "new_animation"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(502, -95), Vector2(1460, 717)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o5yvi"]
+_data = {
+&"RESET": SubResource("Animation_ldgsr"),
+&"new_animation": SubResource("Animation_h4fw4")
+}
+
+[sub_resource type="Animation" id="Animation_rfjv2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(324, -276)]
+}
+
+[sub_resource type="Animation" id="Animation_rku1e"]
+resource_name = "new_animation"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(324, -276), Vector2(1460, 717)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1phco"]
+_data = {
+&"RESET": SubResource("Animation_rfjv2"),
+&"new_animation": SubResource("Animation_rku1e")
+}
+
+[sub_resource type="Animation" id="Animation_nnt18"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(146, -456)]
+}
+
+[sub_resource type="Animation" id="Animation_nb51f"]
+resource_name = "new_animation"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(146, -456), Vector2(1460, 717)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ewbju"]
+_data = {
+&"RESET": SubResource("Animation_nnt18"),
+&"new_animation": SubResource("Animation_nb51f")
+}
+
+[sub_resource type="Animation" id="Animation_7nbq1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1548, -262)]
+}
+
+[sub_resource type="Animation" id="Animation_exi56"]
+resource_name = "SpikeEye"
+length = 25.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 14.966666, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1548, -262), Vector2(1548, -262), Vector2(1548, -262), Vector2(1548, -262), Vector2(1548, -262), Vector2(1548, -262), Vector2(1548, -262), Vector2(1548, -262), Vector2(1548, -262), Vector2(1548, -262), Vector2(1411, 372), Vector2(1300, 372), Vector2(1200, 372), Vector2(1100, 372), Vector2(1100, 372), Vector2(1100, 372), Vector2(1100, 372), Vector2(1100, 372), Vector2(1100, 372), Vector2(1100, 372), Vector2(800, 372), Vector2(800, 372), Vector2(800, 372), Vector2(800, 372), Vector2(700, 372), Vector2(400, 372)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7t8sx"]
+_data = {
+&"RESET": SubResource("Animation_7nbq1"),
+&"SpikeEye": SubResource("Animation_exi56")
+}
+
+[sub_resource type="Animation" id="Animation_85qyi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1298, -187)]
+}
+
+[sub_resource type="Animation" id="Animation_iivbl"]
+resource_name = "Trompetist"
+length = 25.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 4.9333334, 6, 10, 11, 12, 13, 15, 20),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1298, -187), Vector2(1383, -173), Vector2(827, -166), Vector2(1039, 138), Vector2(1039, 138), Vector2(1039, 138), Vector2(1039, 138), Vector2(839, 138), Vector2(839, 138), Vector2(839, 138), Vector2(839, 138), Vector2(740, 51), Vector2(556, -234)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7nbq1"]
+_data = {
+&"RESET": SubResource("Animation_85qyi"),
+&"Trumpetist": SubResource("Animation_iivbl")
+}
+
+[sub_resource type="Animation" id="Animation_1phco"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(341, -99)]
+}
+
+[sub_resource type="Animation" id="Animation_ewbju"]
+resource_name = "new_animation"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 8, 9, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(341, -99), Vector2(328, 85), Vector2(529, 289), Vector2(715, 154), Vector2(802, 154), Vector2(1150, 154), Vector2(1294, 203), Vector2(1433, 192)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_85qyi"]
+_data = {
+&"RESET": SubResource("Animation_1phco"),
+&"Trompetiti": SubResource("Animation_ewbju")
+}
+
+[node name="GAME" type="Node2D" unique_id=1167641289]
+script = ExtResource("1_qxrlw")
+
+[node name="6499Original" type="Sprite2D" parent="." unique_id=886908194]
+top_level = true
+position = Vector2(960, 540.00006)
+scale = Vector2(1.4999999, 1.5)
+texture = ExtResource("7_1l0tm")
+
+[node name="Skull" parent="." unique_id=213274754 instance=ExtResource("9_ldgsr")]
+position = Vector2(924, -312)
+collision_layer = 3
+collision_mask = 3
+bullets_per_shot = 3
+max_health = 1200
+
+[node name="Player" parent="." unique_id=1123238769 groups=["Player"] instance=ExtResource("2_wrm1d")]
+light_mask = 512
+visibility_layer = 512
+position = Vector2(960, 858)
+scale = Vector2(3.5, 3.5)
+collision_layer = 3
+collision_mask = 3
+bullet_scene = ExtResource("5_rfjv2")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=148900240 groups=["wall"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=754510638]
+position = Vector2(590, 538.25)
+shape = SubResource("RectangleShape2D_wowpa")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="." unique_id=319167380 groups=["wall"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4" unique_id=1747761616]
+position = Vector2(1324, 538.5)
+shape = SubResource("RectangleShape2D_wowpa")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1402608343 groups=["wall"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=1805730068]
+position = Vector2(957, -8)
+shape = SubResource("RectangleShape2D_i6g32")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=1918230484 groups=["wall"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=2044789100]
+position = Vector2(957.75, 1085)
+shape = SubResource("RectangleShape2D_i6g32")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=826754222]
+offset = Vector2(680, 1000)
+scale = Vector2(0.09, 0.09)
+transform = Transform2D(0.09, 0, 0, 0.09, 680, 1000)
+script = ExtResource("8_h4fw4")
+heart_full = ExtResource("8_v158k")
+heart_empty = ExtResource("10_ldgsr")
+
+[node name="BombsContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=1422287767 groups=["BombsContainer"]]
+offset_right = 1508.0
+offset_bottom = 500.0
+
+[node name="Bomb1" type="TextureRect" parent="CanvasLayer/BombsContainer" unique_id=813553743]
+layout_mode = 2
+texture = ExtResource("10_o5yvi")
+
+[node name="Bomb2" type="TextureRect" parent="CanvasLayer/BombsContainer" unique_id=786379002]
+layout_mode = 2
+texture = ExtResource("10_o5yvi")
+
+[node name="Bomb3" type="TextureRect" parent="CanvasLayer/BombsContainer" unique_id=849203408]
+layout_mode = 2
+texture = ExtResource("10_o5yvi")
+
+[node name="HeartsContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=614186853]
+light_mask = 512
+visibility_layer = 512
+anchors_preset = -1
+anchor_left = 3.9810002
+anchor_top = 0.15400001
+anchor_right = 4.842
+anchor_bottom = 0.577
+offset_left = 0.9248047
+offset_top = 0.34669495
+offset_right = -0.19433594
+offset_bottom = -0.49328613
+
+[node name="Heart1" type="TextureRect" parent="CanvasLayer/HeartsContainer" unique_id=1446712527]
+layout_mode = 2
+
+[node name="Heart2" type="TextureRect" parent="CanvasLayer/HeartsContainer" unique_id=1905157940]
+layout_mode = 2
+
+[node name="Heart3" type="TextureRect" parent="CanvasLayer/HeartsContainer" unique_id=1381089598]
+layout_mode = 2
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer" unique_id=1691960864]
+custom_minimum_size = Vector2(50, 50)
+anchors_preset = -1
+anchor_left = 3.5130002
+anchor_top = -9.959001
+anchor_right = 4.375
+anchor_bottom = -9.453
+offset_left = -0.5161133
+offset_top = 0.16601563
+offset_bottom = -0.31445313
+theme_override_font_sizes/font_size = 400
+
+[node name="ParallaxBackground" parent="." unique_id=1425688447 instance=ExtResource("9_h4fw4")]
+
+[node name="Spider" parent="." unique_id=836037809 instance=ExtResource("12_rku1e")]
+position = Vector2(502, -95)
+collision_layer = 2
+collision_mask = 2
+max_health = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Spider" unique_id=1748761126]
+libraries/ = SubResource("AnimationLibrary_o5yvi")
+autoplay = &"new_animation"
+
+[node name="Spider2" parent="." unique_id=1776075297 instance=ExtResource("12_rku1e")]
+position = Vector2(324, -276)
+collision_layer = 2
+collision_mask = 2
+max_health = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Spider2" unique_id=38589992]
+libraries/ = SubResource("AnimationLibrary_1phco")
+autoplay = &"new_animation"
+
+[node name="Spider3" parent="." unique_id=569813377 instance=ExtResource("12_rku1e")]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(146, -456)
+collision_layer = 2
+collision_mask = 2
+max_health = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Spider3" unique_id=181198808]
+libraries/ = SubResource("AnimationLibrary_ewbju")
+autoplay = &"new_animation"
+
+[node name="SpikeEye" parent="." unique_id=523991888 instance=ExtResource("10_rku1e")]
+position = Vector2(1548, -262)
+max_health = 50
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="SpikeEye" unique_id=137454914]
+libraries/ = SubResource("AnimationLibrary_7t8sx")
+autoplay = &"SpikeEye"
+
+[node name="Trumpetist" parent="." unique_id=658101877 instance=ExtResource("11_o5yvi")]
+position = Vector2(1298, -187)
+max_health = 200
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Trumpetist" unique_id=1272705335]
+libraries/ = SubResource("AnimationLibrary_7nbq1")
+autoplay = &"Trumpetist"
+
+[node name="Trompetiti" parent="." unique_id=619892645 instance=ExtResource("13_rfjv2")]
+position = Vector2(341, -99)
+max_health = 85
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Trompetiti" unique_id=937564475]
+libraries/ = SubResource("AnimationLibrary_85qyi")
+autoplay = &"Trompetiti"

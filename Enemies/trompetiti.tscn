@@ -1,0 +1,79 @@
+[gd_scene load_steps=12 format=3 uid="uid://csgk4j68edutf"]
+
+[ext_resource type="Script" uid="uid://bbgp0gd27vbi2" path="res://trompetiti.gd" id="1_p3lyi"]
+[ext_resource type="PackedScene" uid="uid://2k6vg2yxr4dx" path="res://Scenes/trumpetist_bullet.tscn" id="2_m6ow6"]
+[ext_resource type="Texture2D" uid="uid://bclmq8q1baeby" path="res://Sprites/trompetiti.png" id="3_pg38a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oxvdw"]
+atlas = ExtResource("3_pg38a")
+region = Rect2(671, 57, 334, 313)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tffjk"]
+atlas = ExtResource("3_pg38a")
+region = Rect2(1067, 73, 334, 313)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_puro2"]
+atlas = ExtResource("3_pg38a")
+region = Rect2(1086, 366, 334, 313)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7vug"]
+atlas = ExtResource("3_pg38a")
+region = Rect2(674, 369, 334, 313)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ydm4"]
+atlas = ExtResource("3_pg38a")
+region = Rect2(206, 359, 334, 313)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4y2q"]
+atlas = ExtResource("3_pg38a")
+region = Rect2(206, 69, 334, 313)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8bsw3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oxvdw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tffjk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_puro2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7vug")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ydm4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4y2q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_83rwk"]
+size = Vector2(87.31958, 79.47925)
+
+[node name="Trompetiti" type="CharacterBody2D"]
+collision_layer = 3
+script = ExtResource("1_p3lyi")
+bullet_scene = ExtResource("2_m6ow6")
+fire_rate = 0.3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-3, -1)
+scale = Vector2(0.57954913, 0.5982429)
+sprite_frames = SubResource("SpriteFrames_8bsw3")
+frame_progress = 0.45720473
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 10)
+shape = SubResource("RectangleShape2D_83rwk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="spawnpos" type="Marker2D" parent="."]
+position = Vector2(34, 50)
