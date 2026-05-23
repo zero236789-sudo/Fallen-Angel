@@ -5,13 +5,18 @@ extends CharacterBody2D
 
 @export var bullet_scene: PackedScene
 @export var fire_rate: float = 0.5        
-@export var max_health: int = 8          # Poca vida, tipo básico
-@export var points: int = 75
+@export var max_health: int = 20          # Poca vida, tipo básico
+@export var points: int = 350
+
+# ─── Temporizador de puntos ──────────────────────────────────
+var points_current: int
+var points_min: int = 100
+var timer_active: bool = false
+var entered_screen: bool = false
 
 # ─── Zigzag ──────────────────────────────────────────────────
-# Alterna entre izquierda y derecha cada disparo
-var zigzag_angles: Array = [0.0]  # Ángulos del zigzag
-var zigzag_index: int = 0                 # Cuál toca ahora
+var zigzag_angles: Array = [0.0]
+var zigzag_index: int = 0
 
 var current_health: int
 var player: Node2D
@@ -19,6 +24,7 @@ var can_shoot := false
 var is_dead := false
 
 func _ready():
+	points_current = points
 	current_health = max_health
 	add_to_group("enemy")
 
@@ -35,6 +41,17 @@ func _ready():
 
 	start_shooting()
 
+func _process(_delta: float) -> void:
+	var screen = get_viewport_rect()
+	if screen.has_point(global_position):
+		if not entered_screen:
+			entered_screen = true
+			start_point_timer()
+	else:
+		if entered_screen and not is_dead:
+			stop_point_timer()
+			queue_free()
+
 # ─── SHOOTING ────────────────────────────────────────────────
 func start_shooting():
 	if can_shoot:
@@ -47,37 +64,29 @@ func shoot_loop() -> void:
 		shoot()
 		await get_tree().create_timer(fire_rate).timeout
 
-#Función shoot, aqui dispara desde la spawn pos (desde la trompetica)
 func shoot():
 	if bullet_scene == null:
-		push_error("bullet_scene is not assigned in Trumpetist!")
+		push_error("bullet_scene is not assigned in Trumpetiti!")
 		return
 
-	# Busca el punto de spawn (la trompeta)
 	var spawn = get_node_or_null("spawnpos")
 	var origin = spawn.global_position if spawn else global_position
 
-	# Dirección base hacia el jugador
 	var base_dir = Vector2.DOWN
 	if is_instance_valid(player):
 		base_dir = origin.direction_to(player.global_position)
 
-	# Alterna el ángulo zigzag en cada disparo
-		
 	var angle = deg_to_rad(zigzag_angles[zigzag_index])
 	zigzag_index = (zigzag_index + 1) % zigzag_angles.size()
-	spawn_bullet(origin, base_dir.rotated(angle))  
+	spawn_bullet(origin, base_dir.rotated(angle))
 
 func spawn_bullet(origin: Vector2, dir: Vector2):
 	if bullet_scene == null:
 		return
-
 	var bullet = bullet_scene.instantiate()
 	bullet.global_position = origin
-
 	if "direction" in bullet:
 		bullet.direction = dir.normalized()
-
 	get_tree().current_scene.add_child.call_deferred(bullet)
 
 # ─── DAÑO ────────────────────────────────────────────────────
@@ -101,4 +110,20 @@ func die() -> void:
 	if is_dead:
 		return
 	is_dead = true
+	stop_point_timer()
+	GameManager.add_score(points_current)
 	queue_free()
+
+# ─── TEMPORIZADOR DE PUNTOS ──────────────────────────────────
+func start_point_timer() -> void:
+	if timer_active:
+		return
+	timer_active = true
+	while timer_active and is_instance_valid(self):
+		await get_tree().create_timer(1.0).timeout
+		if not timer_active:
+			break
+		points_current = max(points_min, points_current - 10)
+
+func stop_point_timer() -> void:
+	timer_active = false

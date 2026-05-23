@@ -61,6 +61,8 @@ animations = [{
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_jj670")
 bullet_scene = ExtResource("2_3f47e")
+points = 150
+
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0)
