@@ -1,0 +1,155 @@
+[gd_scene load_steps=18 format=3 uid="uid://byw7580cwb7x2"]
+
+[ext_resource type="Script" uid="uid://chx8m2y124moe" path="res://game3.gd" id="1_ccubw"]
+[ext_resource type="PackedScene" uid="uid://bg88xaf2p2gvc" path="res://Scenes/player.tscn" id="4_1rvy5"]
+[ext_resource type="PackedScene" uid="uid://cin40omuysyd5" path="res://Scenes/PlayerBullet.tscn" id="5_d1j75"]
+[ext_resource type="Script" uid="uid://bhmprte321pd7" path="res://Scenes/canvas_layer.gd" id="6_26mq8"]
+[ext_resource type="Texture2D" uid="uid://cwni3clhkdb28" path="res://png-clipart-heart-pixel-art-warning-function-angle-text-removebg-preview.png" id="7_3txj3"]
+[ext_resource type="Texture2D" uid="uid://beq7isq55m8c4" path="res://TechoySuelo.png" id="8_ccubw"]
+[ext_resource type="Texture2D" uid="uid://0jy15scj6anm" path="res://imagen vacia.png" id="8_qiemo"]
+[ext_resource type="Texture2D" uid="uid://ct5t6kxawvhkx" path="res://MarcoDerecho.png" id="9_8hxov"]
+[ext_resource type="Texture2D" uid="uid://cxv3bbgamwmni" path="res://image-removebg-preview.png" id="9_eav1x"]
+[ext_resource type="Texture2D" uid="uid://c2cim73acg5gm" path="res://MarcoIzquierdo.png" id="10_svqiw"]
+[ext_resource type="Texture2D" uid="uid://cixipus1ahod5" path="res://ManoDerechaAbi.png" id="12_o4lua"]
+[ext_resource type="Texture2D" uid="uid://r75eancnieg2" path="res://Cabezacabra.png" id="13_1rvy5"]
+[ext_resource type="Texture2D" uid="uid://fkd8omkwpb8n" path="res://ManoizquAbrir.png" id="13_kjnwh"]
+
+[sub_resource type="Gradient" id="Gradient_ccubw"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8hxov"]
+gradient = SubResource("Gradient_ccubw")
+fill_to = Vector2(0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wowpa"]
+size = Vector2(16, 1107.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i6g32"]
+size = Vector2(716.5, 16)
+
+[node name="GAME" type="Node2D"]
+script = ExtResource("1_ccubw")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = SubResource("GradientTexture2D_8hxov")
+
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("4_1rvy5")]
+light_mask = 512
+visibility_layer = 512
+position = Vector2(960, 858)
+scale = Vector2(3.5, 3.5)
+collision_layer = 3
+collision_mask = 3
+bullet_scene = ExtResource("5_d1j75")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["wall"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(590, 538.25)
+shape = SubResource("RectangleShape2D_wowpa")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="." groups=["wall"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+position = Vector2(1324, 538.5)
+shape = SubResource("RectangleShape2D_wowpa")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." groups=["wall"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(957, -8)
+shape = SubResource("RectangleShape2D_i6g32")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="." groups=["wall"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(957.75, 1085)
+shape = SubResource("RectangleShape2D_i6g32")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+offset = Vector2(680, 1000)
+scale = Vector2(0.09, 0.09)
+transform = Transform2D(0.09, 0, 0, 0.09, 680, 1000)
+script = ExtResource("6_26mq8")
+heart_full = ExtResource("7_3txj3")
+heart_empty = ExtResource("8_qiemo")
+
+[node name="BombsContainer" type="HBoxContainer" parent="CanvasLayer" groups=["BombsContainer"]]
+offset_right = 1508.0
+offset_bottom = 500.0
+
+[node name="Bomb1" type="TextureRect" parent="CanvasLayer/BombsContainer"]
+layout_mode = 2
+texture = ExtResource("9_eav1x")
+
+[node name="Bomb2" type="TextureRect" parent="CanvasLayer/BombsContainer"]
+layout_mode = 2
+texture = ExtResource("9_eav1x")
+
+[node name="Bomb3" type="TextureRect" parent="CanvasLayer/BombsContainer"]
+layout_mode = 2
+texture = ExtResource("9_eav1x")
+
+[node name="HeartsContainer" type="HBoxContainer" parent="CanvasLayer"]
+light_mask = 512
+visibility_layer = 512
+anchors_preset = -1
+anchor_left = 3.9810002
+anchor_top = 0.15400001
+anchor_right = 4.842
+anchor_bottom = 0.577
+offset_left = 0.9248047
+offset_top = 0.34669495
+offset_right = -0.19433594
+offset_bottom = -0.49328613
+
+[node name="Heart1" type="TextureRect" parent="CanvasLayer/HeartsContainer"]
+layout_mode = 2
+
+[node name="Heart2" type="TextureRect" parent="CanvasLayer/HeartsContainer"]
+layout_mode = 2
+
+[node name="Heart3" type="TextureRect" parent="CanvasLayer/HeartsContainer"]
+layout_mode = 2
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+custom_minimum_size = Vector2(50, 50)
+anchors_preset = -1
+anchor_left = 4.1150002
+anchor_top = -9.959001
+anchor_right = 4.977
+anchor_bottom = -9.453
+offset_left = -0.80029297
+offset_top = 0.16601563
+offset_right = -0.28515625
+offset_bottom = -0.31445313
+theme_override_font_sizes/font_size = 400
+
+[node name="TechoySuelo" type="Sprite2D" parent="."]
+position = Vector2(960, 539.99994)
+scale = Vector2(1.4999999, 1.4999999)
+texture = ExtResource("8_ccubw")
+
+[node name="MarcoDerecho" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+scale = Vector2(1.4999999, 1.4999999)
+texture = ExtResource("9_8hxov")
+
+[node name="MarcoIzquierdo" type="Sprite2D" parent="."]
+position = Vector2(959.99994, 539.99994)
+scale = Vector2(1.4999999, 1.4999999)
+texture = ExtResource("10_svqiw")
+
+[node name="Cabezacabra" type="Sprite2D" parent="."]
+position = Vector2(973.99994, 204.99998)
+scale = Vector2(0.42089844, 0.42089844)
+texture = ExtResource("13_1rvy5")
+
+[node name="ManoDerechaAbi" type="Sprite2D" parent="."]
+position = Vector2(1349, 491)
+texture = ExtResource("12_o4lua")
+
+[node name="ManoizquAbrir" type="Sprite2D" parent="."]
+position = Vector2(594, 478)
+texture = ExtResource("13_kjnwh")
