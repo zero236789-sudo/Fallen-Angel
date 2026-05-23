@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var _animated_sprite = $Prota
 
 @export var speed: float = 400.0
-@export var ray_scene: PackedScene
+@export var bullet_scene: PackedScene
 @export var explosion_scene: PackedScene
 
 # --- Bombas ---
@@ -133,9 +133,9 @@ func spawn_bullet() -> void:
 	if can_shoot:
 		var spawns = [$Spawnposition, $Spawnposition2]
 		for sp in spawns:
-			var ray_instance = ray_scene.instantiate()
-			ray_instance.global_position = sp.global_position
-			get_tree().current_scene.add_child(ray_instance)
+			var bullet = bullet_scene.instantiate()
+			bullet.global_position = sp.global_position
+			get_tree().current_scene.add_child(bullet)
 		can_shoot = false
 		$Timer.start()
 
