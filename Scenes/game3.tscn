@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://byw7580cwb7x2"]
+[gd_scene load_steps=20 format=3 uid="uid://byw7580cwb7x2"]
 
 [ext_resource type="Script" uid="uid://chx8m2y124moe" path="res://game3.gd" id="1_ccubw"]
 [ext_resource type="PackedScene" uid="uid://bg88xaf2p2gvc" path="res://Scenes/player.tscn" id="4_1rvy5"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://cixipus1ahod5" path="res://ManoDerechaAbi.png" id="12_o4lua"]
 [ext_resource type="Texture2D" uid="uid://r75eancnieg2" path="res://Cabezacabra.png" id="13_1rvy5"]
 [ext_resource type="Texture2D" uid="uid://fkd8omkwpb8n" path="res://ManoizquAbrir.png" id="13_kjnwh"]
+[ext_resource type="PackedScene" uid="uid://cux36mxu0n4hr" path="res://Enemies/left_hand.tscn" id="14_kjnwh"]
+[ext_resource type="PackedScene" uid="uid://bhxa15qixml1m" path="res://Enemies/right_hand.tscn" id="15_1rvy5"]
 
 [sub_resource type="Gradient" id="Gradient_ccubw"]
 
@@ -153,3 +155,9 @@ texture = ExtResource("12_o4lua")
 [node name="ManoizquAbrir" type="Sprite2D" parent="."]
 position = Vector2(594, 478)
 texture = ExtResource("13_kjnwh")
+
+[node name="LeftHand" parent="." instance=ExtResource("14_kjnwh")]
+position = Vector2(696, 417)
+
+[node name="RightHand" parent="." instance=ExtResource("15_1rvy5")]
+position = Vector2(1029, 572)
