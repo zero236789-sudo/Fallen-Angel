@@ -120,11 +120,15 @@ func spawn_bullet(origin: Vector2, dir: Vector2) -> void:
 func spawn_arm_bullet(origin: Vector2, dir: Vector2) -> void:
 	var b = bullet_scene.instantiate()
 	b.global_position = origin
+
 	if "direction" in b:
 		b.direction = dir.normalized()
+
 	if "speed" in b:
 		b.speed = arm_bullet_speed
-	get_tree().current_scene.add_child(b)
+
+	get_tree().current_scene.call_deferred("add_child", b)
+
 
 func _get_phase() -> int:
 	var pct = float(current_health) / float(max_health)
@@ -174,4 +178,9 @@ func die() -> void:
 	if is_dead: return
 	is_dead = true
 	GameManager.add_score(points)
+	queue_free()
+
+func _on_screen_exited():
+	queue_free()
+func _on_particles_finished():
 	queue_free()

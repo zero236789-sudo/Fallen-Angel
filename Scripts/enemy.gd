@@ -99,3 +99,8 @@ func die() -> void:
 	is_dead = true
 	GameManager.add_score(points)
 	queue_free()
+
+func _on_screen_exited():
+	queue_free()
+func _on_particles_finished():
+	queue_free()
