@@ -82,6 +82,10 @@ func can_use_bomb() -> bool:
 	if (Time.get_ticks_msec() / 1000.0) - _last_bomb_time < bomb_cooldown:
 		return false
 	return true
+const PLAY_AREA_X_MIN = 590.0
+const PLAY_AREA_X_MAX = 1324.0
+const PLAY_AREA_Y_MIN = -8.0
+const PLAY_AREA_Y_MAX = 1085.0
 
 func use_bomb() -> void:
 	if not can_use_bomb():
@@ -89,21 +93,23 @@ func use_bomb() -> void:
 
 	bombs_current -= 1
 	_last_bomb_time = Time.get_ticks_msec() / 1000.0
-
 	update_bomb_label()
 	update_bomb_icons()
 
-	# 1. Matar enemigos normales
+	# 1. Matar enemigos normales (solo dentro del área de juego)
 	var enemies = get_tree().get_nodes_in_group("enemy")
 	for e in enemies:
 		if e.has_method("is_boss") and e.is_boss():
 			continue
-		if e.has_method("take_damage"):
-			e.take_damage(200)
-		else:
-			e.queue_free()
+		var pos = e.global_position
+		if pos.x >= PLAY_AREA_X_MIN and pos.x <= PLAY_AREA_X_MAX \
+		and pos.y >= PLAY_AREA_Y_MIN and pos.y <= PLAY_AREA_Y_MAX:
+			if e.has_method("take_damage"):
+				e.take_damage(200)
+			else:
+				e.queue_free()
 
-	# 2. Limpiar proyectiles
+	# 2. Limpiar proyectiles (todos, estén donde estén)
 	var bullet_groups = ["enemy_bullet", "SkullBullet", "spider_bullet", "AngelBullet"]
 	for group_name in bullet_groups:
 		var projectiles = get_tree().get_nodes_in_group(group_name)
@@ -118,7 +124,7 @@ func use_bomb() -> void:
 
 	# 4. FX
 	play_bomb_fx()
-
+	
 func play_bomb_fx() -> void:
 	if explosion_scene:
 		var explosion = explosion_scene.instantiate()

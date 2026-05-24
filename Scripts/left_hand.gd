@@ -17,9 +17,6 @@ var is_dead := false
 var ring_angle := 0.0
 var arm_angle := 0.0
 
-<<<<<<< HEAD
-func _ready():
-=======
 # ─── Temporizador de puntos ──────────────────────────────────
 var points_current: int
 var points_min: int = 100
@@ -28,7 +25,6 @@ var entered_screen: bool = false
 
 func _ready():
 	points_current = points
->>>>>>> be0d7268daed5fd58d68910202462f62437d9d2c
 	current_health = max_health
 	add_to_group("enemy")
 
@@ -38,6 +34,7 @@ func _ready():
 
 	var sprite = get_node_or_null("AnimatedSprite2D")
 	if sprite:
+		# Animación fade al aparecer, luego dispara
 		sprite.animation_finished.connect(_on_sprite_animation_finished)
 		sprite.play("fade")
 	else:
@@ -49,8 +46,6 @@ func _on_sprite_animation_finished():
 		sprite.animation_finished.disconnect(_on_sprite_animation_finished)
 	start_shooting()
 
-<<<<<<< HEAD
-=======
 func _process(_delta: float) -> void:
 	var screen = get_viewport_rect()
 	if screen.has_point(global_position):
@@ -62,7 +57,6 @@ func _process(_delta: float) -> void:
 			stop_point_timer()
 			queue_free()
 
->>>>>>> be0d7268daed5fd58d68910202462f62437d9d2c
 func get_spawn_points() -> Array:
 	var result: Array = []
 	_collect(self, result)
@@ -91,26 +85,18 @@ func arm_loop() -> void:
 		var arms := 12
 		for i in range(arms):
 			var angle = arm_angle + (TAU / arms) * i
-<<<<<<< HEAD
-			spawn_arm_bullet(global_position, Vector2(cos(angle), sin(angle)))
-=======
 			var spawn = get_node_or_null("spawnpos")
 			var origin = spawn.global_position if spawn else global_position
 			spawn_arm_bullet(origin, Vector2(cos(angle), sin(angle)))
->>>>>>> be0d7268daed5fd58d68910202462f62437d9d2c
 		arm_angle += deg_to_rad(15.0)
 		await get_tree().create_timer(arm_fire_rate).timeout
 
 func shoot_ring() -> void:
 	for i in range(22):
 		var angle = ring_angle + (TAU / 22.0) * i
-<<<<<<< HEAD
-		spawn_bullet(global_position, Vector2(cos(angle), sin(angle)))
-=======
 		var spawn = get_node_or_null("spawnpos")
 		var origin = spawn.global_position if spawn else global_position
 		spawn_bullet(origin, Vector2(cos(angle), sin(angle)))
->>>>>>> be0d7268daed5fd58d68910202462f62437d9d2c
 	ring_angle += deg_to_rad(12.0)
 
 func get_base_dir(origin: Vector2) -> Vector2:
@@ -124,11 +110,7 @@ func spawn_bullet(origin: Vector2, dir: Vector2) -> void:
 	var b = bullet_scene.instantiate()
 	b.global_position = origin
 	if "direction" in b:
-<<<<<<< HEAD
-		b.direction = dir.normalized()
-=======
-		b.direction = dir.normalized()  # Sin el - para que vaya en dirección contraria a la izquierda
->>>>>>> be0d7268daed5fd58d68910202462f62437d9d2c
+		b.direction = -dir.normalized()
 	get_tree().current_scene.add_child(b)
 
 func spawn_arm_bullet(origin: Vector2, dir: Vector2) -> void:
@@ -137,11 +119,7 @@ func spawn_arm_bullet(origin: Vector2, dir: Vector2) -> void:
 	var b = bullet_scene.instantiate()
 	b.global_position = origin
 	if "direction" in b:
-<<<<<<< HEAD
-		b.direction = dir.normalized()
-=======
-		b.direction = dir.normalized()  # Sin el - para que vaya en dirección contraria a la izquierda
->>>>>>> be0d7268daed5fd58d68910202462f62437d9d2c
+		b.direction = -dir.normalized()
 	if "speed" in b:
 		b.speed = arm_bullet_speed
 	get_tree().current_scene.add_child(b)
@@ -156,24 +134,14 @@ func flash_damage() -> void:
 	if s2: s2.modulate = Color.WHITE
 
 func take_damage(amount: int) -> void:
-<<<<<<< HEAD
-	if is_dead: return
-=======
 	if is_dead:
 		return
->>>>>>> be0d7268daed5fd58d68910202462f62437d9d2c
 	current_health -= amount
 	flash_damage()
 	if current_health <= 0:
 		die()
 
 func die() -> void:
-<<<<<<< HEAD
-	if is_dead: return
-	is_dead = true
-	GameManager.add_score(points)
-	queue_free()
-=======
 	if is_dead:
 		return
 	is_dead = true
@@ -194,4 +162,3 @@ func start_point_timer() -> void:
 
 func stop_point_timer() -> void:
 	timer_active = false
->>>>>>> be0d7268daed5fd58d68910202462f62437d9d2c

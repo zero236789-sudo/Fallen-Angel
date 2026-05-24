@@ -21,117 +21,6 @@ size = Vector2(16, 1107.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i6g32"]
 size = Vector2(716.5, 16)
 
-[sub_resource type="Animation" id="Animation_ldgsr"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(502, -95)]
-}
-
-[sub_resource type="Animation" id="Animation_h4fw4"]
-resource_name = "new_animation"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(502, -95), Vector2(1460, 717)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_o5yvi"]
-_data = {
-&"RESET": SubResource("Animation_ldgsr"),
-&"new_animation": SubResource("Animation_h4fw4")
-}
-
-[sub_resource type="Animation" id="Animation_rfjv2"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(324, -276)]
-}
-
-[sub_resource type="Animation" id="Animation_rku1e"]
-resource_name = "new_animation"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(324, -276), Vector2(1460, 717)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_1phco"]
-_data = {
-&"RESET": SubResource("Animation_rfjv2"),
-&"new_animation": SubResource("Animation_rku1e")
-}
-
-[sub_resource type="Animation" id="Animation_nnt18"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(146, -456)]
-}
-
-[sub_resource type="Animation" id="Animation_nb51f"]
-resource_name = "new_animation"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(146, -456), Vector2(1460, 717)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ewbju"]
-_data = {
-&"RESET": SubResource("Animation_nnt18"),
-&"new_animation": SubResource("Animation_nb51f")
-}
-
 [node name="GAME" type="Node2D"]
 script = ExtResource("1_qxrlw")
 
@@ -142,11 +31,14 @@ scale = Vector2(1.4999999, 1.5)
 texture = ExtResource("7_1l0tm")
 
 [node name="Skull" parent="." instance=ExtResource("9_ldgsr")]
-position = Vector2(962, -302)
+position = Vector2(956, -600)
 collision_layer = 3
 collision_mask = 3
 bullets_per_shot = 3
 max_health = 1200
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Skull"]
+autoplay = "angel mini boss"
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("2_wrm1d")]
 light_mask = 512
@@ -157,25 +49,25 @@ collision_layer = 3
 collision_mask = 3
 bullet_scene = ExtResource("5_rfjv2")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["wall"]]
+[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["boundary", "wall"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(590, 538.25)
 shape = SubResource("RectangleShape2D_wowpa")
 
-[node name="StaticBody2D4" type="StaticBody2D" parent="." groups=["wall"]]
+[node name="StaticBody2D4" type="StaticBody2D" parent="." groups=["boundary", "wall"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
 position = Vector2(1324, 538.5)
 shape = SubResource("RectangleShape2D_wowpa")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="." groups=["wall"]]
+[node name="StaticBody2D2" type="StaticBody2D" parent="." groups=["boundary", "wall"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
 position = Vector2(957, -8)
 shape = SubResource("RectangleShape2D_i6g32")
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="." groups=["wall"]]
+[node name="StaticBody2D3" type="StaticBody2D" parent="." groups=["boundary", "wall"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
 position = Vector2(957.75, 1085)
@@ -190,8 +82,13 @@ heart_full = ExtResource("8_v158k")
 heart_empty = ExtResource("10_ldgsr")
 
 [node name="BombsContainer" type="HBoxContainer" parent="CanvasLayer" groups=["BombsContainer"]]
-offset_right = 1508.0
-offset_bottom = 500.0
+anchors_preset = -1
+anchor_left = -1.4870001
+anchor_right = -0.702
+anchor_bottom = 0.46300003
+offset_left = -0.51586914
+offset_right = 0.28393555
+offset_bottom = -0.040039063
 
 [node name="Bomb1" type="TextureRect" parent="CanvasLayer/BombsContainer"]
 layout_mode = 2
@@ -245,24 +142,18 @@ theme_override_font_sizes/font_size = 400
 position = Vector2(502, -95)
 collision_layer = 2
 collision_mask = 2
-max_health = 3
+max_health = 15
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Spider"]
-libraries = {
-&"": SubResource("AnimationLibrary_o5yvi")
-}
 autoplay = "new_animation"
 
 [node name="Spider2" parent="." instance=ExtResource("12_rku1e")]
 position = Vector2(324, -276)
 collision_layer = 2
 collision_mask = 2
-max_health = 3
+max_health = 15
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Spider2"]
-libraries = {
-&"": SubResource("AnimationLibrary_1phco")
-}
 autoplay = "new_animation"
 
 [node name="Spider3" parent="." instance=ExtResource("12_rku1e")]
@@ -271,19 +162,123 @@ visibility_layer = 2
 position = Vector2(146, -456)
 collision_layer = 2
 collision_mask = 2
-max_health = 3
+max_health = 15
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Spider3"]
-libraries = {
-&"": SubResource("AnimationLibrary_ewbju")
-}
 autoplay = "new_animation"
 
+[node name="Spider4" parent="." instance=ExtResource("12_rku1e")]
+position = Vector2(502, -95)
+collision_layer = 2
+collision_mask = 2
+max_health = 15
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Spider4"]
+autoplay = "sipder4"
+
+[node name="Spider7" parent="." instance=ExtResource("12_rku1e")]
+position = Vector2(502, -95)
+collision_layer = 2
+collision_mask = 2
+max_health = 15
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Spider7"]
+autoplay = "spider7"
+
+[node name="Spider5" parent="." instance=ExtResource("12_rku1e")]
+position = Vector2(324, -276)
+collision_layer = 2
+collision_mask = 2
+max_health = 20
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Spider5"]
+autoplay = "spider5"
+
+[node name="Spider8" parent="." instance=ExtResource("12_rku1e")]
+position = Vector2(324, -276)
+collision_layer = 2
+collision_mask = 2
+max_health = 15
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Spider8"]
+autoplay = "spider8"
+
+[node name="Spider6" parent="." instance=ExtResource("12_rku1e")]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(146, -456)
+collision_layer = 2
+collision_mask = 2
+max_health = 15
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Spider6"]
+autoplay = "spider6"
+
+[node name="Spider9" parent="." instance=ExtResource("12_rku1e")]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(146, -456)
+collision_layer = 2
+collision_mask = 2
+max_health = 15
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Spider9"]
+autoplay = "spider9"
+
 [node name="SpikeEye" parent="." instance=ExtResource("10_rku1e")]
-position = Vector2(1587, -114)
+position = Vector2(1100, 550)
+max_health = 50
+
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="SpikeEye"]
+autoplay = "SpikeEye"
+
+[node name="SpikeEye3" parent="." instance=ExtResource("10_rku1e")]
+position = Vector2(1348, -262)
+max_health = 50
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="SpikeEye3"]
+autoplay = "SpikeEye3"
+
+[node name="SpikeEye2" parent="." instance=ExtResource("10_rku1e")]
+position = Vector2(1100, 550)
+max_health = 50
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="SpikeEye2"]
+autoplay = "SpikeEye2"
 
 [node name="Trumpetist" parent="." instance=ExtResource("11_o5yvi")]
-position = Vector2(1027, 230)
+position = Vector2(1298, -187)
+max_health = 450
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Trumpetist"]
+autoplay = "Trumpetist"
+
+[node name="Trumpetist2" parent="." instance=ExtResource("11_o5yvi")]
+position = Vector2(1298, -187)
+max_health = 450
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Trumpetist2"]
+autoplay = "tumpetist2"
 
 [node name="Trompetiti" parent="." instance=ExtResource("13_rfjv2")]
-position = Vector2(721, 165)
+
+position = Vector2(723, 88)
+max_health = 70
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Trompetiti"]
+autoplay = "Trompetiti"
+
+[node name="Trompetiti2" parent="." instance=ExtResource("13_rfjv2")]
+position = Vector2(723, 88)
+max_health = 70
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Trompetiti2"]
+autoplay = "trompetiti2"
+
+[node name="Trompetiti3" parent="." instance=ExtResource("13_rfjv2")]
+position = Vector2(723, 88)
+max_health = 70
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Trompetiti3"]
+autoplay = "trompetiti3"

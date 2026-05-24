@@ -21,7 +21,6 @@
 [ext_resource type="Texture2D" uid="uid://uxjft8dd4hb6" path="res://ManoDerAbrir75.png" id="19_jy2f3"]
 [ext_resource type="PackedScene" uid="uid://ca52o0tukfvlo" path="res://Enemies/RightHand.tscn" id="21_rsl8m"]
 [ext_resource type="PackedScene" uid="uid://bhj6vywnbshh6" path="res://Enemies/LeftHand.tscn" id="22_55eqp"]
-
 [sub_resource type="Gradient" id="Gradient_ccubw"]
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_8hxov"]

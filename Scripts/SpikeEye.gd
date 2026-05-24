@@ -13,7 +13,14 @@ var player: Node2D
 var can_shoot := false
 var is_dead := false
 
+# ─── Temporizador de puntos ──────────────────────────────────
+var points_current: int
+var points_min: int = 100
+var timer_active: bool = false
+var entered_screen: bool = false
+
 func _ready():
+	points_current = points
 	current_health = max_health
 	add_to_group("enemy")
 
@@ -23,7 +30,6 @@ func _ready():
 	else:
 		push_error("Player not found")
 
-	# Arranca la animación
 	var sprite = get_node_or_null("AnimatedSprite2D")
 	if sprite:
 		sprite.animation = "default"
@@ -31,7 +37,18 @@ func _ready():
 
 	start_shooting()
 
-# SHOOTING
+func _process(_delta: float) -> void:
+	var screen = get_viewport_rect()
+	if screen.has_point(global_position):
+		if not entered_screen:
+			entered_screen = true
+			start_point_timer()
+	else:
+		if entered_screen and not is_dead:
+			stop_point_timer()
+			queue_free()
+
+# ─── SHOOTING ────────────────────────────────────────────────
 func start_shooting():
 	if can_shoot:
 		return
@@ -45,10 +62,9 @@ func shoot_loop() -> void:
 
 func shoot():
 	if bullet_scene == null:
-		push_error("bullet_scene is not assigned in TankEnemy!")
+		push_error("bullet_scene is not assigned in SpikeEye!")
 		return
 
-	# Dispara en anillo completo repartiendo las balas uniformemente
 	for i in range(bullets_per_shot):
 		var angle = (TAU / bullets_per_shot) * i
 		spawn_bullet(Vector2(cos(angle), sin(angle)))
@@ -56,16 +72,13 @@ func shoot():
 func spawn_bullet(dir: Vector2):
 	if bullet_scene == null:
 		return
-
 	var bullet = bullet_scene.instantiate()
 	bullet.global_position = global_position
-
 	if "direction" in bullet:
 		bullet.direction = dir.normalized()
-
 	get_tree().current_scene.add_child.call_deferred(bullet)
 
-# DAÑO
+# ─── DAÑO ────────────────────────────────────────────────────
 func take_damage(amount: int) -> void:
 	if is_dead:
 		return
@@ -86,4 +99,20 @@ func die() -> void:
 	if is_dead:
 		return
 	is_dead = true
+	stop_point_timer()
+	GameManager.add_score(points_current)
 	queue_free()
+
+# ─── TEMPORIZADOR DE PUNTOS ──────────────────────────────────
+func start_point_timer() -> void:
+	if timer_active:
+		return
+	timer_active = true
+	while timer_active and is_instance_valid(self):
+		await get_tree().create_timer(1.0).timeout
+		if not timer_active:
+			break
+		points_current = max(points_min, points_current - 10)
+
+func stop_point_timer() -> void:
+	timer_active = false
