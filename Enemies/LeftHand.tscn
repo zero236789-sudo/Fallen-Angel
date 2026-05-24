@@ -1,0 +1,87 @@
+[gd_scene load_steps=9 format=3 uid="uid://bhj6vywnbshh6"]
+
+[ext_resource type="Script" uid="uid://so3icjigr376" path="res://Enemies/left_hand.gd" id="1_xbnfx"]
+[ext_resource type="PackedScene" uid="uid://6rpkf88xqu3y" path="res://Scenes/AngelBullet.tscn" id="2_ku2x2"]
+[ext_resource type="Texture2D" uid="uid://nh4exi2gup35" path="res://ManoDerAbrir0.png" id="3_uhibe"]
+[ext_resource type="Texture2D" uid="uid://0emmxmliobo1" path="res://Manoizq.png" id="3_xepc6"]
+[ext_resource type="Texture2D" uid="uid://btijbbhnds1pi" path="res://Manoizq25.png" id="4_uhibe"]
+[ext_resource type="Texture2D" uid="uid://xj78lyci4tt8" path="res://Manoizq50.png" id="5_qr0p6"]
+[ext_resource type="Texture2D" uid="uid://y2gg7xswnvkl" path="res://Manoizq75.png" id="6_8jqp8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8c2wr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_uhibe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_uhibe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_uhibe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_uhibe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_uhibe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_uhibe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_uhibe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_uhibe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_uhibe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_uhibe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_uhibe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_uhibe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_uhibe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_uhibe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_qr0p6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8jqp8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xepc6")
+}],
+"loop": false,
+"name": &"fade",
+"speed": 5.0
+}]
+
+[node name="Skull" type="CharacterBody2D" groups=["Enemies"]]
+script = ExtResource("1_xbnfx")
+bullet_scene = ExtResource("2_ku2x2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -1.9073486e-06)
+scale = Vector2(0.7047683, 0.7047683)
+sprite_frames = SubResource("SpriteFrames_8c2wr")
+animation = &"fade"
+autoplay = "fade"
+
+[node name="spawnpos" type="Marker2D" parent="."]
+
+[node name="Muzzleflash" type="AnimationPlayer" parent="."]
+
+[node name="shootdelay" type="Timer" parent="." groups=["Player"]]
+wait_time = 0.15
+one_shot = true

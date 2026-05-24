@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://byw7580cwb7x2"]
+[gd_scene load_steps=47 format=3 uid="uid://byw7580cwb7x2"]
 
 [ext_resource type="Script" uid="uid://chx8m2y124moe" path="res://game3.gd" id="1_ccubw"]
 [ext_resource type="PackedScene" uid="uid://bg88xaf2p2gvc" path="res://Scenes/player.tscn" id="4_1rvy5"]
@@ -10,9 +10,17 @@
 [ext_resource type="Texture2D" uid="uid://ct5t6kxawvhkx" path="res://MarcoDerecho.png" id="9_8hxov"]
 [ext_resource type="Texture2D" uid="uid://cxv3bbgamwmni" path="res://image-removebg-preview.png" id="9_eav1x"]
 [ext_resource type="Texture2D" uid="uid://c2cim73acg5gm" path="res://MarcoIzquierdo.png" id="10_svqiw"]
+[ext_resource type="PackedScene" uid="uid://desu20k23g5mo" path="res://Enemies/Goat.tscn" id="11_8hxov"]
+[ext_resource type="Texture2D" uid="uid://nh4exi2gup35" path="res://ManoDerAbrir0.png" id="12_eav1x"]
 [ext_resource type="Texture2D" uid="uid://cixipus1ahod5" path="res://ManoDerechaAbi.png" id="12_o4lua"]
-[ext_resource type="Texture2D" uid="uid://r75eancnieg2" path="res://Cabezacabra.png" id="13_1rvy5"]
 [ext_resource type="Texture2D" uid="uid://fkd8omkwpb8n" path="res://ManoizquAbrir.png" id="13_kjnwh"]
+[ext_resource type="Texture2D" uid="uid://cgl5d4ahbmyo" path="res://Manoizqu75.png" id="14_d1j75"]
+[ext_resource type="Texture2D" uid="uid://closcji3m1ut1" path="res://ManoizquAbrir100.png" id="15_26mq8"]
+[ext_resource type="Texture2D" uid="uid://vv11k0wjoui0" path="res://ManoDerAbrir25.png" id="17_rsl8m"]
+[ext_resource type="Texture2D" uid="uid://bo2i712ymp3cx" path="res://ManoDerAbrir50.png" id="18_55eqp"]
+[ext_resource type="Texture2D" uid="uid://uxjft8dd4hb6" path="res://ManoDerAbrir75.png" id="19_jy2f3"]
+[ext_resource type="PackedScene" uid="uid://ca52o0tukfvlo" path="res://Enemies/RightHand.tscn" id="21_rsl8m"]
+[ext_resource type="PackedScene" uid="uid://bhj6vywnbshh6" path="res://Enemies/LeftHand.tscn" id="22_55eqp"]
 
 [sub_resource type="Gradient" id="Gradient_ccubw"]
 
@@ -23,8 +31,310 @@ fill_to = Vector2(0, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wowpa"]
 size = Vector2(16, 1107.5)
 
+[sub_resource type="Animation" id="Animation_o4lua"]
+resource_name = "Colision_Imove"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(590, 538.25), Vector2(310, 538.25)]
+}
+
+[sub_resource type="Animation" id="Animation_d1j75"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(590, 538.25)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_26mq8"]
+_data = {
+&"Colision_Imove": SubResource("Animation_o4lua"),
+&"RESET": SubResource("Animation_d1j75")
+}
+
+[sub_resource type="Animation" id="Animation_3txj3"]
+resource_name = "Colision_Dmove"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1324, 538.5), Vector2(1583, 538.5)]
+}
+
+[sub_resource type="Animation" id="Animation_qiemo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1324, 538.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eav1x"]
+_data = {
+&"Colision_Dmove": SubResource("Animation_3txj3"),
+&"RESET": SubResource("Animation_qiemo")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i6g32"]
-size = Vector2(716.5, 16)
+size = Vector2(1921, 16)
+
+[sub_resource type="Animation" id="Animation_8hxov"]
+resource_name = "ParedD_Abriendose"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(960, 540), Vector2(1216, 540)]
+}
+
+[sub_resource type="Animation" id="Animation_svqiw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(960, 540)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o4lua"]
+_data = {
+&"ParedD_Abriendose": SubResource("Animation_8hxov"),
+&"RESET": SubResource("Animation_svqiw")
+}
+
+[sub_resource type="Animation" id="Animation_kjnwh"]
+resource_name = "ParedI_Abriendose"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(959.99994, 539.99994), Vector2(678, 540)]
+}
+
+[sub_resource type="Animation" id="Animation_1rvy5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(959.99994, 539.99994)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d1j75"]
+_data = {
+&"ParedI_Abriendose": SubResource("Animation_kjnwh"),
+&"RESET": SubResource("Animation_1rvy5")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3txj3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_eav1x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_kjnwh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_d1j75")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_26mq8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_26mq8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_26mq8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_26mq8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_d1j75")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_kjnwh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_eav1x")
+}],
+"loop": false,
+"name": &"Manoizq",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_luwqx"]
+resource_name = "ManoIz"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(573, 576), Vector2(300, 576)]
+}
+
+[sub_resource type="Animation" id="Animation_eav1x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(573, 576)]
+}
+
+[sub_resource type="Animation" id="Animation_q0j4c"]
+resource_name = "new_animation"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xkyge"]
+_data = {
+&"ManoIz": SubResource("Animation_luwqx"),
+&"RESET": SubResource("Animation_eav1x"),
+&"new_animation": SubResource("Animation_q0j4c")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qiemo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_eav1x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_rsl8m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_55eqp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_jy2f3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_o4lua")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_o4lua")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_o4lua")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_o4lua")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_jy2f3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_55eqp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_rsl8m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_eav1x")
+}],
+"loop": false,
+"name": &"ManoDer",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_k1rkq"]
+resource_name = "DerMano"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1369, 573), Vector2(1610, 573)]
+}
+
+[sub_resource type="Animation" id="Animation_rsl8m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1369, 573)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dcxdt"]
+_data = {
+&"DerMano": SubResource("Animation_k1rkq"),
+&"RESET": SubResource("Animation_rsl8m")
+}
 
 [node name="GAME" type="Node2D"]
 script = ExtResource("1_ccubw")
@@ -49,11 +359,23 @@ bullet_scene = ExtResource("5_d1j75")
 position = Vector2(590, 538.25)
 shape = SubResource("RectangleShape2D_wowpa")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StaticBody2D/CollisionShape2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_26mq8")
+}
+autoplay = "Colision_Imove"
+
 [node name="StaticBody2D4" type="StaticBody2D" parent="." groups=["wall"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
 position = Vector2(1324, 538.5)
 shape = SubResource("RectangleShape2D_wowpa")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StaticBody2D4/CollisionShape2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_eav1x")
+}
+autoplay = "Colision_Dmove"
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="." groups=["wall"]]
 
@@ -64,7 +386,7 @@ shape = SubResource("RectangleShape2D_i6g32")
 [node name="StaticBody2D3" type="StaticBody2D" parent="." groups=["wall"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
-position = Vector2(957.75, 1085)
+position = Vector2(960.5, 1085)
 shape = SubResource("RectangleShape2D_i6g32")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -136,20 +458,57 @@ position = Vector2(960, 540)
 scale = Vector2(1.4999999, 1.4999999)
 texture = ExtResource("9_8hxov")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MarcoDerecho"]
+libraries = {
+&"": SubResource("AnimationLibrary_o4lua")
+}
+autoplay = "ParedD_Abriendose"
+
 [node name="MarcoIzquierdo" type="Sprite2D" parent="."]
 position = Vector2(959.99994, 539.99994)
 scale = Vector2(1.4999999, 1.4999999)
 texture = ExtResource("10_svqiw")
 
-[node name="Cabezacabra" type="Sprite2D" parent="."]
-position = Vector2(973.99994, 204.99998)
-scale = Vector2(0.42089844, 0.42089844)
-texture = ExtResource("13_1rvy5")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MarcoIzquierdo"]
+libraries = {
+&"": SubResource("AnimationLibrary_d1j75")
+}
+autoplay = "ParedI_Abriendose"
 
-[node name="ManoDerechaAbi" type="Sprite2D" parent="."]
-position = Vector2(1349, 491)
-texture = ExtResource("12_o4lua")
+[node name="CabraGalega" parent="." instance=ExtResource("11_8hxov")]
+position = Vector2(960, 254)
+max_health = 1000
 
-[node name="ManoizquAbrir" type="Sprite2D" parent="."]
-position = Vector2(594, 478)
-texture = ExtResource("13_kjnwh")
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(573, 576)
+sprite_frames = SubResource("SpriteFrames_3txj3")
+animation = &"Manoizq"
+autoplay = "Manoizq"
+frame = 9
+frame_progress = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D2"]
+libraries = {
+&"": SubResource("AnimationLibrary_xkyge")
+}
+autoplay = "ManoIz"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1369, 573)
+sprite_frames = SubResource("SpriteFrames_qiemo")
+animation = &"ManoDer"
+autoplay = "ManoDer"
+frame = 11
+frame_progress = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_dcxdt")
+}
+autoplay = "DerMano"
+
+[node name="RightHand" parent="." instance=ExtResource("21_rsl8m")]
+position = Vector2(1365, 318)
+
+[node name="LeftHand" parent="." instance=ExtResource("22_55eqp")]
+position = Vector2(527, 318)

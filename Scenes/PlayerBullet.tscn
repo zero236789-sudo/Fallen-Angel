@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cin40omuysyd5"]
+[gd_scene load_steps=10 format=3 uid="uid://cin40omuysyd5"]
 
 [ext_resource type="Script" uid="uid://5sgvi7sdjvit" path="res://Scripts/player_bullet.gd" id="1_65pnx"]
 [ext_resource type="Texture2D" uid="uid://8t4fna1hbmlv" path="res://All_Fire_Bullet_Pixel_16x16_00.png" id="2_65pnx"]
@@ -49,18 +49,18 @@ animations = [{
 "speed": 12.0
 }]
 
-[node name="PlayerBullet" type="Area2D" unique_id=1410374333]
+[node name="PlayerBullet" type="Area2D"]
 position = Vector2(-1, -1)
 scale = Vector2(4, 4)
 collision_layer = 254
 collision_mask = 254
 script = ExtResource("1_65pnx")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=738558770]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.75, 0.75)
 shape = SubResource("RectangleShape2D_0vqef")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=88833007]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-5.9604645e-08, 0.5000001)
 rotation = -1.5707964
 scale = Vector2(0.74565417, 0.7456542)

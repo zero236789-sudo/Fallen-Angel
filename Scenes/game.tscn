@@ -1,11 +1,6 @@
+[gd_scene load_steps=26 format=3 uid="uid://cb4ubxmtajkey"]
 
-[gd_scene load_steps=24 format=3 uid="uid://cb4ubxmtajkey"]
-
-
-
-
-
-[ext_resource type="Script" path="res://game.gd" id="1_qxrlw"]
+[ext_resource type="Script" uid="uid://d1e4b52y10qc3" path="res://game.gd" id="1_qxrlw"]
 [ext_resource type="PackedScene" uid="uid://bg88xaf2p2gvc" path="res://Scenes/player.tscn" id="2_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://cin40omuysyd5" path="res://Scenes/PlayerBullet.tscn" id="5_rfjv2"]
 [ext_resource type="Texture2D" uid="uid://08eqvf3cckr" path="res://6499_original.png" id="7_1l0tm"]
@@ -16,8 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://0jy15scj6anm" path="res://imagen vacia.png" id="10_ldgsr"]
 [ext_resource type="Texture2D" uid="uid://cxv3bbgamwmni" path="res://image-removebg-preview.png" id="10_o5yvi"]
 [ext_resource type="PackedScene" uid="uid://cank3qa2fuhfl" path="res://Enemies/spike_eye.tscn" id="10_rku1e"]
-[ext_resource type="PackedScene" uid="uid://bo1ia4oej4ttp" path="res://Enemies/LilDemon.tscn" id="12_rku1e"]
-
 [ext_resource type="PackedScene" uid="uid://ufelgdytsabu" path="res://Enemies/trumpetist.tscn" id="11_o5yvi"]
 [ext_resource type="PackedScene" uid="uid://bo1ia4oej4ttp" path="res://Enemies/LilDemon.tscn" id="12_rku1e"]
 [ext_resource type="PackedScene" uid="uid://csgk4j68edutf" path="res://Enemies/trompetiti.tscn" id="13_rfjv2"]
@@ -159,7 +152,7 @@ max_health = 1200
 light_mask = 512
 visibility_layer = 512
 position = Vector2(960, 858)
-scale = Vector2(3.5, 3.5)
+scale = Vector2(4, 4)
 collision_layer = 3
 collision_mask = 3
 bullet_scene = ExtResource("5_rfjv2")
@@ -289,12 +282,8 @@ autoplay = "new_animation"
 [node name="SpikeEye" parent="." instance=ExtResource("10_rku1e")]
 position = Vector2(1587, -114)
 
-
-
 [node name="Trumpetist" parent="." instance=ExtResource("11_o5yvi")]
 position = Vector2(1027, 230)
 
 [node name="Trompetiti" parent="." instance=ExtResource("13_rfjv2")]
 position = Vector2(721, 165)
-
-
