@@ -139,3 +139,9 @@ func start_point_timer() -> void:
 #No hace falta q explique q hace esto
 func stop_point_timer() -> void:
 	timer_active = false
+	
+	
+func _on_screen_exited():
+	queue_free()
+func _on_particles_finished():
+	queue_free()
