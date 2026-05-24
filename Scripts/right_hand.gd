@@ -32,13 +32,17 @@ func _ready():
 	if players.size() > 0:
 		player = players[0]
 
-	await get_tree().create_timer(0.5).timeout
-
 	var sprite = get_node_or_null("AnimatedSprite2D")
 	if sprite:
-		sprite.animation = "default"
-		sprite.play()
+		sprite.animation_finished.connect(_on_sprite_animation_finished)
+		sprite.play("fade")
+	else:
+		start_shooting()
 
+func _on_sprite_animation_finished():
+	var sprite = get_node_or_null("AnimatedSprite2D")
+	if sprite and sprite.animation_finished.is_connected(_on_sprite_animation_finished):
+		sprite.animation_finished.disconnect(_on_sprite_animation_finished)
 	start_shooting()
 
 func _process(_delta: float) -> void:
@@ -100,17 +104,21 @@ func get_base_dir(origin: Vector2) -> Vector2:
 	return Vector2.DOWN
 
 func spawn_bullet(origin: Vector2, dir: Vector2) -> void:
+	if not bullet_scene:
+		return
 	var b = bullet_scene.instantiate()
 	b.global_position = origin
 	if "direction" in b:
-		b.direction = -dir.normalized()
+		b.direction = dir.normalized()  # Sin el - para que vaya en dirección contraria a la izquierda
 	get_tree().current_scene.add_child(b)
 
 func spawn_arm_bullet(origin: Vector2, dir: Vector2) -> void:
+	if not bullet_scene:
+		return
 	var b = bullet_scene.instantiate()
 	b.global_position = origin
 	if "direction" in b:
-		b.direction = -dir.normalized()
+		b.direction = dir.normalized()  # Sin el - para que vaya en dirección contraria a la izquierda
 	if "speed" in b:
 		b.speed = arm_bullet_speed
 	get_tree().current_scene.add_child(b)
