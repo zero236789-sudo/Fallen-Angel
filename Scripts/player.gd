@@ -170,7 +170,13 @@ func die() -> void:
 	call_deferred("_change_to_gameover")
 
 func _change_to_gameover() -> void:
-	get_tree().change_scene_to_file("res://Scenes/Gameover.tscn")
+	if not is_inside_tree():
+		return
+	var path = "res://Scenes/Gameover.tscn"
+	if ResourceLoader.exists(path):
+		get_tree().change_scene_to_file(path)
+	else:
+		push_error("No se encuentra la escena: " + path)
 
 func _on_timer_timeout():
 	can_shoot = true

@@ -1,4 +1,5 @@
 extends CharacterBody2D
+
 @export var bullet_scene: PackedScene
 @export var fire_rate: float = 0.5
 @export var bullets_per_shot: int = 3
@@ -6,35 +7,64 @@ extends CharacterBody2D
 @export var aim_at_player: bool = true
 @export var max_health: int = 16
 @export var points: int = 300
+@export var wait_for_cabra: bool = false
 
 var current_health: int
 var player: Node2D
 var can_shoot := false
-var last_position: Vector2  
-
-#variables Temporizador de puntos
+var last_position: Vector2
 var points_current: int
 var points_min: int = 100
 var timer_active: bool = false
 var is_dead: bool = false
-
-#ha entrado el enemigo en pantalla???
 var entered_screen: bool = false
+var _cabra_connected: bool = false
 
 func _ready():
-	
 	points_current = points
 	current_health = max_health
-	last_position = global_position 
+	last_position = global_position
 	add_to_group("enemy")
 	var players = get_tree().get_nodes_in_group("player")
 	if players.size() > 0:
 		player = players[0]
 	else:
 		push_error("Player not found")
-	start_shooting()
-	
 
+	if wait_for_cabra:
+		var sprite = get_node_or_null("AnimatedSprite2D")
+		if sprite:
+			sprite.stop()
+			sprite.visible = false
+		await get_tree().process_frame
+		if is_instance_valid(self) and is_inside_tree():
+			_try_connect_cabra()
+	else:
+		start_shooting()
+
+func _try_connect_cabra() -> void:
+	if not is_instance_valid(self) or not is_inside_tree() or _cabra_connected:
+		return
+	var cabras = get_tree().get_nodes_in_group("cabra_galega")
+	if cabras.size() == 0:
+		await get_tree().process_frame
+		if is_instance_valid(self) and is_inside_tree():
+			_try_connect_cabra()
+		return
+	for cabra in cabras:
+		if cabra.has_signal("cabra_started_attacking"):
+			if not cabra.cabra_started_attacking.is_connected(_on_cabra_attacking):
+				cabra.cabra_started_attacking.connect(_on_cabra_attacking)
+				_cabra_connected = true
+
+func _on_cabra_attacking() -> void:
+	if not is_instance_valid(self) or not is_inside_tree():
+		return
+	var sprite = get_node_or_null("AnimatedSprite2D")
+	if sprite:
+		sprite.visible = true
+		sprite.play()
+	start_shooting()
 
 func _process(_delta: float) -> void:
 	var screen = get_viewport_rect()
@@ -48,7 +78,6 @@ func _process(_delta: float) -> void:
 			queue_free()
 	last_position = global_position
 
-# SHOOTING
 func start_shooting():
 	if can_shoot:
 		return
@@ -56,13 +85,15 @@ func start_shooting():
 	shoot_loop()
 
 func shoot_loop() -> void:
-	while is_instance_valid(player):
-		if is_moving():
-			shoot()
+	while is_instance_valid(self) and is_instance_valid(player) and not is_dead:
+		if wait_for_cabra:
+			shoot()        # << en escena del boss siempre dispara
+		elif is_moving():
+			shoot()        # << en otras escenas solo si se mueve
 		await get_tree().create_timer(fire_rate).timeout
 
 func is_moving() -> bool:
-	return global_position.distance_to(last_position) > 0.5  
+	return global_position.distance_to(last_position) > 0.5
 
 func shoot():
 	if bullet_scene == null:
@@ -89,7 +120,7 @@ func spawn_bullet(dir: Vector2):
 		return
 	var bullet = bullet_scene.instantiate()
 	bullet.global_position = global_position
-	if bullet.has_method("set") and "direction" in bullet:
+	if "direction" in bullet:
 		bullet.direction = dir.normalized()
 	get_tree().current_scene.add_child.call_deferred(bullet)
 
@@ -119,13 +150,9 @@ func die() -> void:
 		return
 	is_dead = true
 	stop_point_timer()
-	#llamamos a la funcion add core del script GameManager, 
-	#le pasamos la cantidad d puntos actual al morir
 	GameManager.add_score(points_current)
 	queue_free()
-	
-	
-#Funcion que inicia el temporizador q resta puntos por segundo
+
 func start_point_timer() -> void:
 	if timer_active:
 		return
@@ -135,13 +162,12 @@ func start_point_timer() -> void:
 		if not timer_active:
 			break
 		points_current = max(points_min, points_current - 10)
-		
-#No hace falta q explique q hace esto
+
 func stop_point_timer() -> void:
 	timer_active = false
-	
-	
+
 func _on_screen_exited():
 	queue_free()
+
 func _on_particles_finished():
 	queue_free()

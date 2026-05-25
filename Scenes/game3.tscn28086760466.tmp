@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://byw7580cwb7x2"]
+[gd_scene load_steps=47 format=3 uid="uid://byw7580cwb7x2"]
 
 [ext_resource type="Script" uid="uid://chx8m2y124moe" path="res://game3.gd" id="1_ccubw"]
 [ext_resource type="PackedScene" uid="uid://bg88xaf2p2gvc" path="res://Scenes/player.tscn" id="4_1rvy5"]
@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://cxv3bbgamwmni" path="res://image-removebg-preview.png" id="9_eav1x"]
 [ext_resource type="Texture2D" uid="uid://c2cim73acg5gm" path="res://MarcoIzquierdo.png" id="10_svqiw"]
 [ext_resource type="PackedScene" uid="uid://desu20k23g5mo" path="res://Enemies/Goat.tscn" id="11_8hxov"]
-[ext_resource type="PackedScene" uid="uid://d1l2ka2pv0d7a" path="res://Scenes/Goatbullet.tscn" id="12_55eqp"]
 [ext_resource type="Texture2D" uid="uid://nh4exi2gup35" path="res://ManoDerAbrir0.png" id="12_eav1x"]
 [ext_resource type="Texture2D" uid="uid://cixipus1ahod5" path="res://ManoDerechaAbi.png" id="12_o4lua"]
 [ext_resource type="Texture2D" uid="uid://fkd8omkwpb8n" path="res://ManoizquAbrir.png" id="13_kjnwh"]
@@ -22,7 +21,6 @@
 [ext_resource type="Texture2D" uid="uid://uxjft8dd4hb6" path="res://ManoDerAbrir75.png" id="19_jy2f3"]
 [ext_resource type="PackedScene" uid="uid://ca52o0tukfvlo" path="res://Enemies/RightHand.tscn" id="21_rsl8m"]
 [ext_resource type="PackedScene" uid="uid://bhj6vywnbshh6" path="res://Enemies/LeftHand.tscn" id="22_55eqp"]
-[ext_resource type="PackedScene" uid="uid://bo5l3132bxff2" path="res://Enemies/Spider.tscn" id="23_jy2f3"]
 
 [sub_resource type="Gradient" id="Gradient_ccubw"]
 
@@ -338,77 +336,6 @@ _data = {
 &"RESET": SubResource("Animation_rsl8m")
 }
 
-[sub_resource type="Animation" id="Animation_jy2f3"]
-resource_name = "aaa"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1893, 17), Vector2(1428, 199)]
-}
-
-[sub_resource type="Animation" id="Animation_0361w"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1893, 17)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_4ojrs"]
-_data = {
-&"RESET": SubResource("Animation_0361w"),
-&"aaa": SubResource("Animation_jy2f3")
-}
-
-[sub_resource type="Animation" id="Animation_xkyge"]
-resource_name = "new_animation"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1824, 102), Vector2(1432, 160)]
-}
-
-[sub_resource type="Animation" id="Animation_dcxdt"]
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(476, 171)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_0361w"]
-_data = {
-&"RESET": SubResource("Animation_dcxdt"),
-&"new_animation": SubResource("Animation_xkyge")
-}
-
 [node name="GAME" type="Node2D"]
 script = ExtResource("1_ccubw")
 
@@ -550,7 +477,6 @@ autoplay = "ParedI_Abriendose"
 
 [node name="CabraGalega" parent="." instance=ExtResource("11_8hxov")]
 position = Vector2(960, 254)
-homing_bullet_scene = ExtResource("12_55eqp")
 max_health = 1000
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
@@ -596,29 +522,3 @@ collision_layer = 3
 max_health = 500
 phase2_bullet_speed = 700.0
 phase2_burst_count = 25
-
-[node name="Spider3" parent="." instance=ExtResource("23_jy2f3")]
-position = Vector2(1893, 17)
-scale = Vector2(2.25, 2.25)
-bullets_per_shot = 5
-max_health = 100
-wait_for_cabra = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Spider3"]
-libraries = {
-&"": SubResource("AnimationLibrary_4ojrs")
-}
-autoplay = "aaa"
-
-[node name="Spider2" parent="." instance=ExtResource("23_jy2f3")]
-scale = Vector2(2.25, 2.25)
-bullets_per_shot = 5
-max_health = 100
-wait_for_cabra = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Spider2"]
-root_node = NodePath("../../Spider2")
-libraries = {
-&"": SubResource("AnimationLibrary_0361w")
-}
-autoplay = "RESET"
