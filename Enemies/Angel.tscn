@@ -1,54 +1,67 @@
-[gd_scene format=3 uid="uid://vvx1thhhoqaf"]
+[gd_scene load_steps=6 format=3 uid="uid://vvx1thhhoqaf"]
 
 [ext_resource type="Script" uid="uid://ds75tmv5mdtpq" path="res://Scripts/Enemy1.gd" id="1_1kj8b"]
 [ext_resource type="PackedScene" uid="uid://6rpkf88xqu3y" path="res://Scenes/AngelBullet.tscn" id="2_1kj8b"]
 [ext_resource type="Texture2D" uid="uid://orc5tsoflwl3" path="res://angel.png" id="3_1kj8b"]
+[ext_resource type="AudioStream" uid="uid://ysagmciyll43" path="res://music/magiaz-magical_flying_fairy-451622.mp3" id="4_g82fw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jj670"]
 size = Vector2(756, 505)
 
-[node name="Skull" type="CharacterBody2D" unique_id=1137942806 groups=["Enemies"]]
+[node name="Skull" type="CharacterBody2D" groups=["Enemies"]]
 script = ExtResource("1_1kj8b")
 bullet_scene = ExtResource("2_1kj8b")
+fire_rate = null
 bullets_per_shot = 1
+spread_angle = null
+aim_at_player = null
+max_health = null
+points = null
+arm_bullet_speed = null
+arm_fire_rate = null
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1161267920]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 1.5)
 shape = SubResource("RectangleShape2D_jj670")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=257693415]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1, 2)
 texture = ExtResource("3_1kj8b")
 
-[node name="spawnpos4" type="Marker2D" parent="." unique_id=2114973058]
+[node name="spawnpos4" type="Marker2D" parent="."]
 position = Vector2(69, 45)
 
-[node name="spawnpos5" type="Marker2D" parent="." unique_id=116365845]
+[node name="spawnpos5" type="Marker2D" parent="."]
 position = Vector2(-81, 46)
 
-[node name="spawnpos6" type="Marker2D" parent="." unique_id=1779619810]
+[node name="spawnpos6" type="Marker2D" parent="."]
 position = Vector2(-71, -4)
 
-[node name="spawnpos9" type="Marker2D" parent="." unique_id=808618946]
+[node name="spawnpos9" type="Marker2D" parent="."]
 position = Vector2(75, -52)
 
-[node name="spawnpos8" type="Marker2D" parent="." unique_id=1703434520]
+[node name="spawnpos8" type="Marker2D" parent="."]
 position = Vector2(62, -8)
 
-[node name="spawnpos7" type="Marker2D" parent="." unique_id=828672386]
+[node name="spawnpos7" type="Marker2D" parent="."]
 position = Vector2(-87, -51)
 
-[node name="spawnpos2" type="Marker2D" parent="." unique_id=1795874722]
+[node name="spawnpos2" type="Marker2D" parent="."]
 position = Vector2(-28, 118)
 
-[node name="spawnpos" type="Marker2D" parent="." unique_id=796401978]
+[node name="spawnpos" type="Marker2D" parent="."]
 position = Vector2(-5, 62)
 
-[node name="spawnpos3" type="Marker2D" parent="." unique_id=1348534656]
+[node name="spawnpos3" type="Marker2D" parent="."]
 position = Vector2(18, 119)
 
-[node name="Muzzleflash" type="AnimationPlayer" parent="." unique_id=302606397]
+[node name="Muzzleflash" type="AnimationPlayer" parent="."]
 
-[node name="shootdelay" type="Timer" parent="." unique_id=1189166692 groups=["Player"]]
+[node name="shootdelay" type="Timer" parent="." groups=["Player"]]
 wait_time = 0.15
 one_shot = true
+
+[node name="EntrySFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_g82fw")
+volume_db = -22.672
+bus = &"SFX"

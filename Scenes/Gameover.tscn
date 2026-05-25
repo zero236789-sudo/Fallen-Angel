@@ -1,6 +1,15 @@
 [gd_scene format=3 uid="uid://dtg3888ksre5v"]
 
 [ext_resource type="Script" uid="uid://clsgwmsep8n0a" path="res://game_over.gd" id="1_m5628"]
+[ext_resource type="Texture2D" uid="uid://cfguga2jv04b4" path="res://Main Menu.png" id="2_3vyfe"]
+[ext_resource type="FontFile" uid="uid://cxaqp7qbdbf7s" path="res://INVASION2000.TTF" id="2_5yue4"]
+[ext_resource type="Texture2D" uid="uid://b8s45hq2jrm68" path="res://game over.png" id="3_egvjn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3vyfe"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_egvjn"]
+bg_color = Color(0.14117648, 0.13725491, 0.15294118, 1)
 
 [node name="Control" type="Control" unique_id=565687025]
 layout_mode = 3
@@ -15,21 +24,29 @@ script = ExtResource("1_m5628")
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 705.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3vyfe")
 
-[node name="game over" type="Label" parent="Panel" unique_id=1850363766]
-layout_mode = 0
-offset_left = 870.0
-offset_top = 159.0
-offset_right = 962.0
-offset_bottom = 182.0
-text = "GAME OVER"
+[node name="MainMenu" type="Sprite2D" parent="Panel" unique_id=1977051263]
+position = Vector2(960.2222, 540)
+scale = Vector2(0.99814814, 0.99814814)
+texture = ExtResource("2_3vyfe")
 
 [node name="FinalScore" type="Label" parent="Panel" unique_id=1967423177]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.46800002
+anchor_top = 0.56200004
+anchor_right = 0.615
+anchor_bottom = 0.61
+offset_left = 0.4399414
+offset_top = -0.21002197
+offset_right = 0.19995117
+offset_bottom = -0.05001831
+theme_override_fonts/font = ExtResource("2_5yue4")
+theme_override_font_sizes/font_size = 25
 
 [node name="Highscore" type="Label" parent="Panel" unique_id=208817062]
+visible = false
 layout_mode = 0
 offset_left = 816.0
 offset_top = 58.0
@@ -38,60 +55,76 @@ offset_bottom = 90.0
 
 [node name="RetryButton" type="Button" parent="Panel" unique_id=1618912450]
 layout_mode = 0
-offset_left = 857.0
-offset_top = 336.0
-offset_right = 995.0
-offset_bottom = 367.0
-text = "Volver a intentar"
+offset_left = 818.0
+offset_top = 492.0
+offset_right = 1178.0
+offset_bottom = 566.0
+theme_override_fonts/font = ExtResource("2_5yue4")
+theme_override_font_sizes/font_size = 65
+text = "Try Again"
 
 [node name="MenuButton" type="Button" parent="Panel" unique_id=489918408]
 layout_mode = 0
-offset_left = 855.0
-offset_top = 420.0
-offset_right = 980.0
-offset_bottom = 451.0
-text = "Menú principal"
+offset_left = 805.0
+offset_top = 834.0
+offset_right = 1188.0
+offset_bottom = 908.0
+theme_override_fonts/font = ExtResource("2_5yue4")
+theme_override_font_sizes/font_size = 65
+text = "Main Menu"
 
 [node name="SettingsButton" type="Button" parent="Panel" unique_id=789005224]
 layout_mode = 0
-offset_left = 884.0
-offset_top = 377.0
-offset_right = 949.0
-offset_bottom = 408.0
-text = "Ajustes"
+offset_left = 827.0
+offset_top = 666.0
+offset_right = 1157.0
+offset_bottom = 740.0
+theme_override_fonts/font = ExtResource("2_5yue4")
+theme_override_font_sizes/font_size = 65
+text = "Settings"
 
 [node name="SettingsPanel" type="Panel" parent="." unique_id=1171799847]
 layout_mode = 0
-offset_top = 707.0
+offset_top = 784.0
 offset_right = 1917.0
-offset_bottom = 1081.0
+offset_bottom = 1079.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_egvjn")
 
 [node name="Volumen" type="Label" parent="SettingsPanel" unique_id=1130018989]
 layout_mode = 0
-offset_left = 853.0
-offset_top = 45.0
-offset_right = 908.0
-offset_bottom = 68.0
-text = "Musica"
+offset_left = 946.0
+offset_top = 40.0
+offset_right = 1041.0
+offset_bottom = 71.0
+theme_override_fonts/font = ExtResource("2_5yue4")
+theme_override_font_sizes/font_size = 30
+text = "Music"
 
 [node name="MusicSlider" type="HSlider" parent="SettingsPanel" unique_id=1349880177]
 layout_mode = 0
-offset_left = 755.0
-offset_top = 90.0
-offset_right = 1016.0
-offset_bottom = 138.0
+offset_left = 861.0
+offset_top = 116.0
+offset_right = 1122.0
+offset_bottom = 164.0
 
 [node name="SFX" type="Label" parent="SettingsPanel" unique_id=1001867999]
 layout_mode = 0
-offset_left = 867.0
-offset_top = 146.0
-offset_right = 912.0
-offset_bottom = 169.0
+offset_left = 959.0
+offset_top = 188.0
+offset_right = 1015.0
+offset_bottom = 214.0
+theme_override_fonts/font = ExtResource("2_5yue4")
+theme_override_font_sizes/font_size = 25
 text = "SFX"
 
 [node name="SFXSlider" type="HSlider" parent="SettingsPanel" unique_id=1328143374]
 layout_mode = 0
-offset_left = 757.0
-offset_top = 171.0
-offset_right = 1021.0
-offset_bottom = 216.0
+offset_left = 855.0
+offset_top = 231.0
+offset_right = 1119.0
+offset_bottom = 276.0
+
+[node name="FallenAngelTitlepix" type="Sprite2D" parent="." unique_id=942713147]
+position = Vector2(959, 177)
+scale = Vector2(1.0517241, 1.0517242)
+texture = ExtResource("3_egvjn")

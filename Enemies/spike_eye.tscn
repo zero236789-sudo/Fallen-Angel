@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://cank3qa2fuhfl"]
+[gd_scene load_steps=11 format=3 uid="uid://cank3qa2fuhfl"]
 
-[ext_resource type="Script" path="res://Scripts/SpikeEye.gd" id="1_v2e8e"]
-[ext_resource type="PackedScene" uid="uid://b4sgrb07q48n6" path="res://Scenes/SpikeBullet.tscn" id="2_v2e8e"]
+[ext_resource type="Script" uid="uid://bkl6ble4xqt4q" path="res://Scripts/SpikeEye.gd" id="1_v2e8e"]
+[ext_resource type="PackedScene" uid="uid://cxlob7cq2hleh" path="res://Scenes/SpikeBullet.tscn" id="2_v2e8e"]
 [ext_resource type="Texture2D" uid="uid://blilxlo63phrs" path="res://Sprites/bolapincho6.png" id="3_eb5ij"]
 [ext_resource type="Texture2D" uid="uid://ciqcxknp87mxo" path="res://Sprites/bolapincho5.png" id="4_o8iv0"]
 [ext_resource type="Texture2D" uid="uid://c4s4uybp7l7ut" path="res://Sprites/bolapincho3.png" id="5_wlpfc"]
 [ext_resource type="Texture2D" uid="uid://co6c6gf85wej5" path="res://Sprites/bolapincho4.png" id="6_0l3if"]
 [ext_resource type="Texture2D" uid="uid://b7be8orbuq4bp" path="res://Sprites/bolapincho7.png" id="7_sdoig"]
+[ext_resource type="AudioStream" uid="uid://c4mu5hwr3mpui" path="res://music/8-bit_long-form_orga_#2-1779720699587.mp3" id="8_uafa5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hbeph"]
 resource_local_to_scene = true
@@ -56,3 +57,8 @@ position = Vector2(-1, -1)
 shape = SubResource("CircleShape2D_oxpn2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="EntrySFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_uafa5")
+volume_db = -22.672
+bus = &"SFX"

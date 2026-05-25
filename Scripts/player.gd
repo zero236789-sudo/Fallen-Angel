@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var speed: float = 400.0
 @export var bullet_scene: PackedScene
 @export var explosion_scene: PackedScene
+@onready var bullet_sound = $Bulletsound
 
 # --- Bombas ---
 @export var bomb_cooldown: float = 1.0
@@ -54,17 +55,16 @@ func _physics_process(_delta):
 	else:
 		velocity = Vector2.ZERO
 	move_and_slide()
-
 func _process(_delta):
-	# Disparo
-	if Input.is_action_pressed("shoot"):
+	# Disparo (ARREGLADO)
+	if Input.is_action_pressed("shoot") and can_shoot:
 		spawn_bullet()
 
 	# Bomba
 	if Input.is_action_just_pressed("bomb"):
 		use_bomb()
 
-	# Reinicio de nivel (mantener pulsado)
+	# Reinicio de nivel
 	if Input.is_action_pressed("reiniciar_nivel") and not reiniciando:
 		temporizador += _delta
 		if temporizador >= tiempo_reinicio:
@@ -136,14 +136,17 @@ func play_bomb_fx() -> void:
 # -------------------------
 
 func spawn_bullet() -> void:
-	if can_shoot:
-		var spawns = [$Spawnposition, $Spawnposition2]
-		for sp in spawns:
-			var bullet = bullet_scene.instantiate()
-			bullet.global_position = sp.global_position
-			get_tree().current_scene.add_child(bullet)
-		can_shoot = false
-		$Timer.start()
+	var spawns = [$Spawnposition, $Spawnposition2]
+	for sp in spawns:
+		var bullet = bullet_scene.instantiate()
+		bullet.global_position = sp.global_position
+		get_tree().current_scene.add_child(bullet)
+	
+	# 🔊 sonido
+	bullet_sound.play()
+
+	can_shoot = false
+	$Timer.start()
 
 func take_damage(amount: int) -> void:
 	if invincible:

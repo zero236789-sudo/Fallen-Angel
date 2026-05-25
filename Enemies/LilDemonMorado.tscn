@@ -1,0 +1,140 @@
+[gd_scene format=3 uid="uid://cj2oc2axgvk3n"]
+
+[ext_resource type="Script" uid="uid://w648ystwlijo" path="res://Scripts/BasicEnemys.gd" id="1_n7bcu"]
+[ext_resource type="PackedScene" uid="uid://6rpkf88xqu3y" path="res://Scenes/AngelBullet.tscn" id="2_0xbyi"]
+[ext_resource type="Texture2D" uid="uid://055lcdha0yow" path="res://Sprites/EsbirroMorado.png" id="3_0xbyi"]
+[ext_resource type="Texture2D" uid="uid://d5j2mmmn3xcb" path="res://Esbirro.png" id="3_fdbuq"]
+[ext_resource type="AudioStream" uid="uid://du6cdugxki1aq" path="res://music/8-bit_wet_creature_s_#3-1779720123702.mp3" id="5_fdbuq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jj670"]
+size = Vector2(117, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fdbuq"]
+atlas = ExtResource("3_0xbyi")
+region = Rect2(0, 0, 467, 561)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jp6i1"]
+atlas = ExtResource("3_0xbyi")
+region = Rect2(467, 0, 467, 561)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6g73"]
+atlas = ExtResource("3_0xbyi")
+region = Rect2(934, 0, 467, 561)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwxdf"]
+atlas = ExtResource("3_0xbyi")
+region = Rect2(0, 561, 467, 561)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dmj34"]
+atlas = ExtResource("3_0xbyi")
+region = Rect2(467, 561, 467, 561)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7xnd"]
+atlas = ExtResource("3_0xbyi")
+region = Rect2(934, 561, 467, 561)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h38at"]
+atlas = ExtResource("3_fdbuq")
+region = Rect2(0, 0, 460, 561)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgk2i"]
+atlas = ExtResource("3_fdbuq")
+region = Rect2(460, 0, 460, 561)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67a37"]
+atlas = ExtResource("3_fdbuq")
+region = Rect2(920, 0, 460, 561)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8nug"]
+atlas = ExtResource("3_fdbuq")
+region = Rect2(0, 561, 460, 561)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5xue"]
+atlas = ExtResource("3_fdbuq")
+region = Rect2(460, 561, 460, 561)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2jsl"]
+atlas = ExtResource("3_fdbuq")
+region = Rect2(920, 561, 460, 561)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ulwwc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fdbuq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jp6i1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6g73")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwxdf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dmj34")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7xnd")
+}],
+"loop": true,
+"name": &"Morado",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h38at")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgk2i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_67a37")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j8nug")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5xue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2jsl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="LilDemon" type="CharacterBody2D" unique_id=1720208582 groups=["Enemies"]]
+scale = Vector2(1.5, 1.5)
+collision_layer = 3
+script = ExtResource("1_n7bcu")
+bullet_scene = ExtResource("2_0xbyi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=619321792]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_jj670")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1580231568]
+position = Vector2(2.3841858e-07, -2.3841858e-07)
+scale = Vector2(0.27499995, 0.27499995)
+sprite_frames = SubResource("SpriteFrames_ulwwc")
+animation = &"Morado"
+autoplay = "Morado"
+
+[node name="spawnpos" type="Marker2D" parent="." unique_id=1889531836]
+position = Vector2(0, -64)
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1197602714]
+
+[node name="Muzzleflash" type="AnimationPlayer" parent="." unique_id=1686962225]
+
+[node name="shootdelay" type="Timer" parent="." unique_id=1638015671 groups=["Player"]]
+wait_time = 0.15
+one_shot = true
+
+[node name="EntrySFX" type="AudioStreamPlayer" parent="." unique_id=189318446]
+stream = ExtResource("5_fdbuq")
+volume_db = -22.672
+bus = &"SFX"

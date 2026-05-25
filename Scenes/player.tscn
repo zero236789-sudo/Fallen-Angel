@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bg88xaf2p2gvc"]
+[gd_scene load_steps=6 format=3 uid="uid://bg88xaf2p2gvc"]
 
 [ext_resource type="Script" uid="uid://di7et0xmuqek0" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://kto0dwc4opfh" path="res://ProtaPix.png" id="3_6t5aa"]
 [ext_resource type="PackedScene" uid="uid://dndpfw3qpag4y" path="res://Scenes/Explosion.tscn" id="3_vgqql"]
+[ext_resource type="AudioStream" uid="uid://hjmramcx2qv4" path="res://music/02.wav" id="4_vgqql"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6t5aa"]
 radius = 2.6666667
@@ -31,5 +32,10 @@ texture = ExtResource("3_6t5aa")
 position = Vector2(0, -2.6666667)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_6t5aa")
+
+[node name="Bulletsound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_vgqql")
+volume_db = -22.214
+bus = &"SFX"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

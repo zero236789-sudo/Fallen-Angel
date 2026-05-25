@@ -1,9 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://csgk4j68edutf"]
+[gd_scene format=3 uid="uid://csgk4j68edutf"]
 
 [ext_resource type="Script" uid="uid://bbgp0gd27vbi2" path="res://Scripts/trompetiti.gd" id="1_p3lyi"]
-
 [ext_resource type="PackedScene" uid="uid://2k6vg2yxr4dx" path="res://Scenes/trumpetist_bullet.tscn" id="2_m6ow6"]
 [ext_resource type="Texture2D" uid="uid://bclmq8q1baeby" path="res://Sprites/trompetiti.png" id="3_pg38a"]
+[ext_resource type="AudioStream" uid="uid://co1f8y25jx1uh" path="res://music/3-second_8-bit_melod_#2-1779720981565.mp3" id="4_m6ow6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oxvdw"]
 atlas = ExtResource("3_pg38a")
@@ -58,23 +58,28 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_83rwk"]
 size = Vector2(87.31958, 79.47925)
 
-[node name="Trompetiti" type="CharacterBody2D"]
+[node name="Trompetiti" type="CharacterBody2D" unique_id=732454432]
 collision_layer = 3
 script = ExtResource("1_p3lyi")
 bullet_scene = ExtResource("2_m6ow6")
 fire_rate = 0.3
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=97226470]
 position = Vector2(-3, -1)
 scale = Vector2(0.57954913, 0.5982429)
 sprite_frames = SubResource("SpriteFrames_8bsw3")
 frame_progress = 0.45720473
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1123965633]
 position = Vector2(-1, 10)
 shape = SubResource("RectangleShape2D_83rwk")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=500142136]
 
-[node name="spawnpos" type="Marker2D" parent="."]
+[node name="spawnpos" type="Marker2D" parent="." unique_id=1942763663]
 position = Vector2(34, 50)
+
+[node name="EntrySFX" type="AudioStreamPlayer" parent="." unique_id=1833022970]
+stream = ExtResource("4_m6ow6")
+volume_db = -22.672
+bus = &"SFX"

@@ -8,6 +8,7 @@ extends CharacterBody2D
 @export var max_health: int = 16
 @export var points: int = 300
 @export var wait_for_cabra: bool = false
+@onready var entry_sfx = get_node_or_null("EntrySFX")
 
 var current_health: int
 var player: Node2D
@@ -72,6 +73,8 @@ func _process(_delta: float) -> void:
 		if not entered_screen:
 			entered_screen = true
 			start_point_timer()
+			if entry_sfx:
+				entry_sfx.play()
 	else:
 		if entered_screen and not is_dead:
 			stop_point_timer()
@@ -90,6 +93,10 @@ func shoot_loop() -> void:
 			shoot()        # << en escena del boss siempre dispara
 		elif is_moving():
 			shoot()        # << en otras escenas solo si se mueve
+	while is_instance_valid(player):
+		# 🔹 OPCIÓN 2: Dispara solo cuando está en pantalla (aunque esté quieto)
+		if entered_screen:
+			shoot()
 		await get_tree().create_timer(fire_rate).timeout
 
 func is_moving() -> bool:
@@ -132,18 +139,14 @@ func take_damage(amount: int) -> void:
 	if current_health <= 0:
 		die()
 
+
 func flash_damage() -> void:
-	var sprite1 = get_node_or_null("Sprite2D")
-	var sprite2 = get_node_or_null("Sprite2D2")
-	if sprite1:
-		sprite1.modulate = Color.RED
-	if sprite2:
-		sprite2.modulate = Color.RED
+	var sprite = get_node_or_null("AnimatedSprite2D")
+	if sprite:
+		sprite.modulate = Color.RED
 	await get_tree().create_timer(0.1).timeout
-	if sprite1:
-		sprite1.modulate = Color.WHITE
-	if sprite2:
-		sprite2.modulate = Color.WHITE
+	if sprite:
+		sprite.modulate = Color.WHITE
 
 func die() -> void:
 	if is_dead:

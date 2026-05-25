@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://ufelgdytsabu"]
+[gd_scene load_steps=12 format=3 uid="uid://ufelgdytsabu"]
 
 [ext_resource type="Texture2D" uid="uid://cwkpjtltkchso" path="res://Sprites/trumeptist.png" id="1_icb7t"]
 [ext_resource type="Script" uid="uid://bmyfx46gm3mma" path="res://Scripts/trumpetist.gd" id="1_uyrtp"]
 [ext_resource type="PackedScene" uid="uid://2k6vg2yxr4dx" path="res://Scenes/trumpetist_bullet.tscn" id="2_0hbmw"]
+[ext_resource type="AudioStream" uid="uid://cd2pwhkqrmwoo" path="res://music/3-second_dark_8-bit__#2-1779721417708.mp3" id="4_i4jmt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uyrtp"]
 atlas = ExtResource("1_icb7t")
@@ -71,3 +72,8 @@ root_node = NodePath("../AnimatedSprite2D")
 
 [node name="spawnpos" type="Marker2D" parent="."]
 position = Vector2(51, 73)
+
+[node name="EntrySFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_i4jmt")
+volume_db = -22.672
+bus = &"SFX"
