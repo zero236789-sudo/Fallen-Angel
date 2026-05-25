@@ -105,18 +105,14 @@ func take_damage(amount: int) -> void:
 	if current_health <= 0:
 		die()
 
+
 func flash_damage() -> void:
-	var sprite1 = get_node_or_null("Sprite2D")
-	var sprite2 = get_node_or_null("Sprite2D2")
-	if sprite1:
-		sprite1.modulate = Color.RED
-	if sprite2:
-		sprite2.modulate = Color.RED
+	var sprite = get_node_or_null("AnimatedSprite2D")
+	if sprite:
+		sprite.modulate = Color.RED
 	await get_tree().create_timer(0.1).timeout
-	if sprite1:
-		sprite1.modulate = Color.WHITE
-	if sprite2:
-		sprite2.modulate = Color.WHITE
+	if sprite:
+		sprite.modulate = Color.WHITE
 
 func die() -> void:
 	if is_dead:

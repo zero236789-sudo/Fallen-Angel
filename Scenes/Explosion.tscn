@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://dndpfw3qpag4y"]
+[gd_scene format=3 uid="uid://dndpfw3qpag4y"]
 
 [ext_resource type="Script" uid="uid://cgd2umxyxh6ec" path="res://Scenes/Explosion.gd" id="1_mbc3v"]
 [ext_resource type="Texture2D" uid="uid://bpakrsd5so6pg" path="res://explosion.png" id="2_ix64a"]
 [ext_resource type="Texture2D" uid="uid://kb5lywo15hsh" path="res://explosion8.0.png" id="3_wcvtd"]
+[ext_resource type="AudioStream" uid="uid://8hoi1jmj2vga" path="res://music/freesound_community-medium-explosion-40472 (mp3cut.net).mp3" id="4_5pvja"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5pvja"]
 atlas = ExtResource("2_ix64a")
@@ -102,15 +103,15 @@ animations = [{
 "speed": 35.0
 }]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" unique_id=199280114]
 script = ExtResource("1_mbc3v")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1647827313]
 position = Vector2(-1.5258789e-05, -1.5258789e-05)
 scale = Vector2(25.84168, 25.841667)
 sprite_frames = SubResource("SpriteFrames_odb0j")
 frame = 17
 frame_progress = 1.0
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-autoplay = true
+[node name="Bomba" type="AudioStreamPlayer" parent="." unique_id=1085420100]
+stream = ExtResource("4_5pvja")

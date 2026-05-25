@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bo5l3132bxff2"]
+[gd_scene format=3 uid="uid://bo5l3132bxff2"]
 
 [ext_resource type="Script" uid="uid://w648ystwlijo" path="res://Scripts/BasicEnemys.gd" id="1_jj670"]
 [ext_resource type="PackedScene" uid="uid://6rpkf88xqu3y" path="res://Scenes/AngelBullet.tscn" id="2_3f47e"]
@@ -58,35 +58,35 @@ animations = [{
 "speed": 7.0
 }]
 
-[node name="Spider" type="CharacterBody2D" groups=["Enemies"]]
+[node name="Spider" type="CharacterBody2D" unique_id=1166094311 groups=["Enemies"]]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_jj670")
 bullet_scene = ExtResource("2_3f47e")
 points = 150
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1201887918]
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_jj670")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1348761000]
 position = Vector2(2.3841858e-07, -2.3841858e-07)
 scale = Vector2(0.27499995, 0.27499995)
 sprite_frames = SubResource("SpriteFrames_ulwwc")
 autoplay = "default"
 frame_progress = 0.46225795
 
-[node name="spawnpos" type="Marker2D" parent="."]
+[node name="spawnpos" type="Marker2D" parent="." unique_id=5777112]
 position = Vector2(0, -64)
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=807255011]
 
-[node name="Muzzleflash" type="AnimationPlayer" parent="."]
+[node name="Muzzleflash" type="AnimationPlayer" parent="." unique_id=135667922]
 
-[node name="shootdelay" type="Timer" parent="." groups=["Player"]]
+[node name="shootdelay" type="Timer" parent="." unique_id=1916732040 groups=["Player"]]
 wait_time = 0.15
 one_shot = true
 
-[node name="EntrySFX" type="AudioStreamPlayer" parent="."]
+[node name="EntrySFX" type="AudioStreamPlayer" parent="." unique_id=1405117154]
 stream = ExtResource("4_h38at")
 volume_db = -22.672
 bus = &"SFX"

@@ -108,6 +108,7 @@ animations = [{
 
 [node name="LilDemon" type="CharacterBody2D" unique_id=541729119 groups=["Enemies"]]
 scale = Vector2(1.5, 1.5)
+collision_layer = 3
 script = ExtResource("1_jr4ld")
 bullet_scene = ExtResource("2_yff3r")
 
