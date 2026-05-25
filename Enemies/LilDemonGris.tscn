@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://6rpkf88xqu3y" path="res://Scenes/AngelBullet.tscn" id="2_yff3r"]
 [ext_resource type="Texture2D" uid="uid://d5j2mmmn3xcb" path="res://Esbirro.png" id="3_iab3t"]
 [ext_resource type="Texture2D" uid="uid://dr6wg5p0hd1t3" path="res://Sprites/Esbirrogris.png" id="4_yff3r"]
+[ext_resource type="AudioStream" uid="uid://dysvvevj3085m" path="res://music/8-bit_wet_creature_s_#2-1779719719100.mp3" id="5_iab3t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jj670"]
 size = Vector2(117, 120)
@@ -131,3 +132,8 @@ position = Vector2(0, -64)
 [node name="shootdelay" type="Timer" parent="." unique_id=23193167 groups=["Player"]]
 wait_time = 0.15
 one_shot = true
+
+[node name="EntrySFX" type="AudioStreamPlayer" parent="." unique_id=581774428]
+stream = ExtResource("5_iab3t")
+volume_db = -22.672
+bus = &"SFX"

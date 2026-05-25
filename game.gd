@@ -1,5 +1,5 @@
-# GAME
 extends Node2D
+
 @onready var music = $BattleMusic
 
 func _ready():

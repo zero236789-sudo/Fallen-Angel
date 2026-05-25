@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://bo1ia4oej4ttp"]
+[gd_scene format=3 uid="uid://bo1ia4oej4ttp"]
 
 [ext_resource type="Script" uid="uid://w648ystwlijo" path="res://Scripts/BasicEnemys.gd" id="1_alabq"]
 [ext_resource type="PackedScene" uid="uid://6rpkf88xqu3y" path="res://Scenes/AngelBullet.tscn" id="2_o2htn"]
 [ext_resource type="Texture2D" uid="uid://d5j2mmmn3xcb" path="res://Esbirro.png" id="3_i3dlj"]
+[ext_resource type="AudioStream" uid="uid://dysvvevj3085m" path="res://music/8-bit_wet_creature_s_#2-1779719719100.mp3" id="4_o2htn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jj670"]
 size = Vector2(117, 120)
@@ -57,29 +58,34 @@ animations = [{
 "speed": 7.0
 }]
 
-[node name="LilDemon" type="CharacterBody2D" groups=["Enemies"]]
+[node name="LilDemon" type="CharacterBody2D" unique_id=513530310 groups=["Enemies"]]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_alabq")
 bullet_scene = ExtResource("2_o2htn")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1802389176]
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_jj670")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=411711119]
 position = Vector2(2.3841858e-07, -2.3841858e-07)
 scale = Vector2(0.27499995, 0.27499995)
 sprite_frames = SubResource("SpriteFrames_ulwwc")
 autoplay = "default"
 frame_progress = 0.46225795
 
-[node name="spawnpos" type="Marker2D" parent="."]
+[node name="spawnpos" type="Marker2D" parent="." unique_id=1781547016]
 position = Vector2(0, -64)
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=27916521]
 
-[node name="Muzzleflash" type="AnimationPlayer" parent="."]
+[node name="Muzzleflash" type="AnimationPlayer" parent="." unique_id=912142249]
 
-[node name="shootdelay" type="Timer" parent="." groups=["Player"]]
+[node name="shootdelay" type="Timer" parent="." unique_id=1427098119 groups=["Player"]]
 wait_time = 0.15
 one_shot = true
+
+[node name="EntrySFX" type="AudioStreamPlayer" parent="." unique_id=280196658]
+stream = ExtResource("4_o2htn")
+volume_db = -22.672
+bus = &"SFX"
