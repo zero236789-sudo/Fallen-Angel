@@ -6,6 +6,8 @@ extends Control
 @onready var settings_panel = $SettingsPanel
 @onready var music_slider = $SettingsPanel/MusicSlider
 @onready var sfx_slider = $SettingsPanel/SFXSlider
+@onready var sfx_play = $SFXPlay
+@onready var sfx_settings = $SFXSettings
 
 func _ready():
 	play_button.pressed.connect(_on_play)
@@ -13,13 +15,11 @@ func _ready():
 	settings_button.pressed.connect(_on_settings)
 	settings_panel.visible = false
 
-	var music_bus = AudioServer.get_bus_index("Music")
-	var sfx_bus = AudioServer.get_bus_index("SFX")
-	if music_bus != -1:
-		music_slider.value = db_to_linear(AudioServer.get_bus_volume_db(music_bus))
-	if sfx_bus != -1:
-		sfx_slider.value = db_to_linear(AudioServer.get_bus_volume_db(sfx_bus))
+	# Primero poner valores sin disparar señales
+	music_slider.value = 100.0
+	sfx_slider.value = 100.0
 
+	# Luego conectar
 	music_slider.value_changed.connect(_on_music_volume)
 	sfx_slider.value_changed.connect(_on_sfx_volume)
 
@@ -31,23 +31,35 @@ func _ready():
 		button.mouse_exited.connect(_on_button_unhover.bind(button))
 
 func _on_play() -> void:
+	sfx_play.play()
+	await sfx_play.finished
+	$MusicPlayer.stop()
 	get_tree().change_scene_to_file("res://Scenes/game.tscn")
 
 func _on_quit() -> void:
 	get_tree().quit()
 
 func _on_settings() -> void:
+	sfx_settings.play()
 	settings_panel.visible = !settings_panel.visible
 
 func _on_music_volume(value: float) -> void:
 	var bus = AudioServer.get_bus_index("Music")
 	if bus != -1:
-		AudioServer.set_bus_volume_db(bus, linear_to_db(value))
+		if value <= 0.0:
+			AudioServer.set_bus_mute(bus, true)
+		else:
+			AudioServer.set_bus_mute(bus, false)
+			AudioServer.set_bus_volume_db(bus, linear_to_db(value / 100.0))
 
 func _on_sfx_volume(value: float) -> void:
 	var bus = AudioServer.get_bus_index("SFX")
 	if bus != -1:
-		AudioServer.set_bus_volume_db(bus, linear_to_db(value))
+		if value <= 0.0:
+			AudioServer.set_bus_mute(bus, true)
+		else:
+			AudioServer.set_bus_mute(bus, false)
+			AudioServer.set_bus_volume_db(bus, linear_to_db(value / 100.0))
 
 func _on_button_hover(button: Button) -> void:
 	var tween = create_tween()

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ccurid1w0cq4s"
+path="res://.godot/imported/Crypt Cathedral.mp3-18e099054a02e452460d76944eb19306.mp3str"
+
+[deps]
+
+source_file="res://music/Crypt Cathedral.mp3"
+dest_files=["res://.godot/imported/Crypt Cathedral.mp3-18e099054a02e452460d76944eb19306.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

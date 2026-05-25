@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var fire_rate: float = 0.5        
 @export var max_health: int = 20          # Poca vida, tipo básico
 @export var points: int = 350
+@onready var entry_sfx = get_node_or_null("EntrySFX")
 
 # ─── Temporizador de puntos ──────────────────────────────────
 var points_current: int
@@ -47,6 +48,8 @@ func _process(_delta: float) -> void:
 		if not entered_screen:
 			entered_screen = true
 			start_point_timer()
+			if entry_sfx:
+				entry_sfx.play()
 	else:
 		if entered_screen and not is_dead:
 			stop_point_timer()

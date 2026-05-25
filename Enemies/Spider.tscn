@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://bo5l3132bxff2"]
+[gd_scene load_steps=13 format=3 uid="uid://bo5l3132bxff2"]
 
 [ext_resource type="Script" uid="uid://w648ystwlijo" path="res://Scripts/BasicEnemys.gd" id="1_jj670"]
 [ext_resource type="PackedScene" uid="uid://6rpkf88xqu3y" path="res://Scenes/AngelBullet.tscn" id="2_3f47e"]
 [ext_resource type="Texture2D" uid="uid://d5j2mmmn3xcb" path="res://Esbirro.png" id="3_3f47e"]
+[ext_resource type="AudioStream" uid="uid://dysvvevj3085m" path="res://music/8-bit_wet_creature_s_#2-1779719719100.mp3" id="4_h38at"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jj670"]
 size = Vector2(117, 120)
@@ -63,7 +64,6 @@ script = ExtResource("1_jj670")
 bullet_scene = ExtResource("2_3f47e")
 points = 150
 
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_jj670")
@@ -85,3 +85,8 @@ position = Vector2(0, -64)
 [node name="shootdelay" type="Timer" parent="." groups=["Player"]]
 wait_time = 0.15
 one_shot = true
+
+[node name="EntrySFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_h38at")
+volume_db = -22.672
+bus = &"SFX"

@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var aim_at_player: bool = true
 @export var max_health: int = 16
 @export var points: int = 300
+@onready var entry_sfx = get_node_or_null("EntrySFX")
 
 var current_health: int
 var player: Node2D
@@ -42,6 +43,8 @@ func _process(_delta: float) -> void:
 		if not entered_screen:
 			entered_screen = true
 			start_point_timer()
+			if entry_sfx:
+				entry_sfx.play()
 	else:
 		if entered_screen and not is_dead:
 			stop_point_timer()

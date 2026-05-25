@@ -13,6 +13,7 @@ signal phase_changed(phase: int)
 @export var points: int = 100
 @export var arm_bullet_speed: float = 350.0
 @export var arm_fire_rate: float = 0.08  # velocidad del loop del molinillo
+@onready var entry_sfx = get_node_or_null("EntrySFX")
 
 var current_health: int
 var player: Node2D
@@ -21,6 +22,7 @@ var is_dead := false
 var current_phase := 3
 var ring_angle := 0.0
 var arm_angle := 0.0
+var entered_screen: bool = false
 
 func _ready():
 	current_health = max_health
@@ -184,3 +186,11 @@ func _on_screen_exited():
 	queue_free()
 func _on_particles_finished():
 	queue_free()
+
+
+
+func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
+	if not entered_screen:
+		entered_screen = true
+		if entry_sfx:
+			entry_sfx.play()
