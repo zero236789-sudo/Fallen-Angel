@@ -60,7 +60,8 @@ func start_shooting():
 
 func shoot_loop() -> void:
 	while is_instance_valid(player):
-		if is_moving():
+		# 🔹 OPCIÓN 2: Dispara solo cuando está en pantalla (aunque esté quieto)
+		if entered_screen:
 			shoot()
 		await get_tree().create_timer(fire_rate).timeout
 
