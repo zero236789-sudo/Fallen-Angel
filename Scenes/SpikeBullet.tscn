@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cxlob7cq2hleh"]
 
 [ext_resource type="Texture2D" uid="uid://eq74x7dcvwq7" path="res://Sprites/SpikeEyeBullet.png" id="1_5c1xu"]
-[ext_resource type="Script" uid="uid://5nh6psy0bonr" path="res://Scripts/spike_bullet.gd" id="1_u8wpr"]
+[ext_resource type="Script" path="res://Scripts/spike_bullet.gd" id="1_u8wpr"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u8wpr"]
 radius = 22.0

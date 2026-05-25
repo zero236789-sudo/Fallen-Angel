@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://2k6vg2yxr4dx"]
 
 [ext_resource type="Texture2D" uid="uid://c0iexka1n0fqu" path="res://Wii_-_Wii_Music_-_Miscellaneous_-_Notes.png" id="1_8nme1"]
-[ext_resource type="Script" uid="uid://dwl734calr12k" path="res://Scripts/trumpetist_bullet.gd" id="1_hd1ub"]
+[ext_resource type="Script" path="res://Scripts/trumpetist_bullet.gd" id="1_hd1ub"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hd1ub"]
 atlas = ExtResource("1_8nme1")
@@ -25,22 +25,7 @@ region = Rect2(265, 5, 58, 58)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uvr0e"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hd1ub")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7ahv1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7gxqm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ecxuj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hb0iy")
-}],
+"frames": [{ "duration": 1.0, "texture": SubResource("AtlasTexture_hd1ub") }, { "duration": 1.0, "texture": SubResource("AtlasTexture_7ahv1") }, { "duration": 1.0, "texture": SubResource("AtlasTexture_7gxqm") }, { "duration": 1.0, "texture": SubResource("AtlasTexture_ecxuj") }, { "duration": 1.0, "texture": SubResource("AtlasTexture_hb0iy") }],
 "loop": true,
 "name": &"default",
 "speed": 3.0

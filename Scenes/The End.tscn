@@ -1,9 +1,9 @@
-[gd_scene format=3 uid="uid://dtg3888ksre5v"]
+[gd_scene format=3 uid="uid://fyx4qixaykct"]
 
-[ext_resource type="Script" uid="uid://clsgwmsep8n0a" path="res://game_over.gd" id="1_m5628"]
-[ext_resource type="Texture2D" uid="uid://cfguga2jv04b4" path="res://Main Menu.png" id="2_3vyfe"]
-[ext_resource type="FontFile" uid="uid://cxaqp7qbdbf7s" path="res://INVASION2000.TTF" id="2_5yue4"]
-[ext_resource type="Texture2D" uid="uid://b8s45hq2jrm68" path="res://game over.png" id="3_egvjn"]
+[ext_resource type="Script" uid="uid://bjdlawqr24k22" path="res://Scenes/the_end.gd" id="1_ty7y6"]
+[ext_resource type="Texture2D" uid="uid://cfguga2jv04b4" path="res://Main Menu.png" id="2_vi8fl"]
+[ext_resource type="FontFile" uid="uid://cxaqp7qbdbf7s" path="res://INVASION2000.TTF" id="3_3yujq"]
+[ext_resource type="Texture2D" uid="uid://ba1hjrjlid8b1" path="res://The End.png" id="4_ty7y6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3vyfe"]
 bg_color = Color(0, 0, 0, 1)
@@ -18,7 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_m5628")
+script = ExtResource("1_ty7y6")
 
 [node name="Panel" type="Panel" parent="." unique_id=482781453]
 layout_mode = 0
@@ -30,7 +30,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_3vyfe")
 [node name="MainMenu" type="Sprite2D" parent="Panel" unique_id=1977051263]
 position = Vector2(960.2223, 540)
 scale = Vector2(0.99814814, 0.99814814)
-texture = ExtResource("2_3vyfe")
+texture = ExtResource("2_vi8fl")
 
 [node name="FinalScore" type="Label" parent="Panel" unique_id=1967423177]
 layout_mode = 1
@@ -43,7 +43,7 @@ offset_left = -0.040039063
 offset_top = 0.15499878
 offset_right = 0.95996094
 offset_bottom = 0.17999268
-theme_override_fonts/font = ExtResource("2_5yue4")
+theme_override_fonts/font = ExtResource("3_3yujq")
 theme_override_font_sizes/font_size = 50
 horizontal_alignment = 1
 
@@ -57,39 +57,40 @@ offset_bottom = 90.0
 
 [node name="RetryButton" type="Button" parent="Panel" unique_id=1618912450]
 layout_mode = 0
-offset_left = 805.0
-offset_top = 492.0
-offset_right = 1165.0
-offset_bottom = 566.0
-theme_override_fonts/font = ExtResource("2_5yue4")
+offset_left = -419.0
+offset_top = 426.0
+offset_right = -59.0
+offset_bottom = 500.0
+theme_override_fonts/font = ExtResource("3_3yujq")
 theme_override_font_sizes/font_size = 65
 text = "Try Again"
 
 [node name="MenuButton" type="Button" parent="Panel" unique_id=489918408]
 layout_mode = 0
-offset_left = 805.0
-offset_top = 834.0
-offset_right = 1188.0
-offset_bottom = 908.0
-theme_override_fonts/font = ExtResource("2_5yue4")
+offset_left = 640.0
+offset_top = 527.0
+offset_right = 1271.4324
+offset_bottom = 649.0
+theme_override_fonts/font = ExtResource("3_3yujq")
 theme_override_font_sizes/font_size = 65
 text = "Main Menu"
 
 [node name="SettingsButton" type="Button" parent="Panel" unique_id=789005224]
 layout_mode = 0
-offset_left = 820.0
-offset_top = 666.0
-offset_right = 1150.0
-offset_bottom = 740.0
-theme_override_fonts/font = ExtResource("2_5yue4")
+offset_left = -422.0
+offset_top = 604.0
+offset_right = -92.0
+offset_bottom = 678.0
+theme_override_fonts/font = ExtResource("3_3yujq")
 theme_override_font_sizes/font_size = 65
 text = "Settings"
 
 [node name="SettingsPanel" type="Panel" parent="." unique_id=1171799847]
 layout_mode = 0
-offset_top = 784.0
-offset_right = 1917.0
-offset_bottom = 1079.0
+offset_left = -2124.0
+offset_top = 738.0
+offset_right = -207.0
+offset_bottom = 1033.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_egvjn")
 
 [node name="Volumen" type="Label" parent="SettingsPanel" unique_id=1130018989]
@@ -98,7 +99,7 @@ offset_left = 946.0
 offset_top = 40.0
 offset_right = 1041.0
 offset_bottom = 71.0
-theme_override_fonts/font = ExtResource("2_5yue4")
+theme_override_fonts/font = ExtResource("3_3yujq")
 theme_override_font_sizes/font_size = 30
 text = "Music"
 
@@ -115,7 +116,7 @@ offset_left = 959.0
 offset_top = 188.0
 offset_right = 1015.0
 offset_bottom = 214.0
-theme_override_fonts/font = ExtResource("2_5yue4")
+theme_override_fonts/font = ExtResource("3_3yujq")
 theme_override_font_sizes/font_size = 25
 text = "SFX"
 
@@ -127,6 +128,6 @@ offset_right = 1119.0
 offset_bottom = 276.0
 
 [node name="FallenAngelTitlepix" type="Sprite2D" parent="." unique_id=942713147]
-position = Vector2(975, 177)
-scale = Vector2(1.0517241, 1.0517242)
-texture = ExtResource("3_egvjn")
+position = Vector2(978, 281)
+scale = Vector2(1.5800605, 1.5800608)
+texture = ExtResource("4_ty7y6")

@@ -1,5 +1,4 @@
 extends CharacterBody2D
-
 @export var bullet_scene: PackedScene
 @export var homing_bullet_scene: PackedScene
 @export var fire_rate: float = 0.5
@@ -10,9 +9,7 @@ extends CharacterBody2D
 @export var points: int = 100
 @export var arm_bullet_speed: float = 350.0
 @export var arm_fire_rate: float = 0.08
-
-signal cabra_started_attacking  # << las Spiders escuchan esto
-
+signal cabra_started_attacking
 var current_health: int
 var player: Node2D
 var can_shoot := false
@@ -25,7 +22,7 @@ var _can_fire_homing := true
 func _ready():
 	current_health = max_health
 	add_to_group("enemy")
-	add_to_group("cabra_galega")  # << las Spiders la encuentran por este grupo
+	add_to_group("cabra_galega")
 	var players = get_tree().get_nodes_in_group("player")
 	if players.size() > 0:
 		player = players[0]
@@ -52,7 +49,7 @@ func _on_righthand_died() -> void:
 	if righthand_dead:
 		return
 	righthand_dead = true
-	cabra_started_attacking.emit()  # << avisa a las Spiders
+	cabra_started_attacking.emit()
 	_start_openmoutn_attack()
 
 func _start_openmoutn_attack() -> void:
@@ -115,4 +112,18 @@ func die() -> void:
 	if is_dead: return
 	is_dead = true
 	GameManager.add_score(points)
-	queue_free()
+	_fade_to_the_end()
+
+func _fade_to_the_end() -> void:
+	var overlay = ColorRect.new()
+	overlay.color = Color(0, 0, 0, 0)
+	overlay.set_anchors_preset(Control.PRESET_FULL_RECT)
+	# Necesita ser CanvasLayer para tapar todo (UI incluida)
+	var canvas = CanvasLayer.new()
+	canvas.layer = 100
+	get_tree().current_scene.add_child(canvas)
+	canvas.add_child(overlay)
+	var tween = get_tree().create_tween()
+	tween.tween_property(overlay, "color:a", 1.0, 2.0)
+	await tween.finished
+	get_tree().change_scene_to_file("res://Scenes/The End.tscn")

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cj2oc2axgvk3n"]
+[gd_scene load_steps=0 format=3 uid="uid://cj2oc2axgvk3n"]
 
 [ext_resource type="Script" uid="uid://w648ystwlijo" path="res://Scripts/BasicEnemys.gd" id="1_n7bcu"]
 [ext_resource type="PackedScene" uid="uid://6rpkf88xqu3y" path="res://Scenes/AngelBullet.tscn" id="2_0xbyi"]

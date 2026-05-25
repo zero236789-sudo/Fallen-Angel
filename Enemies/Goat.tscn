@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://desu20k23g5mo"]
+[gd_scene format=3 uid="uid://desu20k23g5mo"]
 
 [ext_resource type="Script" uid="uid://j3wcqt4tes78" path="res://Enemies/goat.gd" id="1_ydomd"]
 [ext_resource type="Texture2D" uid="uid://8pck04beiw7i" path="res://Goatycona.png" id="2_4qn3k"]
@@ -95,7 +95,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Skull" type="CharacterBody2D" groups=["Enemies"]]
+[node name="Skull" type="CharacterBody2D" unique_id=142032877 groups=["Enemies"]]
 light_mask = 3
 visibility_layer = 3
 collision_layer = 3
@@ -103,20 +103,20 @@ collision_mask = 3
 script = ExtResource("1_ydomd")
 bullet_scene = ExtResource("2_pce2g")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1762284062]
 light_mask = 3
 visibility_layer = 3
 position = Vector2(0, -29)
 shape = SubResource("RectangleShape2D_jj670")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=311941135]
 position = Vector2(9.536743e-07, 0)
 scale = Vector2(1.4745761, 1.4745762)
 sprite_frames = SubResource("SpriteFrames_4qn3k")
 animation = &"OpenMouth"
 
-[node name="Muzzleflash" type="AnimationPlayer" parent="."]
+[node name="Muzzleflash" type="AnimationPlayer" parent="." unique_id=486006323]
 
-[node name="shootdelay" type="Timer" parent="." groups=["Player"]]
+[node name="shootdelay" type="Timer" parent="." unique_id=272856118 groups=["Player"]]
 wait_time = 0.15
 one_shot = true

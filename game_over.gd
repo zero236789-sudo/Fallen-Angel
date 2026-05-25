@@ -9,7 +9,7 @@ extends Control
 @onready var sfx_slider = $SettingsPanel/SFXSlider
 
 func _ready():
-	final_score.text = "Puntuación: " + str(GameManager.score)
+	final_score.text = "Points: " + str(GameManager.score)
 	highscore_label.text = "Máximo: " + str(GameManager.highscore)
 	settings_panel.visible = false
 

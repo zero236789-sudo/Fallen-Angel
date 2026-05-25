@@ -93,10 +93,6 @@ func shoot_loop() -> void:
 			shoot()        # << en escena del boss siempre dispara
 		elif is_moving():
 			shoot()        # << en otras escenas solo si se mueve
-	while is_instance_valid(player):
-		# 🔹 OPCIÓN 2: Dispara solo cuando está en pantalla (aunque esté quieto)
-		if entered_screen:
-			shoot()
 		await get_tree().create_timer(fire_rate).timeout
 
 func is_moving() -> bool:
