@@ -125,13 +125,10 @@ func spawn_arm_bullet(origin: Vector2, dir: Vector2) -> void:
 	get_tree().current_scene.add_child(b)
 
 func flash_damage() -> void:
-	var s1 = get_node_or_null("Sprite2D")
-	var s2 = get_node_or_null("Sprite2D2")
+	var s1 = get_node_or_null("AnimatedSprite2D")
 	if s1: s1.modulate = Color.RED
-	if s2: s2.modulate = Color.RED
 	await get_tree().create_timer(0.1).timeout
 	if s1: s1.modulate = Color.WHITE
-	if s2: s2.modulate = Color.WHITE
 
 func take_damage(amount: int) -> void:
 	if is_dead:
