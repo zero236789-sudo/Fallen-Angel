@@ -1,0 +1,133 @@
+[gd_scene format=3 uid="uid://cc3lrnr01yc5b"]
+
+[ext_resource type="Script" uid="uid://w648ystwlijo" path="res://Scripts/BasicEnemys.gd" id="1_jr4ld"]
+[ext_resource type="PackedScene" uid="uid://6rpkf88xqu3y" path="res://Scenes/AngelBullet.tscn" id="2_yff3r"]
+[ext_resource type="Texture2D" uid="uid://d5j2mmmn3xcb" path="res://Esbirro.png" id="3_iab3t"]
+[ext_resource type="Texture2D" uid="uid://dr6wg5p0hd1t3" path="res://Sprites/Esbirrogris.png" id="4_yff3r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jj670"]
+size = Vector2(117, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h38at"]
+atlas = ExtResource("3_iab3t")
+region = Rect2(0, 0, 460, 561)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgk2i"]
+atlas = ExtResource("3_iab3t")
+region = Rect2(460, 0, 460, 561)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67a37"]
+atlas = ExtResource("3_iab3t")
+region = Rect2(920, 0, 460, 561)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8nug"]
+atlas = ExtResource("3_iab3t")
+region = Rect2(0, 561, 460, 561)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5xue"]
+atlas = ExtResource("3_iab3t")
+region = Rect2(460, 561, 460, 561)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2jsl"]
+atlas = ExtResource("3_iab3t")
+region = Rect2(920, 561, 460, 561)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iab3t"]
+atlas = ExtResource("4_yff3r")
+region = Rect2(0, 0, 467, 561)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lf5dd"]
+atlas = ExtResource("4_yff3r")
+region = Rect2(467, 0, 467, 561)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjqdn"]
+atlas = ExtResource("4_yff3r")
+region = Rect2(934, 0, 467, 561)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfb3n"]
+atlas = ExtResource("4_yff3r")
+region = Rect2(0, 561, 467, 561)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7f1r"]
+atlas = ExtResource("4_yff3r")
+region = Rect2(467, 561, 467, 561)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0g6n"]
+atlas = ExtResource("4_yff3r")
+region = Rect2(934, 561, 467, 561)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ulwwc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h38at")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgk2i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_67a37")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j8nug")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5xue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2jsl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iab3t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lf5dd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjqdn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfb3n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7f1r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0g6n")
+}],
+"loop": true,
+"name": &"grias",
+"speed": 7.0
+}]
+
+[node name="LilDemon" type="CharacterBody2D" unique_id=541729119 groups=["Enemies"]]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_jr4ld")
+bullet_scene = ExtResource("2_yff3r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1147644579]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_jj670")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=42673844]
+position = Vector2(2.3841858e-07, -2.3841858e-07)
+scale = Vector2(0.27499995, 0.27499995)
+sprite_frames = SubResource("SpriteFrames_ulwwc")
+animation = &"grias"
+autoplay = "grias"
+
+[node name="spawnpos" type="Marker2D" parent="." unique_id=817179197]
+position = Vector2(0, -64)
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1949080405]
+
+[node name="Muzzleflash" type="AnimationPlayer" parent="." unique_id=1129119980]
+
+[node name="shootdelay" type="Timer" parent="." unique_id=23193167 groups=["Player"]]
+wait_time = 0.15
+one_shot = true

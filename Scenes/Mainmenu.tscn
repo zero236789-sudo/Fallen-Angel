@@ -86,13 +86,13 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_j1xha")
 
 [node name="Musica" type="Label" parent="SettingsPanel" unique_id=459110844]
 layout_mode = 0
-offset_left = 133.0
+offset_left = 154.0
 offset_top = 130.0
-offset_right = 280.0
-offset_bottom = 153.0
+offset_right = 301.0
+offset_bottom = 166.0
 theme_override_fonts/font = ExtResource("1_e8kt5")
 theme_override_font_sizes/font_size = 35
-text = "Musica"
+text = "Music"
 
 [node name="MusicSlider" type="HSlider" parent="SettingsPanel" unique_id=218922362]
 layout_mode = 0
@@ -104,9 +104,9 @@ offset_bottom = 228.0
 [node name="SFX" type="Label" parent="SettingsPanel" unique_id=1254358421]
 layout_mode = 0
 offset_left = 169.0
-offset_top = 353.0
+offset_top = 374.0
 offset_right = 247.0
-offset_bottom = 389.0
+offset_bottom = 410.0
 theme_override_fonts/font = ExtResource("1_e8kt5")
 theme_override_font_sizes/font_size = 35
 text = "SFX"
