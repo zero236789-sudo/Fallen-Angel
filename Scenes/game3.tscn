@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://byw7580cwb7x2"]
+[gd_scene format=3 uid="uid://byw7580cwb7x2"]
 
 [ext_resource type="Script" uid="uid://chx8m2y124moe" path="res://game3.gd" id="1_ccubw"]
 [ext_resource type="PackedScene" uid="uid://bg88xaf2p2gvc" path="res://Scenes/player.tscn" id="4_1rvy5"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://ca52o0tukfvlo" path="res://Enemies/RightHand.tscn" id="21_rsl8m"]
 [ext_resource type="PackedScene" uid="uid://bhj6vywnbshh6" path="res://Enemies/LeftHand.tscn" id="22_55eqp"]
 [ext_resource type="PackedScene" uid="uid://bo5l3132bxff2" path="res://Enemies/Spider.tscn" id="23_jy2f3"]
+[ext_resource type="AudioStream" uid="uid://1lsp6kc7bdk0" path="res://music/finalbossEpic.mp3" id="24_luwqx"]
 
 [sub_resource type="Gradient" id="Gradient_ccubw"]
 
@@ -338,21 +339,6 @@ _data = {
 &"RESET": SubResource("Animation_rsl8m")
 }
 
-[sub_resource type="Animation" id="Animation_jy2f3"]
-resource_name = "aaa"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1893, 17), Vector2(1428, 199)]
-}
-
 [sub_resource type="Animation" id="Animation_0361w"]
 length = 0.001
 tracks/0/type = "value"
@@ -368,10 +354,39 @@ tracks/0/keys = {
 "values": [Vector2(1893, 17)]
 }
 
+[sub_resource type="Animation" id="Animation_jy2f3"]
+resource_name = "aaa"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1893, 17), Vector2(1428, 199)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4ojrs"]
 _data = {
 &"RESET": SubResource("Animation_0361w"),
 &"aaa": SubResource("Animation_jy2f3")
+}
+
+[sub_resource type="Animation" id="Animation_dcxdt"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(476, 171)]
 }
 
 [sub_resource type="Animation" id="Animation_xkyge"]
@@ -389,35 +404,21 @@ tracks/0/keys = {
 "values": [Vector2(1824, 102), Vector2(1432, 160)]
 }
 
-[sub_resource type="Animation" id="Animation_dcxdt"]
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(476, 171)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0361w"]
 _data = {
 &"RESET": SubResource("Animation_dcxdt"),
 &"new_animation": SubResource("Animation_xkyge")
 }
 
-[node name="GAME" type="Node2D"]
+[node name="GAME" type="Node2D" unique_id=1834037271]
 script = ExtResource("1_ccubw")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=664381107]
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = SubResource("GradientTexture2D_8hxov")
 
-[node name="Player" parent="." groups=["Player"] instance=ExtResource("4_1rvy5")]
+[node name="Player" parent="." unique_id=893248792 groups=["Player"] instance=ExtResource("4_1rvy5")]
 light_mask = 512
 visibility_layer = 512
 position = Vector2(960, 858)
@@ -426,43 +427,39 @@ collision_layer = 3
 collision_mask = 3
 bullet_scene = ExtResource("5_d1j75")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["wall"]]
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1333785754 groups=["wall"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1765630847]
 position = Vector2(590, 538.25)
 shape = SubResource("RectangleShape2D_wowpa")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="StaticBody2D/CollisionShape2D"]
-libraries = {
-&"": SubResource("AnimationLibrary_26mq8")
-}
-autoplay = "Colision_Imove"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StaticBody2D/CollisionShape2D" unique_id=956357109]
+libraries/ = SubResource("AnimationLibrary_26mq8")
+autoplay = &"Colision_Imove"
 
-[node name="StaticBody2D4" type="StaticBody2D" parent="." groups=["wall"]]
+[node name="StaticBody2D4" type="StaticBody2D" parent="." unique_id=266866731 groups=["wall"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4" unique_id=114773909]
 position = Vector2(1324, 538.5)
 shape = SubResource("RectangleShape2D_wowpa")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="StaticBody2D4/CollisionShape2D"]
-libraries = {
-&"": SubResource("AnimationLibrary_eav1x")
-}
-autoplay = "Colision_Dmove"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StaticBody2D4/CollisionShape2D" unique_id=774057074]
+libraries/ = SubResource("AnimationLibrary_eav1x")
+autoplay = &"Colision_Dmove"
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="." groups=["wall"]]
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1157209140 groups=["wall"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=1887800892]
 position = Vector2(957, -8)
 shape = SubResource("RectangleShape2D_i6g32")
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="." groups=["wall"]]
+[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=1002172708 groups=["wall"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=506929651]
 position = Vector2(960.5, 1085)
 shape = SubResource("RectangleShape2D_i6g32")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1841961829]
 offset = Vector2(680, 1000)
 scale = Vector2(0.09, 0.09)
 transform = Transform2D(0.09, 0, 0, 0.09, 680, 1000)
@@ -470,23 +467,23 @@ script = ExtResource("6_26mq8")
 heart_full = ExtResource("7_3txj3")
 heart_empty = ExtResource("8_qiemo")
 
-[node name="BombsContainer" type="HBoxContainer" parent="CanvasLayer" groups=["BombsContainer"]]
+[node name="BombsContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=2099453405 groups=["BombsContainer"]]
 offset_right = 1508.0
 offset_bottom = 500.0
 
-[node name="Bomb1" type="TextureRect" parent="CanvasLayer/BombsContainer"]
+[node name="Bomb1" type="TextureRect" parent="CanvasLayer/BombsContainer" unique_id=965091079]
 layout_mode = 2
 texture = ExtResource("9_eav1x")
 
-[node name="Bomb2" type="TextureRect" parent="CanvasLayer/BombsContainer"]
+[node name="Bomb2" type="TextureRect" parent="CanvasLayer/BombsContainer" unique_id=1097790126]
 layout_mode = 2
 texture = ExtResource("9_eav1x")
 
-[node name="Bomb3" type="TextureRect" parent="CanvasLayer/BombsContainer"]
+[node name="Bomb3" type="TextureRect" parent="CanvasLayer/BombsContainer" unique_id=1036976634]
 layout_mode = 2
 texture = ExtResource("9_eav1x")
 
-[node name="HeartsContainer" type="HBoxContainer" parent="CanvasLayer"]
+[node name="HeartsContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=796474174]
 light_mask = 512
 visibility_layer = 512
 anchors_preset = -1
@@ -499,16 +496,16 @@ offset_top = 0.34669495
 offset_right = -0.19433594
 offset_bottom = -0.49328613
 
-[node name="Heart1" type="TextureRect" parent="CanvasLayer/HeartsContainer"]
+[node name="Heart1" type="TextureRect" parent="CanvasLayer/HeartsContainer" unique_id=528697844]
 layout_mode = 2
 
-[node name="Heart2" type="TextureRect" parent="CanvasLayer/HeartsContainer"]
+[node name="Heart2" type="TextureRect" parent="CanvasLayer/HeartsContainer" unique_id=699802125]
 layout_mode = 2
 
-[node name="Heart3" type="TextureRect" parent="CanvasLayer/HeartsContainer"]
+[node name="Heart3" type="TextureRect" parent="CanvasLayer/HeartsContainer" unique_id=1756845571]
 layout_mode = 2
 
-[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+[node name="ScoreLabel" type="Label" parent="CanvasLayer" unique_id=380990440]
 custom_minimum_size = Vector2(50, 50)
 anchors_preset = -1
 anchor_left = 4.1150002
@@ -521,39 +518,35 @@ offset_right = -0.28515625
 offset_bottom = -0.31445313
 theme_override_font_sizes/font_size = 400
 
-[node name="TechoySuelo" type="Sprite2D" parent="."]
+[node name="TechoySuelo" type="Sprite2D" parent="." unique_id=1789639185]
 position = Vector2(960, 539.99994)
 scale = Vector2(1.4999999, 1.4999999)
 texture = ExtResource("8_ccubw")
 
-[node name="MarcoDerecho" type="Sprite2D" parent="."]
+[node name="MarcoDerecho" type="Sprite2D" parent="." unique_id=1967548605]
 position = Vector2(960, 540)
 scale = Vector2(1.4999999, 1.4999999)
 texture = ExtResource("9_8hxov")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MarcoDerecho"]
-libraries = {
-&"": SubResource("AnimationLibrary_o4lua")
-}
-autoplay = "ParedD_Abriendose"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MarcoDerecho" unique_id=1338871102]
+libraries/ = SubResource("AnimationLibrary_o4lua")
+autoplay = &"ParedD_Abriendose"
 
-[node name="MarcoIzquierdo" type="Sprite2D" parent="."]
+[node name="MarcoIzquierdo" type="Sprite2D" parent="." unique_id=2121014485]
 position = Vector2(959.99994, 539.99994)
 scale = Vector2(1.4999999, 1.4999999)
 texture = ExtResource("10_svqiw")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MarcoIzquierdo"]
-libraries = {
-&"": SubResource("AnimationLibrary_d1j75")
-}
-autoplay = "ParedI_Abriendose"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MarcoIzquierdo" unique_id=921738963]
+libraries/ = SubResource("AnimationLibrary_d1j75")
+autoplay = &"ParedI_Abriendose"
 
-[node name="CabraGalega" parent="." instance=ExtResource("11_8hxov")]
+[node name="CabraGalega" parent="." unique_id=956749603 instance=ExtResource("11_8hxov")]
 position = Vector2(960, 254)
 homing_bullet_scene = ExtResource("12_55eqp")
 max_health = 1000
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=793399]
 position = Vector2(573, 576)
 sprite_frames = SubResource("SpriteFrames_3txj3")
 animation = &"Manoizq"
@@ -561,13 +554,11 @@ autoplay = "Manoizq"
 frame = 9
 frame_progress = 1.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D2"]
-libraries = {
-&"": SubResource("AnimationLibrary_xkyge")
-}
-autoplay = "ManoIz"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D2" unique_id=1727774951]
+libraries/ = SubResource("AnimationLibrary_xkyge")
+autoplay = &"ManoIz"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1481394652]
 position = Vector2(1369, 573)
 sprite_frames = SubResource("SpriteFrames_qiemo")
 animation = &"ManoDer"
@@ -575,13 +566,11 @@ autoplay = "ManoDer"
 frame = 11
 frame_progress = 1.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
-libraries = {
-&"": SubResource("AnimationLibrary_dcxdt")
-}
-autoplay = "DerMano"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D" unique_id=1934101587]
+libraries/ = SubResource("AnimationLibrary_dcxdt")
+autoplay = &"DerMano"
 
-[node name="RightHand" parent="." instance=ExtResource("21_rsl8m")]
+[node name="RightHand" parent="." unique_id=1602234071 instance=ExtResource("21_rsl8m")]
 position = Vector2(1365, 318)
 collision_layer = 3
 max_health = 500
@@ -590,35 +579,36 @@ phase2_burst_count = 20
 mandala_ring_delay = 0.03
 mandala_spiral_speed = 460.0
 
-[node name="LeftHand" parent="." instance=ExtResource("22_55eqp")]
+[node name="LeftHand" parent="." unique_id=667636648 instance=ExtResource("22_55eqp")]
 position = Vector2(527, 318)
 collision_layer = 3
 max_health = 500
 phase2_bullet_speed = 700.0
 phase2_burst_count = 25
 
-[node name="Spider3" parent="." instance=ExtResource("23_jy2f3")]
+[node name="Spider3" parent="." unique_id=147540676 instance=ExtResource("23_jy2f3")]
 position = Vector2(1893, 17)
 scale = Vector2(2.25, 2.25)
 bullets_per_shot = 5
 max_health = 100
 wait_for_cabra = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Spider3"]
-libraries = {
-&"": SubResource("AnimationLibrary_4ojrs")
-}
-autoplay = "aaa"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Spider3" unique_id=1817833336]
+libraries/ = SubResource("AnimationLibrary_4ojrs")
+autoplay = &"aaa"
 
-[node name="Spider2" parent="." instance=ExtResource("23_jy2f3")]
+[node name="Spider2" parent="." unique_id=920566749 instance=ExtResource("23_jy2f3")]
 scale = Vector2(2.25, 2.25)
 bullets_per_shot = 5
 max_health = 100
 wait_for_cabra = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Spider2"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Spider2" unique_id=453248588]
 root_node = NodePath("../../Spider2")
-libraries = {
-&"": SubResource("AnimationLibrary_0361w")
-}
-autoplay = "RESET"
+libraries/ = SubResource("AnimationLibrary_0361w")
+autoplay = &"RESET"
+
+[node name="FinalBossTheme" type="AudioStreamPlayer" parent="." unique_id=450675845]
+stream = ExtResource("24_luwqx")
+volume_db = -6.305
+autoplay = true

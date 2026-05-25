@@ -10,6 +10,8 @@ extends CharacterBody2D
 @export var points: int = 100
 @export var arm_bullet_speed: float = 350.0
 @export var arm_fire_rate: float = 0.08
+@onready var entry_sound = get_node_or_null("EntrySound")
+@onready var phase_sound = get_node_or_null("PhaseSound")
 
 signal cabra_started_attacking  # << las Spiders escuchan esto
 
@@ -36,6 +38,8 @@ func _ready():
 	if sprite:
 		sprite.animation = "default"
 		sprite.play()
+	if entry_sound:
+		entry_sound.play()
 
 func _try_connect_righthand() -> void:
 	var righthand_list = get_tree().get_nodes_in_group("right_hand")
@@ -56,6 +60,8 @@ func _on_righthand_died() -> void:
 	_start_openmoutn_attack()
 
 func _start_openmoutn_attack() -> void:
+	if phase_sound:
+		phase_sound.play()  # ← suena cuando abre la boca
 	var sprite = get_node_or_null("AnimatedSprite2D")
 	if not sprite:
 		return

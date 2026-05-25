@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://d1l2ka2pv0d7a"]
+[gd_scene format=3 uid="uid://d1l2ka2pv0d7a"]
 
 [ext_resource type="Script" uid="uid://c8yicgbsj2t67" path="res://Scenes/homing_bullet.gd" id="1_5iquo"]
 [ext_resource type="Texture2D" uid="uid://b5mumq4yh73u7" path="res://atlas0_157.png" id="2_5iquo"]

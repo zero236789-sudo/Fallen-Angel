@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://desu20k23g5mo"]
+[gd_scene format=3 uid="uid://desu20k23g5mo"]
 
 [ext_resource type="Script" uid="uid://j3wcqt4tes78" path="res://Enemies/goat.gd" id="1_ydomd"]
 [ext_resource type="Texture2D" uid="uid://8pck04beiw7i" path="res://Goatycona.png" id="2_4qn3k"]
 [ext_resource type="PackedScene" uid="uid://d1l2ka2pv0d7a" path="res://Scenes/Goatbullet.tscn" id="2_pce2g"]
 [ext_resource type="Texture2D" uid="uid://cqayeh4ehn80v" path="res://GoatyBoca.png" id="2_utrct"]
+[ext_resource type="AudioStream" uid="uid://68abplv85qkg" path="res://music/phatphrogstudio-dragon-voice-growl-496281.mp3" id="5_pce2g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jj670"]
 size = Vector2(736, 444)
@@ -95,7 +96,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Skull" type="CharacterBody2D" groups=["Enemies"]]
+[node name="Skull" type="CharacterBody2D" unique_id=1637155597 groups=["Enemies"]]
 light_mask = 3
 visibility_layer = 3
 collision_layer = 3
@@ -103,20 +104,25 @@ collision_mask = 3
 script = ExtResource("1_ydomd")
 bullet_scene = ExtResource("2_pce2g")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1440885200]
 light_mask = 3
 visibility_layer = 3
 position = Vector2(0, -29)
 shape = SubResource("RectangleShape2D_jj670")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1117408343]
 position = Vector2(9.536743e-07, 0)
 scale = Vector2(1.4745761, 1.4745762)
 sprite_frames = SubResource("SpriteFrames_4qn3k")
 animation = &"OpenMouth"
 
-[node name="Muzzleflash" type="AnimationPlayer" parent="."]
+[node name="Muzzleflash" type="AnimationPlayer" parent="." unique_id=1345084199]
 
-[node name="shootdelay" type="Timer" parent="." groups=["Player"]]
+[node name="shootdelay" type="Timer" parent="." unique_id=695803354 groups=["Player"]]
 wait_time = 0.15
 one_shot = true
+
+[node name="EntrySound" type="AudioStreamPlayer" parent="." unique_id=321739939]
+stream = ExtResource("5_pce2g")
+
+[node name="PhaseSound" type="AudioStreamPlayer" parent="." unique_id=1289954488]
