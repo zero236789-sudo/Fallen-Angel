@@ -180,7 +180,14 @@ func die() -> void:
 	if is_dead: return
 	is_dead = true
 	GameManager.add_score(points)
-	queue_free()
+	is_dead = true
+	# Ocultamos el enemigo pero no lo borramos hasta cambiar escena
+	visible = false
+	set_process(false)
+	set_physics_process(false)
+	await get_tree().create_timer(1.0).timeout
+	get_tree().change_scene_to_file("res://Scenes/game3.tscn")
+
 
 func _on_screen_exited():
 	queue_free()
