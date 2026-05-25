@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://8pck04beiw7i" path="res://Goatycona.png" id="2_4qn3k"]
 [ext_resource type="PackedScene" uid="uid://d1l2ka2pv0d7a" path="res://Scenes/Goatbullet.tscn" id="2_pce2g"]
 [ext_resource type="Texture2D" uid="uid://cqayeh4ehn80v" path="res://GoatyBoca.png" id="2_utrct"]
+[ext_resource type="AudioStream" uid="uid://68abplv85qkg" path="res://music/phatphrogstudio-dragon-voice-growl-496281.mp3" id="5_pce2g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jj670"]
 size = Vector2(736, 444)
@@ -120,3 +121,8 @@ animation = &"OpenMouth"
 [node name="shootdelay" type="Timer" parent="." unique_id=272856118 groups=["Player"]]
 wait_time = 0.15
 one_shot = true
+
+[node name="EntrySound" type="AudioStreamPlayer" parent="." unique_id=321739939]
+stream = ExtResource("5_pce2g")
+
+[node name="PhaseSound" type="AudioStreamPlayer" parent="." unique_id=1289954488]

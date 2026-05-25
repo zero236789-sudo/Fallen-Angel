@@ -1066,4 +1066,5 @@ autoplay = &"spider5"
 [node name="BattleMusic" type="AudioStreamPlayer" parent="." unique_id=999999999]
 stream = ExtResource("17_ewbju")
 volume_db = -11.45
+autoplay = true
 bus = &"Music"

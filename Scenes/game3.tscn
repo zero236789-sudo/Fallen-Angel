@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://ca52o0tukfvlo" path="res://Enemies/RightHand.tscn" id="21_rsl8m"]
 [ext_resource type="PackedScene" uid="uid://bhj6vywnbshh6" path="res://Enemies/LeftHand.tscn" id="22_55eqp"]
 [ext_resource type="PackedScene" uid="uid://bo5l3132bxff2" path="res://Enemies/Spider.tscn" id="23_jy2f3"]
+[ext_resource type="AudioStream" uid="uid://1lsp6kc7bdk0" path="res://music/finalbossEpic.mp3" id="24_luwqx"]
 
 [sub_resource type="Gradient" id="Gradient_ccubw"]
 
@@ -602,7 +603,12 @@ bullets_per_shot = 5
 max_health = 100
 wait_for_cabra = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Spider2" unique_id=2074835177]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Spider2" unique_id=453248588]
 root_node = NodePath("../../Spider2")
 libraries/ = SubResource("AnimationLibrary_0361w")
 autoplay = &"RESET"
+
+[node name="FinalBossTheme" type="AudioStreamPlayer" parent="." unique_id=450675845]
+stream = ExtResource("24_luwqx")
+volume_db = -6.305
+autoplay = true
