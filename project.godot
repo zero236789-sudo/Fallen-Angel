@@ -23,6 +23,7 @@ config/icon="res://Sprites/icon.svg"
 
 GameManager="*res://game_manager.gd"
 NodeCleaner="*uid://rk0yf3d6eypj"
+MusicManager="*uid://cfvd4ynb48s8"
 
 [display]
 

@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://cc3lrnr01yc5b" path="res://Enemies/LilDemonGris.tscn" id="15_nb51f"]
 [ext_resource type="PackedScene" uid="uid://cj2oc2axgvk3n" path="res://Enemies/LilDemonMorado.tscn" id="16_nnt18"]
 [ext_resource type="AudioStream" uid="uid://de8qfkvo2nsl8" path="res://music/vibedepot-sports-metal-background-536607.mp3" id="17_ewbju"]
+[ext_resource type="AudioStream" uid="uid://cq3qf0bowl7ta" path="res://music/davidjbarrios-intense-doom-style-metal-instrumental-quotsynthetic-edenquot-515740.mp3" id="18_85qyi"]
 
 [sub_resource type="Animation" id="Animation_mucmn"]
 length = 0.001
@@ -1066,5 +1067,8 @@ autoplay = &"spider5"
 [node name="BattleMusic" type="AudioStreamPlayer" parent="." unique_id=999999999]
 stream = ExtResource("17_ewbju")
 volume_db = -11.45
-autoplay = true
+bus = &"Music"
+
+[node name="AngelMusic" type="AudioStreamPlayer" parent="." unique_id=168767588]
+stream = ExtResource("18_85qyi")
 bus = &"Music"

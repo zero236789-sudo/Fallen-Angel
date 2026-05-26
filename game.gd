@@ -1,11 +1,9 @@
 extends Node2D
 
-@onready var music = $BattleMusic
-
-
 func _ready():
 	await get_tree().process_frame
-	var _boss = get_node_or_null("Skull")
-	music.reparent(get_tree().root)
-	music.name = "PersistentMusic"
-	music.play()
+	$BattleMusic.finished.connect(_on_battle_music_finished)
+	$BattleMusic.play()
+
+func _on_battle_music_finished() -> void:
+	$AngelMusic.play()

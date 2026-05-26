@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bhj6vywnbshh6"]
+[gd_scene format=3 uid="uid://bhj6vywnbshh6"]
 
 [ext_resource type="Script" uid="uid://so3icjigr376" path="res://Enemies/left_hand.gd" id="1_xbnfx"]
 [ext_resource type="PackedScene" uid="uid://w6gwv6bloa0y" path="res://Scenes/MainGoatBullet.tscn" id="2_uhibe"]
@@ -70,26 +70,26 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Skull" type="CharacterBody2D" groups=["Enemies"]]
+[node name="Skull" type="CharacterBody2D" unique_id=1854226451 groups=["Enemies"]]
 script = ExtResource("1_xbnfx")
 bullet_scene = ExtResource("2_uhibe")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=961266257]
 position = Vector2(295.5, -83)
 shape = SubResource("RectangleShape2D_uhibe")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1629153706]
 position = Vector2(0, -1.9073486e-06)
 scale = Vector2(0.7047683, 0.7047683)
 sprite_frames = SubResource("SpriteFrames_8c2wr")
 animation = &"fade"
 autoplay = "fade"
 
-[node name="spawnpos" type="Marker2D" parent="."]
+[node name="spawnpos" type="Marker2D" parent="." unique_id=794402837]
 position = Vector2(-15, -22)
 
-[node name="Muzzleflash" type="AnimationPlayer" parent="."]
+[node name="Muzzleflash" type="AnimationPlayer" parent="." unique_id=1045554867]
 
-[node name="shootdelay" type="Timer" parent="." groups=["Player"]]
+[node name="shootdelay" type="Timer" parent="." unique_id=1075963051 groups=["Player"]]
 wait_time = 0.15
 one_shot = true

@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://d1l2ka2pv0d7a" path="res://Scenes/Goatbullet.tscn" id="2_pce2g"]
 [ext_resource type="Texture2D" uid="uid://cqayeh4ehn80v" path="res://GoatyBoca.png" id="2_utrct"]
 [ext_resource type="AudioStream" uid="uid://68abplv85qkg" path="res://music/phatphrogstudio-dragon-voice-growl-496281.mp3" id="5_pce2g"]
+[ext_resource type="AudioStream" uid="uid://yv4lhpg1o58p" path="res://music/dragon-studio-epic-dragon-roar-364481.mp3" id="6_qnb0v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jj670"]
 size = Vector2(736, 444)
@@ -124,5 +125,9 @@ one_shot = true
 
 [node name="EntrySound" type="AudioStreamPlayer" parent="." unique_id=321739939]
 stream = ExtResource("5_pce2g")
+bus = &"SFX"
 
 [node name="PhaseSound" type="AudioStreamPlayer" parent="." unique_id=1289954488]
+stream = ExtResource("6_qnb0v")
+volume_db = -6.679
+bus = &"SFX"

@@ -1,5 +1,4 @@
 extends Control
-
 @onready var play_button = $CenterContainer2/VBoxContainer/Play
 @onready var quit_button = $CenterContainer2/VBoxContainer/Quit
 @onready var settings_button = $CenterContainer2/VBoxContainer/Settings
@@ -14,15 +13,11 @@ func _ready():
 	quit_button.pressed.connect(_on_quit)
 	settings_button.pressed.connect(_on_settings)
 	settings_panel.visible = false
-
-	# Primero poner valores sin disparar señales
 	music_slider.value = 100.0
 	sfx_slider.value = 100.0
-
-	# Luego conectar
 	music_slider.value_changed.connect(_on_music_volume)
 	sfx_slider.value_changed.connect(_on_sfx_volume)
-
+	$MusicPlayer.play()
 	for button in [play_button, quit_button, settings_button]:
 		button.add_theme_stylebox_override("normal", _make_stylebox(Color(0, 0, 0, 0)))
 		button.add_theme_stylebox_override("pressed", _make_stylebox(Color(0, 0, 0, 0)))
@@ -33,7 +28,6 @@ func _ready():
 func _on_play() -> void:
 	sfx_play.play()
 	await sfx_play.finished
-	$MusicPlayer.stop()
 	get_tree().change_scene_to_file("res://Scenes/game.tscn")
 
 func _on_quit() -> void:
