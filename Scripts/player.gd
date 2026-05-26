@@ -170,6 +170,9 @@ func _start_invincibility() -> void:
 	invincible = false
 
 func die() -> void:
+	var persistent = get_tree().root.get_node_or_null("PersistentMusic")
+	if persistent:
+		persistent.queue_free()
 	call_deferred("_change_to_gameover")
 
 func _change_to_gameover() -> void:

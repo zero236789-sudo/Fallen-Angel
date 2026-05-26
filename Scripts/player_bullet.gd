@@ -23,6 +23,8 @@ func _ready():
 
 func _process(delta: float) -> void:
 	position += Vector2.UP * speed * delta
+	if position.y < -100 or position.x < 590 or position.x > 1324:
+		queue_free()
 
 	# 🔹 Limpieza por posición (seguridad adicional)
 	if position.y < -100:

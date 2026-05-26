@@ -1,3 +1,4 @@
+
 # ════════════════════════════════════════════════════════════
 # TRUMPETIST - Enemigo que dispara notas musicales en zigzag
 # ════════════════════════════════════════════════════════════
@@ -28,6 +29,7 @@ func _ready():
 	points_current = points
 	current_health = max_health
 	add_to_group("enemy")
+	$CollisionShape2D.set_deferred("disabled", true)
 
 	var players = get_tree().get_nodes_in_group("player")
 	if players.size() > 0:
@@ -47,6 +49,7 @@ func _process(_delta: float) -> void:
 	if screen.has_point(global_position):
 		if not entered_screen:
 			entered_screen = true
+			$CollisionShape2D.set_deferred("disabled", false)
 			start_point_timer()
 			if entry_sfx:
 				entry_sfx.play()

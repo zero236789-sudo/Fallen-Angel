@@ -611,4 +611,3 @@ autoplay = &"RESET"
 [node name="FinalBossTheme" type="AudioStreamPlayer" parent="." unique_id=450675845]
 stream = ExtResource("24_luwqx")
 volume_db = -6.305
-autoplay = true
