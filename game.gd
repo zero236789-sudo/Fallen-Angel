@@ -5,7 +5,7 @@ extends Node2D
 
 func _ready():
 	await get_tree().process_frame
-	var boss = get_node_or_null("Skull")
+	var _boss = get_node_or_null("Skull")
 	music.reparent(get_tree().root)
 	music.name = "PersistentMusic"
 	music.play()

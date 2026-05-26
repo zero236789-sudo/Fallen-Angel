@@ -31,6 +31,9 @@ func _ready():
 	add_to_group("player")
 	GameManager.lives_changed.connect(_on_lives_changed)
 
+	bombs_max = GameManager.bombs_max
+	bombs_current = GameManager.bombs
+
 	bombs_container = get_tree().get_first_node_in_group("BombsContainer")
 	update_bomb_label()
 	update_bomb_icons()
@@ -92,6 +95,7 @@ func use_bomb() -> void:
 		return
 
 	bombs_current -= 1
+	GameManager.bombs = bombs_current
 	_last_bomb_time = Time.get_ticks_msec() / 1000.0
 	update_bomb_label()
 	update_bomb_icons()
@@ -170,6 +174,10 @@ func _start_invincibility() -> void:
 	invincible = false
 
 func die() -> void:
+	# Para la música persistente si existe
+	var persistent = get_tree().root.get_node_or_null("PersistentMusic")
+	if persistent:
+		persistent.queue_free()
 	call_deferred("_change_to_gameover")
 
 func _change_to_gameover() -> void:
@@ -183,16 +191,6 @@ func _change_to_gameover() -> void:
 
 func _on_timer_timeout():
 	can_shoot = true
-
-# -------------------------
-#     SUBIDA DE NIVEL
-# -------------------------
-
-func on_level_complete() -> void:
-	bombs_max += 1
-	bombs_current = bombs_max
-	update_bomb_label()
-	update_bomb_icons()
 
 # -------------------------
 #     REINICIO DE NIVEL

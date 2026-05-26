@@ -370,7 +370,7 @@ func take_damage(amount: int) -> void:
 		return
 	current_health -= amount
 	flash_damage()
-	if not is_phase4 and current_health <= max_health / 2 and current_health > 0:
+	if not is_phase4 and current_health <= max_health / 2.0 and current_health > 0:
 		enter_phase_4()
 	if current_health <= 0:
 		die()

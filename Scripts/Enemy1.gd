@@ -180,12 +180,29 @@ func die() -> void:
 	if is_dead: return
 	is_dead = true
 	GameManager.add_score(points)
-	is_dead = true
-	# Ocultamos el enemigo pero no lo borramos hasta cambiar escena
+	GameManager.level_up_bonus()
 	visible = false
 	set_process(false)
 	set_physics_process(false)
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(0.8).timeout
+	_fade_to_black()
+
+func _fade_to_black() -> void:
+	# Creamos el CanvasLayer por código
+	var canvas = CanvasLayer.new()
+	canvas.layer = 99
+	get_tree().current_scene.add_child(canvas)
+
+	var rect = ColorRect.new()
+	rect.color = Color(0, 0, 0, 0)
+	rect.set_anchors_preset(Control.PRESET_FULL_RECT)
+	canvas.add_child(rect)
+
+	# Fade a negro
+	var tween = get_tree().create_tween()
+	tween.tween_property(rect, "color:a", 1.0, 1.2)
+	await tween.finished
+
 	get_tree().change_scene_to_file("res://Scenes/game3.tscn")
 
 
